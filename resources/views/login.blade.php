@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mx-auto mt-5">
                     <li class="nav-item">
                         <a href="/dashboard" class="nav-link">
                             <span class="nav-link-inner--text">Dashboard</span>
@@ -68,38 +68,79 @@
     <!-- Main content -->
     <div class="main-content">
         <!-- Header -->
-        <div class="container mt-8">
+        <div class="container mt-9">
             <div class="header-body text-center mb-0">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <h1 class="text-white">Welcome!</h1>
-                        <p class="text-lead text-white">Use these awesome forms to login or create new account in your
-                            project for free.</p>
+                        <a href="/dashboard">
+                            <img src="{{asset('/assets')}}/img/botika.webp" width="50px" height="50px">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div>
         <!-- Page content -->
-        <div class="container mt-0 pb-5">
+        <div class="container mt-5 pb-5">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary border-0 mb-0">
                         <div class="card-body px-lg-5 py-lg-5">
-                            <div class="text-muted text-center mt-0 mb-3"><small>Log in</small></div>
-                            <form role="form">
-                                <div class="form-group mb-3">
+                            @if($users != 0)
+                            <form action="{{ url('/verify_login') }}" method="post" name="login_form" role="form">
+                                @csrf
+                                <div class="form-group mt-3 mb-3">
                                     <label class="label">Username</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
                                         <input class="form-control" placeholder="Username" type="username">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text check-value" id="username_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Password</label>
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Password" type="password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text check-value" id="password_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id="customCheckLogin" type="checkbox">
+                                    <label class="custom-control-label" for="customCheckLogin">
+                                        <span class="text-muted">Remember me</span>
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-primary my-4">Login</button>
+                                </div>
+                            </form>
+                            @else
+                            <form action="{{ url('/first_account') }}" method="post" name="create_form" role="form">
+                              @csrf
+                                <div class="form-group">
+                                    <label class="label">Nama</label>
+                                    <div class="input-group input-group-merge input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Name" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Email</label>
+                                    <div class="input-group input-group-merge input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Email" type="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -111,24 +152,11 @@
                                         <input class="form-control" placeholder="Password" type="password">
                                     </div>
                                 </div>
-                                <div class="custom-control custom-control-alternative custom-checkbox">
-                                    <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                                    <label class="custom-control-label" for=" customCheckLogin">
-                                        <span class="text-muted">Remember me</span>
-                                    </label>
-                                </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary my-4">Sign in</button>
+                                    <button type="button" class="btn btn-primary mt-4">Create account</button>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-6">
-                            <a href="#" class="text-light"><small>Forgot password?</small></a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <a href="/register" class="text-light"><small>Create new account</small></a>
+                            </form>     
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -136,10 +164,10 @@
         </div>
     </div>
     <!-- Footer -->
-    <footer class="py-5" id="footer-main">
+    <footer class="py-5 mb-3" id="footer-main">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-xl-12">
+                <div class="col-12">
                     <div class="copyright text-center text-muted">
                         &copy; 2020 Powered By <a href="https://www.botika.online" class="font-weight-bold ml-1"
                             target="_blank">Botika</a>
