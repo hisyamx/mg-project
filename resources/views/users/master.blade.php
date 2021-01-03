@@ -9,7 +9,7 @@
     <meta name="author" content="Creative Tim">
     <title>@yield('title')</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/png">
+    <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/webp">
     {{-- <link rel="icon" href="{{asset('/assets')}}/img/logo.svg"> --}}
     @include('users/header')
 
