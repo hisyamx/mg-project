@@ -8,22 +8,26 @@ class MainController extends Controller
 {
     public function index()
     {
-        // $index = IndexController::all();
         return view('users.pages.index');
     }
     public function profile()
     {
-        // $index = IndexController::all();
         return view('users.pages.profile');
     }
     public function division()
     {
-        // $index = IndexController::all();
-        return view('users.pages.division');
+        return view('manage_division.division');
+    }
+    public function karyawan()
+    {
+        return view('manage_karyawan.karyawan');
+    }
+    public function magang()
+    {
+        return view('manage_magang.magang');
     }
     public function project()
     {
-        // $index = IndexController::all();
-        return view('users.pages.detailproject');
+        return view('manage_project.project');
     }
 }

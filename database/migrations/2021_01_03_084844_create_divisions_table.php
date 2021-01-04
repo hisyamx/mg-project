@@ -15,6 +15,10 @@ class CreateDivisionsTable extends Migration
     {
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_division');
+            $table->string('nama_division');
+            $table->string('status')->default('Active');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

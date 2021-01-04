@@ -124,7 +124,7 @@
                             </form>
                             @else
                             <form action="{{ url('/first_account') }}" method="post" name="create_form" role="form">
-                              @csrf
+                                @csrf
                                 <div class="form-group">
                                     <label class="label">Nama</label>
                                     <div class="input-group input-group-merge input-group-alternative mb-3">

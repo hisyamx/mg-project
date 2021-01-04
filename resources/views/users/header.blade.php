@@ -29,14 +29,26 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link active" href="/user">
-                                <i class="ni ni-tv-2 text-primary"></i>
+                                <i class="ni ni-tv-2 text-blue"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/division">
-                                <i class="ni ni-bullet-list-67 text-default"></i>
+                            <a class="nav-link" href="/division">
+                                <i class="ni ni-ui-04 text-pink"></i>
                                 <span class="nav-link-text">Division</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/division">
+                                <i class="ni ni-bullet-list-67 text-primary"></i>
+                                <span class="nav-link-text">Karyawan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/magang">
+                                <i class="ni ni-bullet-list-67 text-success"></i>
+                                <span class="nav-link-text">Magang</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -50,20 +62,20 @@
                     <hr class="my-3">
                     <!-- Heading -->
                     <h6 class="navbar-heading p-0 text-muted">
-                        <span class="docs-normal">Project</span>
+                        <span class="docs-normal">Users</span>
                     </h6>
                     <!-- Navigation -->
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/proggress" target="_blank">
-                                <i class="ni ni-spaceship"></i>
-                                <span class="nav-link-text">Proggress Project</span>
+                            <a class="nav-link" href="/project" target="_blank">
+                                <i class="ni ni-spaceship text-red"></i>
+                                <span class="nav-link-text">Manage Project</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/project" target="_blank">
-                                <i class="ni ni-palette"></i>
-                                <span class="nav-link-text">Detail Project</span>
+                            <a class="nav-link" href="/account" target="_blank">
+                                <i class="ni ni-palette text-orange"></i>
+                                <span class="nav-link-text">Manage Account</span>
                             </a>
                         </li>
                     </ul>
