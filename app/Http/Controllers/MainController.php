@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index()
+    public function beranda()
     {
         return view('users.pages.index');
     }
@@ -16,18 +16,18 @@ class MainController extends Controller
     }
     public function division()
     {
-        return view('manage_division.division');
+        return view('division.division');
     }
     public function karyawan()
     {
-        return view('manage_karyawan.karyawan');
+        return view('karyawan.karyawan');
     }
     public function magang()
     {
-        return view('manage_magang.magang');
+        return view('magang.magang');
     }
     public function project()
     {
-        return view('manage_project.project');
+        return view('project.project');
     }
 }

@@ -19,6 +19,7 @@ class CreateAccessesTable extends Migration
             $table->boolean('kelola_akun');
             $table->boolean('kelola_division');
             $table->boolean('kelola_karyawan');
+            $table->boolean('kelola_magang');
             $table->boolean('kelola_project');
             $table->timestamps();
         });

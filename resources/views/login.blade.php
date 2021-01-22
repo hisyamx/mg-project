@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
+    <meta name="description" content="Botika Dashboard Management.">
+    <meta name="author" content="Botika">
     <title>Login</title>
     <!-- Favicon -->
     <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/webp">
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700">
     <!-- Icons -->
     <link rel="stylesheet" href="{{asset('/assets')}}/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="{{asset('/assets')}}/vendor/@fortawesome/fontawesome-free/css/all.min.css"
@@ -45,30 +45,13 @@
                         </div>
                     </div>
                 </div>
-                <ul class="navbar-nav mx-auto mt-5">
-                    <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">
-                            <span class="nav-link-inner--text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link">
-                            <span class="nav-link-inner--text">Login</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/register" class="nav-link">
-                            <span class="nav-link-inner--text">Register</span>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
     <!-- Main content -->
     <div class="main-content">
         <!-- Header -->
-        <div class="container mt-9">
+        <div class="container mt-5">
             <div class="header-body text-center mb-0">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
@@ -94,7 +77,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Username" type="username">
+                                        <input class="form-control" placeholder="Username" name="username" type="username">
                                         <div class="input-group-append">
                                             <span class="input-group-text check-value" id="username_error"></span>
                                         </div>
@@ -106,7 +89,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Password" type="password">
+                                        <input class="form-control" placeholder="Password" name="password" type="password">
                                         <div class="input-group-append">
                                             <span class="input-group-text check-value" id="password_error"></span>
                                         </div>
@@ -118,8 +101,8 @@
                                         <span class="text-muted">Remember me</span>
                                     </label>
                                 </div>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary my-4">Login</button>
+                                <div class="text-center form-group">
+                                    <button type="submit" class="btn btn-primary my-4 submit-btn btn-block">Login</button>
                                 </div>
                             </form>
                             @else
@@ -131,7 +114,16 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></span>
                                         </div>
-                                        <input class="form-control" placeholder="Name" type="text">
+                                        <input class="form-control" placeholder="Nama" name="nama" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Username</label>
+                                    <div class="input-group input-group-merge input-group-alternative mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Username" name="username" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -140,7 +132,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></span>
                                         </div>
-                                        <input class="form-control" placeholder="Email" type="email">
+                                        <input class="form-control" placeholder="Email" name="email" type="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -149,11 +141,11 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Password" type="password">
+                                        <input class="form-control" placeholder="Password" name="name" type="password">
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary mt-4">Create account</button>
+                                <div class="text-center form-group">
+                                    <button type="submit" class="btn btn-primary mt-4 submit-btn btn-block">Create account</button>
                                 </div>
                             </form>     
                             @endif
@@ -178,13 +170,31 @@
     </footer>
     <!-- Argon Scripts -->
     <!-- Core -->
-    <script src="{{asset('/assets')}}/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="{{asset('/assets')}}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('/assets')}}/vendor/js-cookie/js.cookie.js"></script>
-    <script src="{{asset('/assets')}}/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="{{asset('/assets')}}/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <script src="{{asset('/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('/assets/vendor/js-cookie/js.cookie.js')}}"></script>
+    <script src="{{asset('/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
+    <script src="{{asset('/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
     <!-- Argon JS -->
-    <script src="{{asset('/assets')}}/js/argon.js?v=1.2.0"></script>
+    <script src="{{asset('/assets/js/argon.js?v=1.2.0')}}"></script>
+    <script src="{{asset('/js/login/script.js')}}"></script>
+    <script>
+        @if ($message = Session::get('create_success'))
+        swal(
+            "Berhasil!",
+            "{{ $message }}",
+            "success"
+        );
+        @endif
+
+        @if ($message = Session::get('login_failed'))
+            swal(
+                "Gagal!",
+                "{{ $message }}",
+                "error"
+            );
+        @endif
+    </script>
 </body>
 
 </html>

@@ -28,9 +28,10 @@ class UserManageController extends Controller
         $access = new Acces;
         $access->user = $users->id;
         $access->kelola_akun = 1;
-        $access->kelola_barang = 1;
-        $access->transaksi = 1;
-        $access->kelola_laporan = 1;
+        $access->kelola_division = 1;
+        $access->kelola_project = 1;
+        $access->kelola_karyawan = 1;
+        $access->kelola_magang = 1;
         $access->save();
 
     	Session::flash('create_success', 'Akun baru berhasil dibuat');
@@ -114,17 +115,19 @@ class UserManageController extends Controller
                     $access = new Acces;
                     $access->user = $users->id;
                     $access->kelola_akun = 1;
-                    $access->kelola_barang = 1;
-                    $access->transaksi = 1;
-                    $access->kelola_laporan = 1;
+                    $access->kelola_division = 1;
+                    $access->kelola_project = 1;
+                    $access->kelola_karyawan = 1;
+                    $access->kelola_magang = 1;
                     $access->save();
                 }else{
                     $access = new Acces;
                     $access->user = $users->id;
                     $access->kelola_akun = 0;
-                    $access->kelola_barang = 1;
-                    $access->transaksi = 1;
-                    $access->kelola_laporan = 1;
+                    $access->kelola_division = 1;
+                    $access->kelola_project = 1;
+                    $access->kelola_karyawan = 1;
+                    $access->kelola_magang = 1;
                     $access->save();
                 }
 

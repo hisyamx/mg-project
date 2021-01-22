@@ -22,7 +22,7 @@ class AuthManageController extends Controller
     public function verifyLogin(Request $request)
     {
     	if(Auth::attempt($request->only('username', 'password'))){
-    		return redirect('/');
+    		return redirect('/dashboard');
     	}
     	Session::flash('login_failed', 'Username atau password salah');
     	
