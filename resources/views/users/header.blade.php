@@ -28,31 +28,31 @@
                     <!-- Nav items -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">
+                            <a class="nav-link {{ request()->is('dashboard') ? 'active' : ''}}" href="/dashboard">
                                 <i class="ni ni-tv-2 text-blue"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/division">
+                            <a class="nav-link {{ request()->is('division') ? 'active' : ''}}" href="/division">
                                 <i class="ni ni-ui-04 text-pink"></i>
                                 <span class="nav-link-text">Division</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/karyawan">
+                            <a class="nav-link {{ request()->is('karyawan') ? 'active' : ''}}" href="/karyawan">
                                 <i class="ni ni-bullet-list-67 text-primary"></i>
                                 <span class="nav-link-text">Karyawan</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/magang">
+                            <a class="nav-link {{ request()->is('magang') ? 'active' : ''}}" href="/magang">
                                 <i class="ni ni-bullet-list-67 text-success"></i>
                                 <span class="nav-link-text">Magang</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/profile">
+                            <a class="nav-link {{ request()->is('profile') ? 'active' : ''}}" href="/profile">
                                 <i class="ni ni-single-02 text-yellow"></i>
                                 <span class="nav-link-text">Profile</span>
                             </a>
@@ -67,13 +67,13 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/project">
+                            <a class="nav-link {{ request()->is('project') ? 'active' : ''}}" href="/project">
                                 <i class="ni ni-spaceship text-red"></i>
                                 <span class="nav-link-text">Manage Project</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/account">
+                            <a class="nav-link {{ request()->is('account') ? 'active' : ''}}" href="/account">
                                 <i class="ni ni-palette text-orange"></i>
                                 <span class="nav-link-text">Manage Account</span>
                             </a>
