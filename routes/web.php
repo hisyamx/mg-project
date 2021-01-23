@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth']], function(){
 
 	Route::get('/', 'MainController@beranda');
 	Route::get('/dashboard', 'MainController@beranda');
-	Route::get('/division', 'MainController@division');
+	// Route::get('/division', 'MainController@division');
 	Route::get('/karyawan', 'MainController@karyawan');
 	Route::get('/magang', 'MainController@magang');
 	Route::get('/project', 'MainController@project');
@@ -48,12 +48,19 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/account/update', 'UserManageController@updateAccount');
 	Route::get('/account/delete/{id}', 'UserManageController@deleteAccount');
 	Route::get('/account/filter/{id}', 'UserManageController@filterTable');
-	// > Akses
-	Route::get('/access', 'AccessManageController@viewAccess');
-	Route::get('/access/change/{user}/{access}', 'AccessManageController@changeAccess');
-	Route::get('/access/check/{user}', 'AccessManageController@checkAccess');
-	Route::get('/access/sidebar', 'AccessManageController@sidebarRefresh');
 	
+	// ------------------------- Kelola Division -------------------------
+	// > Division
+//Get Requests
+	Route::get("/division",'DivisionController@index')->name('division.division');
+	Route::get("/division/edit/{id}",'DivisionController@edit')->name('division.edit');
+	Route::get("/division/delete/{id}",'DivisionController@show')->name('division.show');
+	//Post Requests
+	Route::post("/division",'DivisionController@store')->name('division.division');
+	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.edit');
+	// Delete Request
+	Route::delete("/division/delete/{id}",'DivisionController@destroy');
+
 	// ------------------------- Kelola Project -------------------------
 	// > Project
 	// Route::get('/product', 'ProductManageController@viewProduct');
@@ -64,16 +71,6 @@ Route::group(['middleware' => ['auth']], function(){
 	// Route::post('/product/update', 'ProductManageController@updateProduct');
 	// Route::get('/product/delete/{id}', 'ProductManageController@deleteProduct');
 	// Route::get('/product/filter/{id}', 'ProductManageController@filterTable');
-
-	// ------------------------- Kelola Laporan -------------------------
-	// Route::get('/report/transaction', 'ReportManageController@reportTransaction');
-	// Route::post('/report/transaction/filter', 'ReportManageController@filterTransaction');
-	// Route::get('/report/transaction/chart/{id}', 'ReportManageController@chartTransaction');
-	// Route::post('/report/transaction/export', 'ReportManageController@exportTransaction');
-	// Route::get('/report/workers', 'ReportManageController@reportWorker');
-	// Route::get('/report/workers/filter/{id}', 'ReportManageController@filterWorker');
-	// Route::get('/report/workers/detail/{id}', 'ReportManageController@detailWorker');
-	// Route::post('/report/workers/export/{id}', 'ReportManageController@exportWorker');
 
 	// ------------------------- Kelola Karyawan -------------------------
 	// Route::get('/product', 'ProductManageController@viewProduct');

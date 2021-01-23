@@ -17,6 +17,7 @@ class CreateDivisionsTable extends Migration
             $table->id();
             $table->string('kode_division');
             $table->string('nama_division');
+            $table->string('headof_division');
             $table->string('status')->default('Active');
             $table->string('keterangan');
             $table->timestamps();
