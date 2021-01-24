@@ -137,10 +137,10 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">{{ Auth::user()->nama }}/h4>
                                                     </div>
                                                     <div class="text-right text-muted">
-                                                        <small>2 hrs ago</small>
+                                                        <small>{{ Auth::user()->nama }}</small>
                                                     </div>
                                                 </div>
                                                 <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
@@ -157,17 +157,14 @@
                                 aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="Image placeholder" src="assets/img/theme/team-4.jpg">
+                                        <img alt="image" src="{{asset('assets/img/botika.webp')}}">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                        <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->nama }}</span>
                                     </div>
                                 </div>
                             </a>
                             <div class="dropdown-menu  dropdown-menu-right ">
-                                <div class="dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome!</h6>
-                                </div>
                                 <a href="/profile" class="dropdown-item">
                                     <i class="ni ni-single-02"></i>
                                     <span>Profile</span>

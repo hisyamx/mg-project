@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Karyawan;
+
 class KaryawanController extends Controller
 {
     public function __construct()
@@ -12,9 +14,9 @@ class KaryawanController extends Controller
     }
     public function index()
     {
-        $department = Department::orderBy('name')->paginate(10);
+        $karyawan = Karyawan::orderBy('name')->paginate(10);
 
-        return view("department.index",['department' => $department]);
+        return view("karyawan.karyawan",['karyawan' => $karyawan]);
     }
  
     public function store(Request $request)
@@ -23,43 +25,43 @@ class KaryawanController extends Controller
         $this->validate($request,[ 'name' => 'required|max:30'           
             ]);
 
-        $department = new Department();
+        $karyawan = new Karyawan();
 
-        $department->name = request('name');
+        $karyawan->name = request('name');
         
-        $department->save();
+        $karyawan->save();
 
-        return redirect("/department")->with("success","Department Created Successfully");
+        return redirect("/karyawan")->with("success","Karyawan Created Successfully");
     }
 
     public function show($id)
     {
-        $department = Department::findOrFail($id);
-        return view("department.show",['department' => $department]);
+        $karyawan = Karyawan::findOrFail($id);
+        return view("karyawan.show",['karyawan' => $karyawan]);
     }
 
     public function destroy($id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $karyawan = Karyawan::findOrFail($id);
+        $karyawan->delete();
         
-        return redirect("/department")->with("success","Department Deleted Successfully");
+        return redirect("/karyawan")->with("success","Karyawan Deleted Successfully");
     }
 
     public function edit($id)
     {
-        $department = Department::findOrFail($id);
-        return view("department.edit",['department' => $department]);
+        $karyawan = Karyawan::findOrFail($id);
+        return view("karyawan.edit",['karyawan' => $karyawan]);
     }
 
     public function update_record($id)
     {
-        $department = Department::findOrFail($id);
+        $karyawan = Karyawan::findOrFail($id);
 
-        $department->name = request('name');
+        $karyawan->name = request('name');
 
-        $department->save(); //this will UPDATE the record with id=1
+        $karyawan->save(); //this will UPDATE the record with id=1
 
-        return redirect("/department")->with("success","Department Updated Successfully");
+        return redirect("/karyawan")->with("success","Karyawan Updated Successfully");
     }
 }

@@ -1,5 +1,5 @@
 @extends('users.master')
-@section('title', 'Project - Dashboard Management')
+@section('title', 'Division - Dashboard Management')
 
 @section('content')
 <!-- Header -->
@@ -15,9 +15,6 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-lg-6 col-5 text-right">
-                    <a href="/division/" class="btn btn-sm btn-neutral">Add New Division</a>
-                </div>
             </div>
         </div>
     </div>
@@ -31,20 +28,17 @@
                     <form class="mb-0" action="{{ route('division.division') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-4 col-12">
+                        <div class="col-sm-4 col-12">
                         <label for="nama_division">Nama Divisi</label>
-                        <input type="text" class="form-control" id="nama_division" name="nama_division" required 
-                        value="{{ old('nama_division') }}">
+                        <input type="text" class="form-control" id="nama_division" name="nama_division" required value="{{ old('nama_division') }}">
                         </div>
-                        <div class="col-md-4 col-12">
-                        <label for="head0f_division">Kepala Divisi</label>
-                        <input type="text" class="form-control" id="headof_division" name="headof_division" required 
-                        value="{{ old('head0f_division') }}">
+                        <div class="col-sm-5 col-12">
+                        <label for="headof_division">Kepala Divisi</label>
+                        <input type="text" class="form-control" id="headof_division" name="headof_division" required value="{{ old('headof_division') }}">
                         </div>
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-3 col-12">
                         <label for="status_division">Status Divisi</label>
-                        <input type="text" class="form-control" id="status_division" name="status_division" required 
-                        value="{{ old('status_division') }}">
+                        <input type="text" class="form-control" id="status_division" name="status_division" required value="{{ old('status_division') }}">
                         </div>
                     </div>
                     <br>
@@ -106,10 +100,22 @@
                 </div>
                 {{ $division->links() }}
                 @else
-                <h4>No Result Found</h4>
+                {{-- <h4>No Result Found</h4> --}}
+                <div class="col-md mb-5">
+                    <button class="btn btn-disabled btn-block"> No Result Found </button>
+                </div>
                 @endif
             </div>
         </div>
     </div>
+    <script>        
+        if ($status_division == Active) {
+            <i class="bg-warning"></i>
+        }
+        else {
+            <i class="bg-green"></i>
+        }
+    </script>
+
 
     @endsection

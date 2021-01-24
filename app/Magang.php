@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Magang extends Model
 {
-    //
+    public function payment_reports()
+    {
+        return $this->hasMany('App\PaymentReport');
+    }
 }

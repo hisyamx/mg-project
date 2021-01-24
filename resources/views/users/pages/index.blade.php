@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item active"><a href="/dashboard">Dashboards</a></li>
+                                <li class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -22,6 +22,26 @@
                 </div>
                 <!-- Card stats -->
                 <div class="row">
+                <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Divisi</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ count($division) }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div
+                                            class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                            <i class="ni ni-ui-04"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats">
                             <!-- Card body -->
@@ -29,10 +49,10 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Karyawan</h5>
-                                        <span class="h2 font-weight-bold mb-0">19819</span>
+                                        <span class="h2 font-weight-bold mb-0">{{ count($karyawan) }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
                                             <i class="ni ni-bullet-list-67"></i>
                                         </div>
                                     </div>
@@ -46,13 +66,12 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Divisi</h5>
-                                        <span class="h2 font-weight-bold mb-0">2,356</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Magang</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ count($magang) }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        <div
-                                            class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                            <i class="ni ni-ui-04"></i>
+                                        <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                            <i class="ni ni-bullet-list-67"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -66,29 +85,11 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Project</h5>
-                                        <span class="h2 font-weight-bold mb-0">924</span>
+                                        <span class="h2 font-weight-bold mb-0">{{ count($project) }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
                                             <i class="ni ni-spaceship"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Account</h5>
-                                        <span class="h2 font-weight-bold mb-0">49,65%</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="ni ni-palette"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -141,62 +142,6 @@
                                         <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/index.html
-                                    </th>
-                                    <td>
-                                        3,985
-                                    </td>
-                                    <td>
-                                        319
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/charts.html
-                                    </th>
-                                    <td>
-                                        3,513
-                                    </td>
-                                    <td>
-                                        294
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/tables.html
-                                    </th>
-                                    <td>
-                                        2,050
-                                    </td>
-                                    <td>
-                                        147
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/profile.html
-                                    </th>
-                                    <td>
-                                        1,795
-                                    </td>
-                                    <td>
-                                        190
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -214,6 +159,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(count($division) >= 1)
                     <div class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">
@@ -223,50 +169,22 @@
                                     <th scope="col">Head of Division</th>
                                 </tr>
                             </thead>
+                            <?php $i = 1; ?>
+                            @foreach($division AS $args)
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        Facebook
+                                        {{$args->nama_division}}
                                     </th>
                                     <td>
-                                        1,480
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Facebook
-                                    </th>
-                                    <td>
-                                        5,480
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Google
-                                    </th>
-                                    <td>
-                                        4,807
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Instagram
-                                    </th>
-                                    <td>
-                                        3,678
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        twitter
-                                    </th>
-                                    <td>
-                                        2,645
+                                        {{$args->headof_division}}
                                     </td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

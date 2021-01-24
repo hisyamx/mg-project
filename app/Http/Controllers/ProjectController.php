@@ -7,6 +7,8 @@ use Session;
 use App\Acces;
 use Illuminate\Http\Request;
 
+use App\Project;
+
 class ProjectController extends Controller
 {
     public function __construct()
@@ -15,9 +17,9 @@ class ProjectController extends Controller
     }
     public function index()
     {
-        $department = Department::orderBy('name')->paginate(10);
+        $project = Project::orderBy('name')->paginate(10);
 
-        return view("department.index",['department' => $department]);
+        return view("project.project",['project' => $project]);
     }
  
     public function store(Request $request)
@@ -26,43 +28,43 @@ class ProjectController extends Controller
         $this->validate($request,[ 'name' => 'required|max:30'           
             ]);
 
-        $department = new Department();
+        $project = new Project();
 
-        $department->name = request('name');
+        $project->name = request('name');
         
-        $department->save();
+        $project->save();
 
-        return redirect("/department")->with("success","Department Created Successfully");
+        return redirect("/project")->with("success","Project Created Successfully");
     }
 
     public function show($id)
     {
-        $department = Department::findOrFail($id);
-        return view("department.show",['department' => $department]);
+        $project = Project::findOrFail($id);
+        return view("project.show",['project' => $project]);
     }
 
     public function destroy($id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $project = Project::findOrFail($id);
+        $project->delete();
         
-        return redirect("/department")->with("success","Department Deleted Successfully");
+        return redirect("/project")->with("success","Project Deleted Successfully");
     }
 
     public function edit($id)
     {
-        $department = Department::findOrFail($id);
-        return view("department.edit",['department' => $department]);
+        $project = Project::findOrFail($id);
+        return view("project.edit",['project' => $project]);
     }
 
     public function update_record($id)
     {
-        $department = Department::findOrFail($id);
+        $project = Project::findOrFail($id);
 
-        $department->name = request('name');
+        $project->name = request('name');
 
-        $department->save(); //this will UPDATE the record with id=1
+        $project->save(); //this will UPDATE the record with id=1
 
-        return redirect("/department")->with("success","Department Updated Successfully");
+        return redirect("/project")->with("success","Project Updated Successfully");
     }
 }

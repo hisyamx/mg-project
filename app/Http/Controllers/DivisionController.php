@@ -13,20 +13,25 @@ class DivisionController extends Controller
     }
     public function index()
     {
-        $division = Division::orderBy('name')->paginate(10);
-
+        $division = Division::orderBy('nama_division')->paginate(10);
         return view("division.division",['division' => $division]);
     }
  
     public function store(Request $request)
     {
 
-        $this->validate($request,[ 'name' => 'required|max:30'           
-            ]);
+        $this->validate($request, [
+        
+            'nama_division' => 'required|max:30',           
+            'headof_division' => 'required|max:30',           
+            'status_division' => 'required|max:30'           
+        ]);
 
         $division = new Division();
 
-        $division->name = request('name');
+        $division->nama_division = request('nama_division');
+        $division->headof_division = request('headof_division');
+        $division->status_division = request('status_division');
         
         $division->save();
 
@@ -36,7 +41,7 @@ class DivisionController extends Controller
     public function show($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.show",['division' => $division]);
+        return view("division.edit",['division' => $division]);
     }
 
     public function destroy($id)
@@ -50,14 +55,16 @@ class DivisionController extends Controller
     public function edit($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.edit",['division' => $division]);
+        return view("division.add",['division' => $division]);
     }
 
     public function update_record($id)
     {
         $division = Division::findOrFail($id);
 
-        $division->name = request('name');
+        $division->nama_division = request('nama_division');
+        $division->headof_division = request('headof_division');
+        $division->status_division = request('status_division');
 
         $division->save(); //this will UPDATE the record with id=1
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Magang;
+
 class MagangController extends Controller
 {
     public function __construct()
@@ -12,9 +14,9 @@ class MagangController extends Controller
     }
     public function index()
     {
-        $department = Department::orderBy('name')->paginate(10);
+        $magang = Magang::orderBy('name')->paginate(10);
 
-        return view("department.index",['department' => $department]);
+        return view("magang.magang",['magang' => $magang]);
     }
  
     public function store(Request $request)
@@ -23,43 +25,43 @@ class MagangController extends Controller
         $this->validate($request,[ 'name' => 'required|max:30'           
             ]);
 
-        $department = new Department();
+        $magang = new Magang();
 
-        $department->name = request('name');
+        $magang->name = request('name');
         
-        $department->save();
+        $magang->save();
 
-        return redirect("/department")->with("success","Department Created Successfully");
+        return redirect("/magang")->with("success","Magang Created Successfully");
     }
 
     public function show($id)
     {
-        $department = Department::findOrFail($id);
-        return view("department.show",['department' => $department]);
+        $magang = Magang::findOrFail($id);
+        return view("magang.show",['magang' => $magang]);
     }
 
     public function destroy($id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $magang = Magang::findOrFail($id);
+        $magang->delete();
         
-        return redirect("/department")->with("success","Department Deleted Successfully");
+        return redirect("/magang")->with("success","Magang Deleted Successfully");
     }
 
     public function edit($id)
     {
-        $department = Department::findOrFail($id);
-        return view("department.edit",['department' => $department]);
+        $magang = Magang::findOrFail($id);
+        return view("magang.edit",['magang' => $magang]);
     }
 
     public function update_record($id)
     {
-        $department = Department::findOrFail($id);
+        $magang = Magang::findOrFail($id);
 
-        $department->name = request('name');
+        $magang->name = request('name');
 
-        $department->save(); //this will UPDATE the record with id=1
+        $magang->save(); //this will UPDATE the record with id=1
 
-        return redirect("/department")->with("success","Department Updated Successfully");
+        return redirect("/magang")->with("success","Magang Updated Successfully");
     }
 }
