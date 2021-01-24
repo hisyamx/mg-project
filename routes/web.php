@@ -63,15 +63,20 @@ Route::group(['middleware' => ['auth']], function(){
 
 	// ------------------------- Kelola Project -------------------------
 	// > Project
-	// Route::get('/product', 'ProductManageController@viewProduct');
-	// Route::get('/product/new', 'ProductManageController@viewNewProduct');
-	// Route::post('/product/create', 'ProductManageController@createProduct');
-	// Route::post('/product/import', 'ProductManageController@importProduct');
-	// Route::get('/product/edit/{id}', 'ProductManageController@editProduct');
-	// Route::post('/product/update', 'ProductManageController@updateProduct');
-	// Route::get('/product/delete/{id}', 'ProductManageController@deleteProduct');
-	// Route::get('/product/filter/{id}', 'ProductManageController@filterTable');
-
+	// Get Request
+	Route::get("/project",'ProjectController@index')->name('project.project');
+	Route::get("/project/create",'ProjectController@create')->name('project.create');
+	Route::get("/project/single/{id}","ProjectController@single")->name("project.single");
+	Route::get("/project/edit/{id}","ProjectController@edit")->name("project.edit");
+	Route::get("/project/delete/{id}","ProjectController@show")->name("project.delete");
+	Route::get("/project/pay/{id}","ProjectController@pay")->name("project.pay");
+	//Post Request
+	Route::post("/project/create","ProjectController@store");
+	Route::post("/project/edit/{id}","ProjectController@update_record")->name("project.edit");
+	// Route::post("/project/pay/{id}","PaymentReportController@create");
+	// Delete
+	Route::delete("/project/delete/{id}","ProjectController@destroy");
+	// End of karyawan
 	// ------------------------- Kelola Karyawan -------------------------
 	// > Karyawan
 	// Get Request

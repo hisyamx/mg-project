@@ -10,13 +10,13 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('karyawan.karyawan') }}">Karyawan</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="#" class="btn btn-sm btn-neutral">Tambah Data Karyawan</a>
+                    <a href="{{ route('karyawan.create') }}" class="btn btn-sm btn-neutral">Tambah Data Karyawan</a>
                 </div>
             </div>
         </div>
