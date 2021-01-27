@@ -41,7 +41,7 @@ class DivisionController extends Controller
     public function show($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.edit",['division' => $division]);
+        return view("division.add",['division' => $division]);
     }
 
     public function destroy($id)
@@ -55,7 +55,7 @@ class DivisionController extends Controller
     public function edit($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.add",['division' => $division]);
+        return view("division.edit",['division' => $division]);
     }
 
     public function update_record($id)

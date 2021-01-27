@@ -17,7 +17,8 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('dashboard.create') }}" class="btn btn-sm btn-neutral">Tambah Project</a>
+                        <a href="{{ route('project.create') }}" class="btn btn-sm btn-neutral">Tambah Project</a>
+                        {{-- <a href="/project" class="btn btn-sm btn-neutral">Tambah Project</a> --}}
                     </div>
                 </div>
                 <!-- Card stats -->
@@ -112,7 +113,7 @@
                                 <h3 class="mb-0">Project</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="{{route(project.project)}}" class="btn btn-sm btn-primary">Lihat semua</a>
+                                <a href="{{route('project.project')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                             </div>
                         </div>
                     </div>

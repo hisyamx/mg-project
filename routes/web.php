@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+// use App\Http\Controllers\AccessManageController;
+// use App\Http\Controllers\AuthManageController;
+// use App\Http\Controllers\DivisionController;
+// use App\Http\Controllers\KaryawanController;
+// use App\Http\Controllers\MagangController;
+// use App\Http\Controllers\MainController;
+// use App\Http\Controllers\ProfileController;
+// use App\Http\Controllers\ProjectController;
+
 // Auth::routes();
 
 // Route::get('/', function () {
@@ -53,8 +62,8 @@ Route::group(['middleware' => ['auth']], function(){
 	// > Division
 //Get Requests
 	Route::get("/division",'DivisionController@index')->name('division.division');
-	Route::get("/division/edit/{id}",'DivisionController@edit')->name('division.add');
-	Route::get("/division/delete/{id}",'DivisionController@show')->name('division.edit');
+	Route::get("/division/edit/{id}",'DivisionController@edit')->name('division.edit');
+	Route::get("/division/delete/{id}",'DivisionController@add')->name('division.add');
 	//Post Requests
 	Route::post("/division",'DivisionController@store')->name('division.division');
 	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.add');
