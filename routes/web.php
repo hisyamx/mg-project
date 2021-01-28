@@ -14,15 +14,17 @@ use App\Http\Controllers\ProjectController;
 // Auth::routes();
 
 // });
-// Route::get('/home', 'HomeController@index')->name('home');
-	
+// Route::get('/home', 'HomeController@index')->name('home');	
+
 Route::get('/login', 'AuthManageController@viewLogin')->name('login');
 Route::post('/verify_login', 'AuthManageController@verifyLogin');
 Route::post('/first_account', 'UserManageController@firstAccount');
-
 // Route::group(['middleware' => ['auth', 'checkRole:admin,user']], function(){
 Route::group(['middleware' => ['auth']], function(){
 
+	// Route::get('/', function () {
+	// 	return view('pages.index');
+	// });
 	// main
 	Route::get('/', 'MainController@index')->name('dashboard.index');
 	Route::get('/dashboard', 'MainController@index')->name('dashboard.index');

@@ -8,6 +8,7 @@ use App\Acces;
 use Illuminate\Http\Request;
 
 use App\Project;
+use App\Division;
 
 class ProjectController extends Controller
 {
@@ -44,11 +45,13 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
+            'nim' => 'required|max:50',
+            'sekolah' =>  'required|max:100',  
+            'role' =>  'required',  
             'division' =>  'required',  
-            'location' =>  'required|max:100',  
             'telephone' =>  'required|min:10|max:15',  
-            'cover_image' => 'image|nullable|max:1999',
-        
+            'status' =>  'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
 
         // Handle File Upload
@@ -70,10 +73,12 @@ class ProjectController extends Controller
         $project = new Project();
 
         $project->name = request('name');
+        $project->nim = request('nim');
+        $project->role = request('role');
         $project->division = request('division');
-        $project->location = request('location');
+        $project->sekolah = request('sekolah');
         $project->telephone = request('telephone');
-        $project->salary = request('salary');
+        $project->status = request('status');
         $project->cover_image = $fileNameToStore;
         
         $project->save();
@@ -98,19 +103,20 @@ class ProjectController extends Controller
             Storage::delete('public/cover_images/'.$project->cover_image);
         }
         
-        return redirect("/project")->with("success","Project Deleted Successfully");
+        return redirect("/project")->with("success","project Deleted Successfully");
     }
 
     public function update_record(Request $request,$id)
     {
         $this->validate($request, [
             'name' => 'required|max:50',
+            'nim' => 'required|max:50',
+            'sekolah' =>  'required|max:100',  
+            'role' =>  'required',  
             'division' =>  'required',  
-            'location' =>  'required|max:100',  
             'telephone' =>  'required|min:10|max:15',  
-            'salary' =>  'required',
+            'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
-        
         ]);
 
         $project = Project::findOrFail($id);
@@ -131,10 +137,12 @@ class ProjectController extends Controller
         }
 
         $project->name = request('name');
+        $project->nim = request('nim');
+        $project->role = request('role');
         $project->division = request('division');
-        $project->location = request('location');
+        $project->sekolah = request('sekolah');
         $project->telephone = request('telephone');
-        $project->salary = request('salary');
+        $project->status = request('status');
         if($request->hasFile('cover_image')){
             $project->cover_image = $fileNameToStore;
         }
@@ -155,7 +163,7 @@ class ProjectController extends Controller
     public function pay($id)
     {
         $division = Division::orderBy('name') -> get();
-        $project = Project::findOrFail($id);
+        $project = project::findOrFail($id);
         return view("project.pay",['project' => $project,'division' => $division]);
     }    
 }

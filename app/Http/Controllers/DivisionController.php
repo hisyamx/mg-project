@@ -13,7 +13,7 @@ class DivisionController extends Controller
     }
     public function index()
     {
-        $division = Division::orderBy('name_division')->paginate(10);
+        $division = Division::orderBy('name')->paginate(10);
         return view("division.index",['division' => $division]);
     }
  
@@ -22,16 +22,16 @@ class DivisionController extends Controller
 
         $this->validate($request, [
         
-            'name_division' => 'required|max:30',           
-            'headof_division' => 'required|max:30',           
-            'status_division' => 'required|max:30'           
+            'name' => 'required|max:30',           
+            'headof' => 'required|max:30',           
+            'status' => 'required|max:30'           
         ]);
 
         $division = new Division();
 
-        $division->name_division = request('name_division');
-        $division->headof_division = request('headof_division');
-        $division->status_division = request('status_division');
+        $division->name = request('name');
+        $division->headof = request('headof');
+        $division->status = request('status');
         
         $division->save();
 
@@ -62,9 +62,9 @@ class DivisionController extends Controller
     {
         $division = Division::findOrFail($id);
 
-        $division->name_division = request('name_division');
-        $division->headof_division = request('headof_division');
-        $division->status_division = request('status_division');
+        $division->name = request('name');
+        $division->headof = request('headof');
+        $division->status = request('status');
 
         $division->save(); //this will UPDATE the record with id=1
 

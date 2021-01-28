@@ -11,7 +11,7 @@
                     <div class="col-lg-6 col-7">
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href=""><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></li>
                             </ol>
                         </nav>
@@ -123,21 +123,17 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Nama Project</th>
-                                    <th scope="col">Visitors</t h>
-                                    <th scope="col">Unique users</th>
-                                    <th scope="col">Bounce rate</th>
+                                    <th scope="col">Division Responsible</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        /argon/
+                                        Name
                                     </th>
                                     <td>
                                         4,569
-                                    </td>
-                                    <td>
-                                        340
                                     </td>
                                     <td>
                                         <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%

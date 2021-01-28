@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{asset('/assets')}}/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 <!-- Page plugins -->
 <!-- Argon CSS -->
-<link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+<link rel="stylesheet" href="assets/css/argon.css" type="text/css">
 </head>
 
 <body>
@@ -13,14 +13,28 @@
     <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
         <div class="scrollbar-inner">
             <!-- Brand -->
-            <div class="sidenav-header  align-items-center">
+            <div class="sidenav-header d-flex align-items-center">
                 <a class="navbar-brand" href="/dashboard">
-                    <img src="{{asset('/assets')}}/img/botika.webp" class="navbar-brand-img" alt="...">
+                    <img src="{{asset('assets/img/botika.webp')}}" class="navbar-brand-img" alt="...">
                 </a>
+                <div class=" ml-auto ">
+                    <!-- Sidenav toggler -->
+                    <div class="sidenav-toggler d-none d-xl-block active" data-action="sidenav-unpin"
+                        data-target="#sidenav-main">
+                        <div class="sidenav-toggler-inner">
+                            <i class="sidenav-toggler-line"></i>
+                            <i class="sidenav-toggler-line"></i>
+                            <i class="sidenav-toggler-line"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="navbar-inner">
                 <!-- Collapse -->
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                    <!-- Divider -->
+                    <hr class="my-3">
+
                     <!-- Heading -->
                     <h6 class="navbar-heading p-0 text-muted">
                         <span class="docs-normal">Main</span>
@@ -29,7 +43,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('dashboard') ? 'active' : ''}}" href="/dashboard">
-                                <i class="ni ni-tv-2 text-blue"></i>
+                                <i class="ni ni-shop text-blue"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
@@ -107,7 +121,17 @@
                     </form>
                     <!-- Navbar links -->
                     <ul class="navbar-nav align-items-center  ml-md-auto ">
-                        
+                        <li class="nav-item d-xl-none">
+                            <!-- Sidenav toggler -->
+                            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+                                data-target="#sidenav-main">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </div>
+                        </li>
                         <li class="nav-item d-sm-none">
                             <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
                                 <i class="ni ni-zoom-split-in"></i>
@@ -131,7 +155,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="assets/img/theme/team-1.jpg"
+                                                <img alt="Image placeholder" src="{{asset('assets/img/botika_icon2.svg')}}"
                                                     class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
@@ -156,8 +180,8 @@
                             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <div class="media align-items-center">
-                                    <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="image" src="{{asset('assets/img/botika.webp')}}">
+                                    <span class="avatar avatar-sm rounded-circle bg-default">
+                                        <img alt="image" src="{{asset('assets/img/botika_icon2.svg')}}">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->nama }}</span>
@@ -178,17 +202,6 @@
                                     <i class="ni ni-user-run"></i>
                                     <span>Logout</span>
                                 </a>
-                            </div>
-                        </li>
-                        <li class="nav-item ml-3 d-xl-none">
-                            <!-- Sidenav toggler -->
-                            <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
-                                data-target="#sidenav-main">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
                             </div>
                         </li>
                     </ul>
