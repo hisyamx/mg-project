@@ -5,7 +5,20 @@
 <link rel="stylesheet" href="{{asset('/assets')}}/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 <!-- Page plugins -->
 <!-- Argon CSS -->
-<link rel="stylesheet" href="assets/css/argon.css" type="text/css">
+<link rel="stylesheet" href="{{asset('/assets')}}/css/argon.css" type="text/css">
+<!-- Page plugins -->
+{{-- datatables --}}
+<link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+<style>
+    @media print {
+        #ghostery-tracker-tally {
+            display: none !important
+        }
+    }
+
+</style>
 </head>
 
 <body>
@@ -155,7 +168,8 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="{{asset('assets/img/botika_icon2.svg')}}"
+                                                <img alt="Image placeholder"
+                                                    src="{{asset('assets/img/botika_icon2.svg')}}"
                                                     class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
