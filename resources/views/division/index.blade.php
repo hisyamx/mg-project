@@ -3,7 +3,6 @@
 
 @section('content')
 <!-- Header -->
-
 <div class="header bg-default pb-6">
     <div class="container-fluid">
         <div class="header-body">
@@ -30,16 +29,16 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-4 col-12">
-                        <label for="nama_division">Nama Divisi</label>
-                        <input type="text" class="form-control" id="name_division" name="name_division" required value="{{ old('name_division') }}">
+                        <label for="name">Nama Divisi</label>
+                        <input type="text" class="form-control" id="name" name="name" required value="{{ old('name') }}">
                         </div>
                         <div class="col-sm-5 col-12">
-                        <label for="headof_division">Kepala Divisi</label>
-                        <input type="text" class="form-control" id="headof_division" name="headof_division" required value="{{ old('headof_division') }}">
+                        <label for="headof">Kepala Divisi</label>
+                        <input type="text" class="form-control" id="headof" name="headof" required value="{{ old('headof') }}">
                         </div>
                         <div class="col-md-3 col-12">
-                        <label for="status_division">Status Divisi</label>
-                        <input type="text" class="form-control" id="status_division" name="status_division" required value="{{ old('status_division') }}">
+                        <label for="status">Status Divisi</label>
+                        <input type="text" class="form-control" id="status" name="status" required value="{{ old('status') }}">
                         </div>
                     </div>
                     <br>
@@ -69,17 +68,17 @@
                                 <th scope="row">
                                     <div class="media align-items-center">
                                         <div class="media-body">
-                                            <span class="name mb-0 text-sm">{{$args->name_division}}</span>
+                                            <span class="name mb-0 text-sm">{{$args->name}}</span>
                                         </div>
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->headof_division}}
+                                    {{$args->headof}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                         {{-- <i class="bg-warning"></i> --}}
-                                        <span class="status">{{$args->status_division}}</span>
+                                        <span class="status">{{$args->status}}</span>
                                     </span>
                                 </td>
                                 <td class="text-right">
@@ -89,11 +88,18 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ route('division.add',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Delete</a>
+                                            <!-- Button trigger modal -->
+                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ route('division.edit',$args->id) }}">
+                                                Edit
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ route('division.show',$args->id) }}">
+                                                Delete
+                                            </button> --}}
+                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item" href="{{ route('division.show',$args->id) }}">Delete</a>
                                         </div>
                                     </div>
-                                </td>
+                                    </td>
                             </tr>
                         </tbody>
                         @endforeach
@@ -110,7 +116,7 @@
         </div>
     </div>
     <script>        
-        if ($status_division == Active) {
+        if ($status == Active) {
             <i class="bg-warning"></i>
         }
         else {

@@ -21,7 +21,6 @@ class DivisionController extends Controller
     {
 
         $this->validate($request, [
-        
             'name' => 'required|max:30',           
             'headof' => 'required|max:30',           
             'status' => 'required|max:30'           
@@ -41,7 +40,7 @@ class DivisionController extends Controller
     public function show($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.add",['division' => $division]);
+        return view("division.show",['division' => $division]);
     }
 
     public function destroy($id)

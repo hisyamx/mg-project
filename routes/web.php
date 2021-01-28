@@ -55,10 +55,10 @@ Route::group(['middleware' => ['auth']], function(){
 //Get Requests
 	Route::get("/division",'DivisionController@index')->name('division.index');
 	Route::get("/division/edit/{id}",'DivisionController@edit')->name('division.edit');
-	Route::get("/division/delete/{id}",'DivisionController@add')->name('division.add');
+	Route::get("/division/show/{id}",'DivisionController@show')->name('division.show');
 	//Post Requests
 	Route::post("/division",'DivisionController@store')->name('division.index');
-	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.add');
+	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.edit');
 	// Delete Request
 	Route::delete("/division/delete/{id}",'DivisionController@destroy');
 
