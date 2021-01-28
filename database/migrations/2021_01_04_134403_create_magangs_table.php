@@ -15,6 +15,14 @@ class CreateMagangsTable extends Migration
     {
         Schema::create('magangs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('nim');
+            $table->string('sekolah');
+            $table->string('role');
+            $table->string('division');
+            $table->string('cover_image');
+            $table->string('telephone');
+            $table->string('status')->default('Active');
             $table->timestamps();
         });
     }

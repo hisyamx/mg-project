@@ -15,12 +15,12 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_project');
-            $table->string('jenis_project');
-            $table->string('nama_project');
-            $table->string('nama_users');
+            $table->string('type_project');
+            $table->string('name_project');
+            $table->string('name_division');
             $table->string('deadline')->nullable();
-            $table->string('keterangan')->default('On Proggress');
+            $table->string('cover_image');
+            $table->string('description')->default('On Proggress');
             $table->timestamps();
         });
     }

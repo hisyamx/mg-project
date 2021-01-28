@@ -41,12 +41,13 @@ class MagangController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
+            'nim' => 'required|max:50',
+            'sekolah' =>  'required|max:100',  
+            'role' =>  'required',  
             'division' =>  'required',  
-            'location' =>  'required|max:100',  
             'telephone' =>  'required|min:10|max:15',  
-            'salary' =>  'required',
+            'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
-        
         ]);
 
         // Handle File Upload
@@ -68,10 +69,12 @@ class MagangController extends Controller
         $magang = new Magang();
 
         $magang->name = request('name');
+        $magang->nim = request('nim');
+        $magang->role = request('role');
         $magang->division = request('division');
-        $magang->location = request('location');
+        $magang->sekolah = request('sekolah');
         $magang->telephone = request('telephone');
-        $magang->salary = request('salary');
+        $magang->status = request('status');
         $magang->cover_image = $fileNameToStore;
         
         $magang->save();
@@ -103,12 +106,13 @@ class MagangController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
+            'nim' => 'required|max:50',
+            'sekolah' =>  'required|max:100',  
+            'role' =>  'required',  
             'division' =>  'required',  
-            'location' =>  'required|max:100',  
             'telephone' =>  'required|min:10|max:15',  
-            'salary' =>  'required',
+            'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
-        
         ]);
 
         $magang = Magang::findOrFail($id);
@@ -129,10 +133,12 @@ class MagangController extends Controller
         }
 
         $magang->name = request('name');
+        $magang->nim = request('nim');
+        $magang->role = request('role');
         $magang->division = request('division');
-        $magang->location = request('location');
+        $magang->sekolah = request('sekolah');
         $magang->telephone = request('telephone');
-        $magang->salary = request('salary');
+        $magang->status = request('status');
         if($request->hasFile('cover_image')){
             $magang->cover_image = $fileNameToStore;
         }

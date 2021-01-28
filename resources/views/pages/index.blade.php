@@ -113,7 +113,7 @@
                                 <h3 class="mb-0">Project</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="{{route('project.project')}}" class="btn btn-sm btn-primary">Lihat semua</a>
+                                <a href="{{route('project.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                                 <h3 class="mb-0">Division</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="/division" class="btn btn-sm btn-primary">Lihat semua</a>
+                                <a href="{{route('division.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        {{$args->nama_division}}
+                                        {{$args->name_division}}
                                     </th>
                                     <td>
                                         {{$args->headof_division}}

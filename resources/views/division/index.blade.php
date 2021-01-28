@@ -26,12 +26,12 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <form class="mb-0" action="{{ route('division.division') }}" method="POST">
+                    <form class="mb-0" action="{{ route('division.index') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-sm-4 col-12">
                         <label for="nama_division">Nama Divisi</label>
-                        <input type="text" class="form-control" id="nama_division" name="nama_division" required value="{{ old('nama_division') }}">
+                        <input type="text" class="form-control" id="name_division" name="name_division" required value="{{ old('name_division') }}">
                         </div>
                         <div class="col-sm-5 col-12">
                         <label for="headof_division">Kepala Divisi</label>
@@ -69,7 +69,7 @@
                                 <th scope="row">
                                     <div class="media align-items-center">
                                         <div class="media-body">
-                                            <span class="name mb-0 text-sm">{{$args->nama_division}}</span>
+                                            <span class="name mb-0 text-sm">{{$args->name_division}}</span>
                                         </div>
                                     </div>
                                 </th>

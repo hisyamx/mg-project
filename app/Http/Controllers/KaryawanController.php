@@ -16,7 +16,7 @@ class KaryawanController extends Controller
     {
         $karyawan = Karyawan::orderBy('name')->paginate(10);
 
-        return view("karyawan.karyawan",['karyawan' => $karyawan]);
+        return view("karyawan.index",['karyawan' => $karyawan]);
     }
  
     public function store(Request $request)

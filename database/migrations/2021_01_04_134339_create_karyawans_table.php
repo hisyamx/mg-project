@@ -15,6 +15,13 @@ class CreateKaryawansTable extends Migration
     {
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('kode');
+            $table->string('address');
+            $table->string('role');
+            $table->string('division');
+            $table->string('status')->default('Active');
+            $table->string('cover_image');
             $table->timestamps();
         });
     }

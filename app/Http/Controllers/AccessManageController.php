@@ -51,6 +51,6 @@ class AccessManageController extends Controller
     // Sidebar Refresh
     public function sidebarRefresh()
     {
-    	return view('templates.sidebar');
+    	return view('users.header');
     }
 }

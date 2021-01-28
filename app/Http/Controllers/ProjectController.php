@@ -47,8 +47,7 @@ class ProjectController extends Controller
             'division' =>  'required',  
             'location' =>  'required|max:100',  
             'telephone' =>  'required|min:10|max:15',  
-            'salary' =>  'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
         
         ]);
 

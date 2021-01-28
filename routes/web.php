@@ -2,20 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-// use App\Http\Controllers\AccessManageController;
-// use App\Http\Controllers\AuthManageController;
-// use App\Http\Controllers\DivisionController;
-// use App\Http\Controllers\KaryawanController;
-// use App\Http\Controllers\MagangController;
-// use App\Http\Controllers\MainController;
-// use App\Http\Controllers\ProfileController;
-// use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\AccessManageController;
+use App\Http\Controllers\AuthManageController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\MagangController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 
 // Auth::routes();
-
-// Route::get('/', function () {
-// 		return view('users.pages.index');
-// });
 
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -30,19 +26,13 @@ Route::group(['middleware' => ['auth']], function(){
 	// main
 	Route::get('/', 'MainController@index')->name('dashboard.index');
 	Route::get('/dashboard', 'MainController@index')->name('dashboard.index');
-	// Route::get('/division', 'MainController@division');
-	Route::get('/karyawan', 'MainController@karyawan');
-	Route::get('/magang', 'MainController@magang');
-	Route::get('/project', 'MainController@project');
-
+	//logout
 	Route::get('/logout', 'AuthManageController@logoutProcess');
-	// Route::get('/', 'ViewManageController@viewDashboard');
-	// Route::get('/dashboard/chart/{filter}', 'ViewManageController@filterChartDashboard');
-	// Route::post('/market/update', 'ViewManageController@updateMarket');
+
 	// ------------------------- Fitur Cari -------------------------
 	Route::get('/search/{word}', 'SearchManageController@searchPage');
 	
-	// ------------------------- Profil -------------------------
+	// ------------------------- Profile -------------------------
 	Route::get('/profile', 'ProfileManageController@viewProfile');
 	Route::post('/profile/update/data', 'ProfileManageController@changeData');
 	Route::post('/profile/update/password', 'ProfileManageController@changePassword');
@@ -61,11 +51,11 @@ Route::group(['middleware' => ['auth']], function(){
 	// ------------------------- Kelola Division -------------------------
 	// > Division
 //Get Requests
-	Route::get("/division",'DivisionController@index')->name('division.division');
+	Route::get("/division",'DivisionController@index')->name('division.index');
 	Route::get("/division/edit/{id}",'DivisionController@edit')->name('division.edit');
 	Route::get("/division/delete/{id}",'DivisionController@add')->name('division.add');
 	//Post Requests
-	Route::post("/division",'DivisionController@store')->name('division.division');
+	Route::post("/division",'DivisionController@store')->name('division.index');
 	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.add');
 	// Delete Request
 	Route::delete("/division/delete/{id}",'DivisionController@destroy');
@@ -73,7 +63,7 @@ Route::group(['middleware' => ['auth']], function(){
 	// ------------------------- Kelola Project -------------------------
 	// > Project
 	// Get Request
-	Route::get("/project",'ProjectController@index')->name('project.project');
+	Route::get("/project",'ProjectController@index')->name('project.index');
 	Route::get("/project/create",'ProjectController@create')->name('project.create');
 	Route::get("/project/single/{id}","ProjectController@single")->name("project.single");
 	Route::get("/project/edit/{id}","ProjectController@edit")->name("project.edit");
@@ -89,7 +79,7 @@ Route::group(['middleware' => ['auth']], function(){
 	// ------------------------- Kelola Karyawan -------------------------
 	// > Karyawan
 	// Get Request
-	Route::get("/karyawan",'KaryawanController@index')->name('karyawan.karyawan');
+	Route::get("/karyawan",'KaryawanController@index')->name('karyawan.index');
 	Route::get("/karyawan/create",'KaryawanController@create')->name('karyawan.create');
 	Route::get("/karyawan/single/{id}","KaryawanController@single")->name("karyawan.single");
 	Route::get("/karyawan/edit/{id}","KaryawanController@edit")->name("karyawan.edit");
@@ -106,7 +96,7 @@ Route::group(['middleware' => ['auth']], function(){
 	// ------------------------- Kelola Magang -------------------------
 	// > Magang
 	// Get Request
-	Route::get("/magang",'MagangController@index')->name('magang.magang');
+	Route::get("/magang",'MagangController@index')->name('magang.index');
 	Route::get("/magang/create",'MagangController@create')->name('magang.create');
 	Route::get("/magang/single/{id}","MagangController@single")->name("magang.single");
 	Route::get("/magang/edit/{id}","MagangController@edit")->name("magang.edit");

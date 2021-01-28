@@ -22,31 +22,6 @@ class MainController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function beranda()
-    {
-        return view('users.pages.index');
-    }
-    public function profile()
-    {
-        return view('users.pages.profile');
-    }
-    public function division()
-    {
-        return view('division.division');
-    }
-    public function karyawan()
-    {
-        return view('karyawan.karyawan');
-    }
-    public function magang()
-    {
-        return view('magang.magang');
-    }
-    public function project()
-    {
-        return view('project.project');
-        
-    }
     public function index()
     {
         $karyawan = Karyawan::all();
@@ -58,6 +33,6 @@ class MainController extends Controller
 
         $division = Division::all();
 
-        return view('users.pages.index',['karyawan' => $karyawan,'division' => $division,'magang' => $magang,'project' => $project,'latest_karyawan' => $latest_karyawan,'latest_magang' => $latest_magang,'latest_project' => $latest_project]);
+        return view('pages.index',['karyawan' => $karyawan,'division' => $division,'magang' => $magang,'project' => $project,'latest_karyawan' => $latest_karyawan,'latest_magang' => $latest_magang,'latest_project' => $latest_project]);
     }
 }
