@@ -171,10 +171,10 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        {{$args->name_division}}
+                                        {{$args->name}}
                                     </th>
                                     <td>
-                                        {{$args->headof_division}}
+                                        {{$args->headof}}
                                     </td>
                                 </tr>
                             </tbody>

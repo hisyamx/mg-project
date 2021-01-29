@@ -70,7 +70,6 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get("/project/single/{id}","ProjectController@single")->name("project.single");
 	Route::get("/project/edit/{id}","ProjectController@edit")->name("project.edit");
 	Route::get("/project/delete/{id}","ProjectController@show")->name("project.delete");
-	Route::get("/project/pay/{id}","ProjectController@pay")->name("project.pay");
 	//Post Request
 	Route::post("/project/create","ProjectController@store");
 	Route::post("/project/edit/{id}","ProjectController@update_record")->name("project.edit");
@@ -86,7 +85,6 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get("/karyawan/single/{id}","KaryawanController@single")->name("karyawan.single");
 	Route::get("/karyawan/edit/{id}","KaryawanController@edit")->name("karyawan.edit");
 	Route::get("/karyawan/delete/{id}","KaryawanController@show")->name("karyawan.delete");
-	Route::get("/karyawan/pay/{id}","KaryawanController@pay")->name("karyawan.pay");
 	//Post Request
 	Route::post("/karyawan/create","KaryawanController@store");
 	Route::post("/karyawan/edit/{id}","KaryawanController@update_record")->name("karyawan.edit");
@@ -103,7 +101,6 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get("/magang/single/{id}","MagangController@single")->name("magang.single");
 	Route::get("/magang/edit/{id}","MagangController@edit")->name("magang.edit");
 	Route::get("/magang/delete/{id}","MagangController@show")->name("magang.delete");
-	Route::get("/magang/pay/{id}","MagangController@pay")->name("magang.pay");
 	//Post Request
 	Route::post("/magang/create","MagangController@store");
 	Route::post("/magang/edit/{id}","MagangController@update_record")->name("magang.edit");
