@@ -22,6 +22,7 @@
     </div>
 </div>
 <div class="container-fluid mt--6">
+    @include('layouts.message')
     <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
@@ -29,17 +30,29 @@
                     <form action="{{ route('karyawan.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-8">
                                 <label for="name">Fullname</label>
                                 <input required type="text" class="form-control" id="name" name="name"
-                                    value="{{ old('name') }}">
+                                value="{{ old('name') }}">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="kode">Kode</label>
+                                <input required type="text" class="form-control" id="kode" kode="kode" placeholder="BT-001"
+                                    value="{{ old('kode') }}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="role">Role</label>
+                                <input required type="text" class="form-control" id="role" role="role"
+                                    value="{{ old('role') }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="division">Division</label>
                                 <select required id="division" class="form-control" name="division">
                                     <option selected disabled>Divisi</option>
-                                    @foreach($division AS $args)
-                                    <option value="{{$args->name}}">{{$args->name}}</option>
+                                    @foreach($division AS $div)
+                                    <option value="{{$div->name}}">{{$div->name}}</option>
                                     @endforeach;
                                 </select>
                             </div>
@@ -57,7 +70,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="status">Status</label>
-                                <input name="status" required type="number" class="form-control" id="status"
+                                <input name="status" required type="text" class="form-control" id="status"
                                     value="{{ old('status') }}">
                             </div>
                         </div>

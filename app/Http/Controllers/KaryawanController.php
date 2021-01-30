@@ -27,7 +27,7 @@ class KaryawanController extends Controller
         
         if(count($division) <  1){
             return redirect("/division")->with("error","You must create a division before creating an karyawan");
-       }
+        }
         return view("karyawan.create",['division' => $division]);
     }
 
@@ -42,7 +42,7 @@ class KaryawanController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'nim' => 'required|max:50',
+            'kode' => 'required|max:50',
             'address' =>  'required|max:100',  
             'role' =>  'required',  
             'division' =>  'required',  
@@ -70,10 +70,10 @@ class KaryawanController extends Controller
         $karyawan = new Karyawan();
 
         $karyawan->name = request('name');
-        $karyawan->nim = request('nim');
+        $karyawan->kode = request('kode');
+        $karyawan->address = request('address');
         $karyawan->role = request('role');
         $karyawan->division = request('division');
-        $karyawan->address = request('address');
         $karyawan->telephone = request('telephone');
         $karyawan->status = request('status');
         $karyawan->cover_image = $fileNameToStore;
@@ -107,7 +107,7 @@ class KaryawanController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'nim' => 'required|max:50',
+            'kode' => 'required|max:50',
             'address' =>  'required|max:100',  
             'role' =>  'required',  
             'division' =>  'required',  
@@ -134,10 +134,10 @@ class KaryawanController extends Controller
         }
 
         $karyawan->name = request('name');
-        $karyawan->nim = request('nim');
+        $karyawan->kode = request('kode');
+        $karyawan->address = request('address');
         $karyawan->role = request('role');
         $karyawan->division = request('division');
-        $karyawan->address = request('address');
         $karyawan->telephone = request('telephone');
         $karyawan->status = request('status');
         if($request->hasFile('cover_image')){
@@ -149,18 +149,10 @@ class KaryawanController extends Controller
         return redirect("/karyawan")->with("success","Account was updated successfully");
     }
 
-    public function single($id)
-    {
-        $karyawan = Karyawan::where('division',$id)->orderBy('name') -> paginate(20);
-        $division = Division::orderBy('name') -> get();
-
-        return view('karyawan.single',['karyawan' => $karyawan,'division' => $division]);
-    }
-
-    public function pay($id)
-    {
-        $division = Division::orderBy('name') -> get();
-        $karyawan = Karyawan::findOrFail($id);
-        return view("karyawan.pay",['karyawan' => $karyawan,'division' => $division]);
-    }    
+    // public function pay($id)
+    // {
+    //     $division = Division::orderBy('name') -> get();
+    //     $karyawan = Karyawan::findOrFail($id);
+    //     return view("karyawan.pay",['karyawan' => $karyawan,'division' => $division]);
+    // }    
 }

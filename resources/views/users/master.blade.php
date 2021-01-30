@@ -15,7 +15,7 @@
 
     <section class="banner-part">
 
-        @include('layouts.message')
+        {{-- @include('layouts.message') --}}
         @yield('content')
         @include('users/footer')
         

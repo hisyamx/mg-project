@@ -20,13 +20,15 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
+    @include('layouts.message')
     <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    
+                    <h5>Kode: {{ $karyawan->kode }}</h5>
                     <h5>Nama Karyawan: {{ $karyawan->name }}</h5>
                     <h5>Divisi: {{ $karyawan->division }}</h5>
+                    <h5>Role: {{ $karyawan->role }}</h5>
                     <h5>Status: {{ $karyawan->status }}</h5>
                     <h5>Alamat: {{ $karyawan->address }}</h5>
                     <h5>Date Created: {{ $karyawan->created_at }}</h5>  

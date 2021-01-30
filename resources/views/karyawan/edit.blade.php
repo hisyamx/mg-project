@@ -22,6 +22,7 @@
 </div>
 <!-- Page Content -->
 <div class="container-fluid mt--6">
+    @include('layouts.message')
     <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
@@ -38,15 +39,14 @@
                                     value="{{ $karyawan->name }}">
                                 <label for="division">Divisi</label>
                                 <select required id="division" class="form-control" name="division">
-                                  <option selected disabled>Divisi</option>
-                                  @foreach($division AS $args)
-                                  <option value="{{$args->name}}" 
-                                  <?php 
+                                    <option selected disabled>Divisi</option>
+                                    @foreach($division AS $args)
+                                    <option value="{{$args->name}}" <?php 
                                     if($args->name == $karyawan->division){
                                         print "selected";
-                                      }
+                                    }
                                     ?>>{{$args->name}}</option>
-                                  @endforeach;
+                                    @endforeach;
                                 </select>
 
                                 <input type="text" class="form-control" id="head0f" name="division"

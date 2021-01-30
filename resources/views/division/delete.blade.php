@@ -20,6 +20,7 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
+    @include('layouts.message')
     <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">

@@ -149,18 +149,10 @@ class MagangController extends Controller
         return redirect("/magang")->with("success","Account was updated successfully");
     }
 
-    public function single($id)
-    {
-        $magang = Magang::where('division',$id)->orderBy('name') -> paginate(20);
-        $division = Division::orderBy('name') -> get();
-
-        return view('magang.single',['magang' => $magang,'division' => $division]);
-    }
-
-    public function pay($id)
-    {
-        $division = Division::orderBy('name') -> get();
-        $magang = Magang::findOrFail($id);
-        return view("magang.pay",['magang' => $magang,'division' => $division]);
-    }    
+    // public function pay($id)
+    // {
+    //     $division = Division::orderBy('name') -> get();
+    //     $magang = Magang::findOrFail($id);
+    //     return view("magang.pay",['magang' => $magang,'division' => $division]);
+    // }    
 }

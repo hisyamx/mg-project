@@ -10,13 +10,14 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/karyawan">Magang</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('magang.index') }}">Magang</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="#" class="btn btn-sm btn-neutral">Tambah Data Magang</a>
+                    <a href="{{ route('magang.create') }}" class="btn btn-sm btn-neutral">Tambah Data Magang</a>
                 </div>
             </div>
         </div>
@@ -39,39 +40,43 @@
                                 <th scope="col" class="sort" data-sort="name">NIM</th>
                                 <th scope="col" class="sort" data-sort="name">Nama</th>
                                 <th scope="col" class="sort" data-sort="budget">Divisi</th>
-                                <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col" class="sort" data-sort="completion">Sekolah</th>
+                                <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
+                        <?php $i = 1; ?>
+                        @foreach($magang AS $args)
                         <tbody class="list">
                             <tr>
                                 <td class="budget">
-                                    $2500 USD
+                                    {{$args->nim}}
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
                                         <a href="#" class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                                            <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$args->cover_image)}}">
                                         </a>
                                         <div class="media-body">
-                                            <span class="name mb-0 text-sm"> nama </span>
+                                            <span class="name mb-0 text-sm">{{$args->name}}</span>
                                         </div>
                                     </div>
                                 </th>
+                                @foreach($division AS $div)
                                 <td class="budget">
-                                    $2500 USD
+                                    {{$div->name}}
+                                </td>
+                                @endforeach
+                                <td class="budget">
+                                    {{$args->sekolah}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                         <i class="bg-warning"></i>
                                         {{-- <i class="bg-info"></i> //blue --}}
                                         {{-- <i class="bg-success"></i> //green  --}}
-                                        <span class="status">Off</span>
+                                        <span class="status">{{$args->status}}</span>
                                     </span>
-                                </td>
-                                <td class="budget">
-                                    $2500 USD
                                 </td>
                                 <td class="text-right">
                                     <div class="dropdown">
@@ -80,13 +85,14 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Hapus</a>
+                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>

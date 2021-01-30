@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                 </th>
-                                <?php $i = 1; ?>
+
                                 @foreach($division AS $div)
                                 <td class="budget">
                                     {{$div->name}}

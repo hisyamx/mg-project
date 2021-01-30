@@ -67,7 +67,6 @@ Route::group(['middleware' => ['auth']], function(){
 	// Get Request
 	Route::get("/project",'ProjectController@index')->name('project.index');
 	Route::get("/project/create",'ProjectController@create')->name('project.create');
-	Route::get("/project/single/{id}","ProjectController@single")->name("project.single");
 	Route::get("/project/edit/{id}","ProjectController@edit")->name("project.edit");
 	Route::get("/project/delete/{id}","ProjectController@show")->name("project.delete");
 	//Post Request
@@ -82,15 +81,14 @@ Route::group(['middleware' => ['auth']], function(){
 	// Get Request
 	Route::get("/karyawan",'KaryawanController@index')->name('karyawan.index');
 	Route::get("/karyawan/create",'KaryawanController@create')->name('karyawan.create');
-	Route::get("/karyawan/single/{id}","KaryawanController@single")->name("karyawan.single");
-	Route::get("/karyawan/edit/{id}","KaryawanController@edit")->name("karyawan.edit");
-	Route::get("/karyawan/delete/{id}","KaryawanController@show")->name("karyawan.delete");
+	Route::get("/karyawan/edit/{id}",'KaryawanController@edit')->name("karyawan.edit");
+	Route::get("/karyawan/delete/{id}",'KaryawanController@show')->name("karyawan.delete");
 	//Post Request
-	Route::post("/karyawan/create","KaryawanController@store");
-	Route::post("/karyawan/edit/{id}","KaryawanController@update_record")->name("karyawan.edit");
-	// Route::post("/karyawan/pay/{id}","PaymentReportController@create");
+	Route::post("/karyawan/create",'KaryawanController@store');
+	Route::post("/karyawan/edit/{id}",'KaryawanController@update_record')->name("karyawan.edit");
+	// Route::post("/karyawan/pay/{id}",'PaymentReportController@create');
 	// Delete
-	Route::delete("/karyawan/delete/{id}","KaryawanController@destroy");
+	Route::delete("/karyawan/delete/{id}",'KaryawanController@destroy');
 	// End of karyawan
 
 	// ------------------------- Kelola Magang -------------------------
@@ -98,15 +96,14 @@ Route::group(['middleware' => ['auth']], function(){
 	// Get Request
 	Route::get("/magang",'MagangController@index')->name('magang.index');
 	Route::get("/magang/create",'MagangController@create')->name('magang.create');
-	Route::get("/magang/single/{id}","MagangController@single")->name("magang.single");
-	Route::get("/magang/edit/{id}","MagangController@edit")->name("magang.edit");
-	Route::get("/magang/delete/{id}","MagangController@show")->name("magang.delete");
+	Route::get("/magang/edit/{id}",'MagangController@edit')->name("magang.edit");
+	Route::get("/magang/delete/{id}",'MagangController@show')->name("magang.delete");
 	//Post Request
-	Route::post("/magang/create","MagangController@store");
-	Route::post("/magang/edit/{id}","MagangController@update_record")->name("magang.edit");
-	// Route::post("/magang/pay/{id}","PaymentReportController@create");
+	Route::post("/magang/create",'MagangController@store');
+	Route::post("/magang/edit/{id}",'MagangController@update_record')->name("magang.edit");
+	// Route::post("/magang/pay/{id}",'PaymentReportController@create');
 	// Delete
-	Route::delete("/magang/delete/{id}","MagangController@destroy");
+	Route::delete("/magang/delete/{id}",'MagangController@destroy');
 	// End of magang
 });
 
