@@ -111,8 +111,8 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
-                            <a class="nav-link bg-default" target="_blank" href="/account">
-                                <i class="ni ni-palette text-orange"></i>
+                            <a class="nav-link" target="_blank" href="https://platform.botika.online/docs/">
+                                <i class="ni ni-books text-gray-500"></i>
                                 <span class="nav-link-text">Documentation</span>
                             </a>
                         </li>
@@ -192,7 +192,6 @@
                                                         <small>{{ Auth::user()->nama }}</small>
                                                     </div>
                                                 </div>
-                                                <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
                                             </div>
                                         </div>
                                     </a>

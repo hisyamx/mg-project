@@ -9,15 +9,7 @@ class ProfileManageController extends Controller
     // Open View Profile
     public function viewProfile()
     {
-    	$activity = Activity::where('id_user', Auth::id())
-    	->latest()
-    	->take(3)
-    	->get();
-    	$activities = Activity::where('id_user', Auth::id())
-    	->latest()
-    	->get();
-
-    	return view('profile', compact('activity', 'activities'));
+    	return view('profile.index');
     }
 
     // Change Profile Data
