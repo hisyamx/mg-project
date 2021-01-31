@@ -106,6 +106,17 @@
                             </a>
                         </li>
                     </ul>
+                    <!-- Divider -->
+                    <hr class="my-3">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav mb-md-3">
+                        <li class="nav-item">
+                            <a class="nav-link bg-default" target="_blank" href="/account">
+                                <i class="ni ni-palette text-orange"></i>
+                                <span class="nav-link-text">Documentation</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

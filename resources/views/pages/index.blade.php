@@ -127,19 +127,27 @@
                                     <th scope="col">Status</th>
                                 </tr>
                             </thead>
+                            <?php $i = 1; ?>
+                            @foreach($project AS $args)
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        Name
+                                        {{$args->name}}
                                     </th>
                                     <td>
-                                        4,569
+                                        {{$args->name}}
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-success"></i>
+                                            {{-- <i class="bg-info"></i> //blue --}}
+                                            {{-- <i class="bg-success"></i> //green  --}}
+                                            <span class="status">{{$args->status}}</span>
+                                        </span>
                                     </td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -156,7 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(count($division) >= 1)
+                    @if(count($division) >= 1 )
                     <div class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">

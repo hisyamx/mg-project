@@ -16,9 +16,17 @@ use App\Http\Controllers\ProjectController;
 // });
 // Route::get('/home', 'HomeController@index')->name('home');	
 
+
 Route::get('/login', 'AuthManageController@viewLogin')->name('login');
 Route::post('/verify_login', 'AuthManageController@verifyLogin');
 Route::post('/first_account', 'UserManageController@firstAccount');
+
+// Auth::routes([
+//   'register' => false,
+//   'verify' => true,
+//   'reset' => false
+// ]);
+
 // Route::group(['middleware' => ['auth', 'checkRole:admin,user']], function(){
 Route::group(['middleware' => ['auth']], function(){
 
@@ -42,13 +50,13 @@ Route::group(['middleware' => ['auth']], function(){
 	
 	// ------------------------- Kelola Akun -------------------------
 	// > Akun
-	// Route::get('/account', 'UserManageController@viewAccount');
-	// Route::get('/account/new', 'UserManageController@viewNewAccount');
-	// Route::post('/account/create', 'UserManageController@createAccount');
-	// Route::get('/account/edit/{id}', 'UserManageController@editAccount');
-	// Route::post('/account/update', 'UserManageController@updateAccount');
-	// Route::get('/account/delete/{id}', 'UserManageController@deleteAccount');
-	// Route::get('/account/filter/{id}', 'UserManageController@filterTable');
+	Route::get('/account', 'UserManageController@viewAccount');
+	Route::get('/account/new', 'UserManageController@viewNewAccount');
+	Route::post('/account/create', 'UserManageController@createAccount');
+	Route::get('/account/edit/{id}', 'UserManageController@editAccount');
+	Route::post('/account/update', 'UserManageController@updateAccount');
+	Route::get('/account/delete/{id}', 'UserManageController@deleteAccount');
+	Route::get('/account/filter/{id}', 'UserManageController@filterTable');
 	
 	// ------------------------- Kelola Division -------------------------
 	// > Division
@@ -68,7 +76,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get("/project",'ProjectController@index')->name('project.index');
 	Route::get("/project/create",'ProjectController@create')->name('project.create');
 	Route::get("/project/edit/{id}","ProjectController@edit")->name("project.edit");
-	Route::get("/project/delete/{id}","ProjectController@show")->name("project.delete");
+	Route::get("/project/show/{id}","ProjectController@show")->name("project.show");
 	//Post Request
 	Route::post("/project/create","ProjectController@store");
 	Route::post("/project/edit/{id}","ProjectController@update_record")->name("project.edit");
@@ -82,7 +90,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get("/karyawan",'KaryawanController@index')->name('karyawan.index');
 	Route::get("/karyawan/create",'KaryawanController@create')->name('karyawan.create');
 	Route::get("/karyawan/edit/{id}",'KaryawanController@edit')->name("karyawan.edit");
-	Route::get("/karyawan/delete/{id}",'KaryawanController@show')->name("karyawan.delete");
+	Route::get("/karyawan/show/{id}",'KaryawanController@show')->name("karyawan.show");
 	//Post Request
 	Route::post("/karyawan/create",'KaryawanController@store');
 	Route::post("/karyawan/edit/{id}",'KaryawanController@update_record')->name("karyawan.edit");
@@ -97,7 +105,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get("/magang",'MagangController@index')->name('magang.index');
 	Route::get("/magang/create",'MagangController@create')->name('magang.create');
 	Route::get("/magang/edit/{id}",'MagangController@edit')->name("magang.edit");
-	Route::get("/magang/delete/{id}",'MagangController@show')->name("magang.delete");
+	Route::get("/magang/show/{id}",'MagangController@show')->name("magang.show");
 	//Post Request
 	Route::post("/magang/create",'MagangController@store');
 	Route::post("/magang/edit/{id}",'MagangController@update_record')->name("magang.edit");

@@ -37,14 +37,14 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="kode">Kode</label>
-                                <input required type="text" class="form-control" id="kode" kode="kode" placeholder="BT-001"
+                                <input required type="text" class="form-control" id="kode" name="kode" placeholder="BT-001"
                                     value="{{ old('kode') }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="role">Role</label>
-                                <input required type="text" class="form-control" id="role" role="role"
+                                <input required type="text" class="form-control" id="role" name="role"
                                     value="{{ old('role') }}">
                             </div>
                             <div class="form-group col-md-6">

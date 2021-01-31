@@ -42,9 +42,9 @@ class KaryawanController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'kode' => 'required|max:50',
+            'kode' => 'required|min:4|max:50',
             'address' =>  'required|max:100',  
-            'role' =>  'required',  
+            'role' =>  'required|min:4',  
             'division' =>  'required',  
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',
@@ -107,9 +107,9 @@ class KaryawanController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'kode' => 'required|max:50',
+            'kode' => 'required|min:4|max:50',
             'address' =>  'required|max:100',  
-            'role' =>  'required',  
+            'role' =>  'required|min:4',  
             'division' =>  'required',  
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',

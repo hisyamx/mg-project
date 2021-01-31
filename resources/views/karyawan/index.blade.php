@@ -53,7 +53,7 @@
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="#" class="avatar rounded-circle mr-3">
+                                        <a href="{{ route('division.edit',$args->id) }}" class="avatar rounded-circle mr-3">
                                             <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$args->cover_image)}}">
                                         </a>
                                         <div class="media-body">
