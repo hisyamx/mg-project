@@ -29,7 +29,7 @@
                     <h5>Kepala Divisi: {{ $division->headof }}</h5>
                     <h5>Status Divisi: {{ $division->status }}</h5>
                     <h5>Last Updated: {{ $division->updated_at }}</h5><br>
-                    <form class="" action="{{ route('division.edit',$division->id) }}" method="POST">
+                    <form class="" action="{{ route('division.delete',$division->id) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete</button>

@@ -20,8 +20,16 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
-    @include('layouts.message')
     <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <a class="avatar">
+                        <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$karyawan->cover_image)}}">
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
@@ -33,7 +41,7 @@
                     <h5>Alamat: {{ $karyawan->address }}</h5>
                     <h5>Date Created: {{ $karyawan->created_at }}</h5>  
                     <h5>Last Updated: {{ $karyawan->updated_at }}</h5><br>
-                    <form class="" action="{{ route('karyawan.edit',$karyawan->id) }}" method="POST">
+                    <form class="" action="{{ route('karyawan.delete',$karyawan->id) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete</button>

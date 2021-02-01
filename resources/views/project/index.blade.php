@@ -8,8 +8,7 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                    <h6 class="h2 text-white d-inline-block mb-0">Project</h6>
-                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/project">Project</a></li>
@@ -17,7 +16,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="/project/add" class="btn btn-sm btn-neutral">Tambah Project</a>
+                    <a href="/project/create" class="btn btn-sm btn-neutral">Tambah Project</a>
                 </div>
             </div>
         </div>
@@ -25,6 +24,7 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
+    @include('layouts.message')
     <div class="row">
         <div class="col">
             <div class="card">
@@ -37,11 +37,11 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="sort" data-sort="name">Project</th>
-                                <th scope="col" class="sort" data-sort="budget">Budget</th>
+                                <th scope="col" class="sort" data-sort="name">Nama Project</th>
+                                <th scope="col" class="sort" data-sort="status">Division Responsible</th>
+                                <th scope="col" class="sort" data-sort="status">Started</th>
+                                <th scope="col" class="sort" data-sort="status">Target Finisih</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
-                                <th scope="col">Users</th>
-                                <th scope="col" class="sort" data-sort="completion">Completion</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -49,26 +49,21 @@
                         @foreach($project AS $args)
                         <tbody class="list">
                             <tr>
-                                <td class="budget">
-                                    {{$args->nim}}
-                                </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="#" class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$args->cover_image)}}">
-                                        </a>
                                         <div class="media-body">
                                             <span class="name mb-0 text-sm">{{$args->name}}</span>
                                         </div>
                                     </div>
                                 </th>
-                                @foreach($division AS $div)
                                 <td class="budget">
-                                    {{$div->name}}
+                                    {{$division->name}}
                                 </td>
-                                @endforeach
                                 <td class="budget">
-                                    {{$args->sekolah}}
+                                    {{ $args->created_at }}
+                                </td>
+                                <td class="budget">
+                                    {{ $args->target }}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
@@ -86,7 +81,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="{{ route('project.edit',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('porject.delete',$args->id) }}">Hapus</a>
+                                            <a class="dropdown-item" href="{{ route('porject.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>
@@ -137,7 +132,7 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">To do list</h5>
+                    <h5 class="h3 mb-0">Doing list</h5>
                 </div>
                 <!-- Card body -->
                 <div class="card-body p-0">
@@ -168,7 +163,7 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <!-- Title -->
-                    <h5 class="h3 mb-0">To do list</h5>
+                    <h5 class="h3 mb-0">Done list</h5>
                 </div>
                 <!-- Card body -->
                 <div class="card-body p-0">

@@ -22,16 +22,16 @@
 <div class="container-fluid mt--6">
     @include('layouts.message')
     <div class="row">
-        <div class="col-4 grid-margin">
+        <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('magang.edit',$args->id) }}" class="avatar">
-                        <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$args->cover_image)}}">
+                    <a class="avatar">
+                        <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$magang->cover_image)}}">
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-8 grid-margin">
+        <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
                     <h5>NIM: {{ $magang->nim }}</h5>
@@ -43,14 +43,14 @@
                     <h5>Alamat: {{ $magang->address }}</h5>
                     <h5>Date Created: {{ $magang->created_at }}</h5>  
                     <h5>Last Updated: {{ $magang->updated_at }}</h5><br>
+                    <form class="" action="{{ route('magang.delete',$magang->id) }}" method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <form class="" action="{{ route('magang.edit',$magang->id) }}" method="POST">
-            @csrf
-            @method("DELETE")
-            <button class="btn btn-danger" type="submit">Delete</button>
-        </form>
     </div>
 
     @endsection;

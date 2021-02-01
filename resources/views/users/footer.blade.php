@@ -48,3 +48,9 @@
     <script src="{{asset('/assets')}}/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="{{asset('/assets')}}/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"><div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div></div>
+    
+    {{-- sweetalert --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
+    {{-- <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script> --}}
+

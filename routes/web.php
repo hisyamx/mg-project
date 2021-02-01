@@ -11,21 +11,15 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 
-// Auth::routes();
+Auth::routes();
 
 // });
 // Route::get('/home', 'HomeController@index')->name('home');	
 
 
-Route::get('/login', 'AuthManageController@viewLogin')->name('login');
-Route::post('/verify_login', 'AuthManageController@verifyLogin');
-Route::post('/first_account', 'UserManageController@firstAccount');
-
-// Auth::routes([
-//   'register' => false,
-//   'verify' => true,
-//   'reset' => false
-// ]);
+// Route::get('/login', 'AuthManageController@viewLogin')->name('login');
+// Route::post('/verify_login', 'AuthManageController@verifyLogin');
+// Route::post('/first_account', 'UserManageController@firstAccount');
 
 // Route::group(['middleware' => ['auth', 'checkRole:admin,user']], function(){
 Route::group(['middleware' => ['auth']], function(){
@@ -68,7 +62,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post("/division",'DivisionController@store')->name('division.index');
 	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.edit');
 	// Delete Request
-	Route::delete("/division/delete/{id}",'DivisionController@destroy');
+	Route::delete("/division/delete/{id}",'DivisionController@destroy')->name('division.delete');
 
 	// ------------------------- Kelola Project -------------------------
 	// > Project
@@ -82,7 +76,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post("/project/edit/{id}","ProjectController@update_record")->name("project.edit");
 	// Route::post("/project/pay/{id}","PaymentReportController@create");
 	// Delete
-	Route::delete("/project/delete/{id}","ProjectController@destroy");
+	Route::delete("/project/delete/{id}","ProjectController@destroy")->name("project.delete");
 	// End of karyawan
 	// ------------------------- Kelola Karyawan -------------------------
 	// > Karyawan
@@ -96,7 +90,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post("/karyawan/edit/{id}",'KaryawanController@update_record')->name("karyawan.edit");
 	// Route::post("/karyawan/pay/{id}",'PaymentReportController@create');
 	// Delete
-	Route::delete("/karyawan/delete/{id}",'KaryawanController@destroy');
+	Route::delete("/karyawan/delete/{id}",'KaryawanController@destroy')->name("karyawan.delete");
 	// End of karyawan
 
 	// ------------------------- Kelola Magang -------------------------
@@ -111,7 +105,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post("/magang/edit/{id}",'MagangController@update_record')->name("magang.edit");
 	// Route::post("/magang/pay/{id}",'PaymentReportController@create');
 	// Delete
-	Route::delete("/magang/delete/{id}",'MagangController@destroy');
+	Route::delete("/magang/delete/{id}",'MagangController@destroy')->name("magang.delete");
 	// End of magang
 });
 

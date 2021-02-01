@@ -40,7 +40,7 @@ class DivisionController extends Controller
     public function show($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.show",['division' => $division]);
+        return view("division.delete",['division' => $division]);
     }
 
     public function destroy($id)

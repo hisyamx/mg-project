@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+{{-- sweetalert --}}
+<link rel="stylesheet" href="sweetalert2.min.css">
+{{-- <script src="sweetalert2.min.js"></script> --}}
+{{-- <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
+<script src="sweetalert2/dist/sweetalert2.min.js"></script> --}}
 <style>
     @media print {
         #ghostery-tracker-tally {
@@ -222,7 +227,7 @@
                                     <span>Manage Account</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="/logout" class="dropdown-item">
+                                <a href="{{ route('logout') }}" class="dropdown-item">
                                     <i class="ni ni-user-run"></i>
                                     <span>Logout</span>
                                 </a>

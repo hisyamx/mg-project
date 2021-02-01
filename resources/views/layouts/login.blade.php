@@ -68,87 +68,46 @@
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary border-0 mb-0">
                         <div class="card-body px-lg-5 py-lg-5">
-                            @if($users != 0)
-                            <form action="{{ url('/verify_login') }}" method="post" name="login_form" role="form">
+                            <form action="{{ route('login') }}" method="post" name="login_form" role="form">
                                 @csrf
-                                <div class="form-group mt-3 mb-3">
-                                    <label class="label">Username</label>
+                                <div class="form-group row mt-3 mb-3">
+                                    <label for="email" class="label">Email</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Username" name="username" type="username">
+                                        <input class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" type="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <div class="input-group-append">
-                                            <span class="input-group-text check-value" id="username_error"></span>
+                                            <span class="input-group-text check-value" id="email_error"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="label">Password</label>
+                                <div class="form-group row">
+                                    <label for="password" class="label">Password</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Password" name="password" type="password">
+                                        <input class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" type="password" required autocomplete="current-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <div class="input-group-append">
                                             <span class="input-group-text check-value" id="password_error"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="custom-control custom-control-alternative custom-checkbox">
-                                    <input class="custom-control-input" id="customCheckLogin" type="checkbox">
-                                    <label class="custom-control-label" for="customCheckLogin">
-                                        <span class="text-muted">Remember me</span>
-                                    </label>
-                                </div>
                                 <div class="text-center form-group">
                                     <button type="submit" class="btn btn-primary my-4 submit-btn btn-block">Login</button>
                                 </div>
                             </form>
-                            @else
-                            <form action="{{ url('/first_account') }}" method="post" name="create_form" role="form">
-                                @csrf
-                                <div class="form-group">
-                                    <label class="label">Nama</label>
-                                    <div class="input-group input-group-merge input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Nama" name="nama" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label">Username</label>
-                                    <div class="input-group input-group-merge input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Username" name="username" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label">Email</label>
-                                    <div class="input-group input-group-merge input-group-alternative mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Email" name="email" type="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label">Password</label>
-                                    <div class="input-group input-group-merge input-group-alternative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"></i></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Password" name="name" type="password">
-                                    </div>
-                                </div>
-                                <div class="text-center form-group">
-                                    <button type="submit" class="btn btn-primary mt-4 submit-btn btn-block">Create account</button>
-                                </div>
-                            </form>     
-                            @endif
                         </div>
                     </div>
                 </div>

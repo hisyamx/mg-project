@@ -25,6 +25,7 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--6">
+    @include('layouts.message')
     <div class="row">
         <div class="col">
             <div class="card">
@@ -61,12 +62,9 @@
                                         </div>
                                     </div>
                                 </th>
-
-                                @foreach($division AS $div)
                                 <td class="budget">
-                                    {{$div->name}}
+                                    {{$args->division}}
                                 </td>
-                                @endforeach
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                         <i class="bg-warning"></i>
@@ -82,8 +80,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Hapus</a>
+                                            <a class="dropdown-item" href="{{ route('karyawan.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item" href="{{ route('karyawan.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>

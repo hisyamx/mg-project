@@ -146,7 +146,7 @@ class KaryawanController extends Controller
 
         $karyawan->save(); //this will UPDATE the record
 
-        return redirect("/karyawan")->with("success","Account was updated successfully");
+        return redirect("/karyawan")->with("success","Karyawan was updated successfully");
     }
 
     // public function pay($id)
