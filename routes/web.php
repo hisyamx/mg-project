@@ -11,8 +11,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 
-Auth::routes();
 
+Auth::routes();
 // });
 // Route::get('/home', 'HomeController@index')->name('home');	
 
