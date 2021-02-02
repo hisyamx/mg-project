@@ -16,11 +16,11 @@ class CreateAccessesTable extends Migration
         Schema::create('accesses', function (Blueprint $table) {
             $table->id();
             $table->integer('user');
-            $table->boolean('kelola_akun');
-            $table->boolean('kelola_division');
-            $table->boolean('kelola_karyawan');
-            $table->boolean('kelola_magang');
-            $table->boolean('kelola_project');
+            $table->boolean('account');
+            $table->boolean('division');
+            $table->boolean('karyawan');
+            $table->boolean('magang');
+            $table->boolean('project');
             $table->timestamps();
         });
     }

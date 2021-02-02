@@ -57,11 +57,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
-                                name="address" value="{{ old('address') }}">
-                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="telephone">Telephone</label>
@@ -74,7 +69,11 @@
                                     value="{{ old('status') }}">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
+                                name="address" value="{{ old('address') }}">
+                        </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>
                             <div class="custom-file">

@@ -20,6 +20,8 @@ class CreateMagangsTable extends Migration
             $table->string('sekolah');
             $table->string('role');
             $table->string('division');
+            $table->string('start');
+            $table->string('finish');
             $table->string('cover_image');
             $table->string('telephone');
             $table->string('status')->default('Active');

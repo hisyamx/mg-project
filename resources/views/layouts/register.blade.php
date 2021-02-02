@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Botika Dashboard Management.">
     <meta name="author" content="Botika">
-    <title>Login</title>
+    <title>Register</title>
     <!-- Favicon -->
     <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/webp">
     <!-- Fonts -->
@@ -67,10 +67,11 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary border-0 mb-0">
-                        <div class="card-body px-lg-5 py-lg-5">
+
+                        <div class="card-body px-lg-5 py-lg-3">
                             <form action="{{ route('register') }}" method="post" name="create_form" role="form">
                                 @csrf
-                                <div class="form-group">
+                                <div class="form-group mt-3 mb-3">
                                     <label for="name" class="label">Nama</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
@@ -133,7 +134,7 @@
         </div>
     </div>
     <!-- Footer -->
-    <footer class="py-5 mb-3" id="footer-main">
+    <footer class="py-5" id="footer-main">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12">

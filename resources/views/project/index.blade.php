@@ -26,7 +26,7 @@
 <div class="container-fluid mt--6">
     @include('layouts.message')
     <div class="row">
-        <div class="col">
+        <div class="col-lg-8 order-2">
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header border-0">
@@ -39,8 +39,8 @@
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">Nama Project</th>
                                 <th scope="col" class="sort" data-sort="status">Division Responsible</th>
-                                <th scope="col" class="sort" data-sort="status">Started</th>
-                                <th scope="col" class="sort" data-sort="status">Target Finisih</th>
+                                {{-- <th scope="col" class="sort" data-sort="status">Started</th> --}}
+                                {{-- <th scope="col" class="sort" data-sort="status">Target Finisih</th> --}}
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col"></th>
                             </tr>
@@ -59,12 +59,12 @@
                                 <td class="budget">
                                     {{$division->name}}
                                 </td>
-                                <td class="budget">
+                                {{-- <td class="budget">
                                     {{ $args->created_at }}
-                                </td>
-                                <td class="budget">
+                                </td> --}}
+                                {{-- <td class="budget">
                                     {{ $args->target }}
-                                </td>
+                                </td> --}}
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                         <i class="bg-warning"></i>
@@ -80,8 +80,10 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ route('project.edit',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('porject.show',$args->id) }}">Hapus</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('project.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('porject.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>
@@ -92,101 +94,33 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-xl-4">
-            <!-- Checklist -->
+        <div class="col-lg-4 order-1">
             <div class="card">
-                <!-- Card header -->
-                <div class="card-header">
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">To do list</h5>
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">Timeline Project</h3>
                 </div>
-                <!-- Card body -->
-                <div class="card-body p-0">
-                    <!-- List group -->
-                    <ul class="list-group list-group-flush" data-toggle="checklist">
-                        <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
-                            <div class="checklist-item checklist-item-info checklist-item-checked">
-                                <div class="checklist-info">
-                                    <h5 class="checklist-title mb-0">Call with Dave</h5>
-                                    <small>10:30 AM</small>
-                                </div>
-                                <div>
-                                    <div class="custom-control custom-checkbox custom-checkbox-info">
-                                        <input class="custom-control-input" id="chk-todo-task-1"
-                                            type="checkbox" checked="">
-                                        <label class="custom-control-label" for="chk-todo-task-1"></label>
-                                    </div>
+                <div class="card-body">
+                    <div class="timeline timeline-one-side" data-timeline-content="axis" data-timeline-axis-style="dashed">
+                        <div class="timeline-block">
+                            <span class="timeline-step badge-success">
+                                <i class="ni ni-bell-55"></i>
+                            </span>
+                            <div class="timeline-content">
+                                <small class="text-muted font-weight-bold">10:30 AM</small>
+                                <h5 class=" mt-3 mb-0">New message</h5>
+                                <p class=" text-sm mt-1 mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cum
+                                    sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                <div class="mt-3">
+                                    <span class="badge badge-pill badge-success">design</span>
+                                    <span class="badge badge-pill badge-success">system</span>
+                                    <span class="badge badge-pill badge-success">creative</span>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4">
-            <!-- Checklist -->
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header">
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">Doing list</h5>
-                </div>
-                <!-- Card body -->
-                <div class="card-body p-0">
-                    <!-- List group -->
-                    <ul class="list-group list-group-flush" data-toggle="checklist">
-                        <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
-                            <div class="checklist-item checklist-item-danger checklist-item-checked">
-                                <div class="checklist-info">
-                                    <h5 class="checklist-title mb-0">Call with Dave</h5>
-                                    <small>10:30 AM</small>
-                                </div>
-                                <div>
-                                    <div class="custom-control custom-checkbox custom-checkbox-danger">
-                                        <input class="custom-control-input" id="chk-todo-task-1"
-                                            type="checkbox" checked="">
-                                        <label class="custom-control-label" for="chk-todo-task-1"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4">
-            <!-- Checklist -->
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header">
-                    <!-- Title -->
-                    <h5 class="h3 mb-0">Done list</h5>
-                </div>
-                <!-- Card body -->
-                <div class="card-body p-0">
-                    <!-- List group -->
-                    <ul class="list-group list-group-flush" data-toggle="checklist">
-                        <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
-                            <div class="checklist-item checklist-item-success checklist-item-checked">
-                                <div class="checklist-info">
-                                    <h5 class="checklist-title mb-0">Call with Dave</h5>
-                                    <small>10:30 AM</small>
-                                </div>
-                                <div>
-                                    <div class="custom-control custom-checkbox custom-checkbox-success">
-                                        <input class="custom-control-input" id="chk-todo-task-1"
-                                            type="checkbox" checked="">
-                                        <label class="custom-control-label" for="chk-todo-task-1"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
     @endsection

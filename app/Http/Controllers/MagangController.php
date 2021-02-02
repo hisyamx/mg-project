@@ -46,6 +46,8 @@ class MagangController extends Controller
             'sekolah' =>  'required|max:100',  
             'role' =>  'required',  
             'division' =>  'required',  
+            'start' =>  'date|required',  
+            'finish' =>  'date|required',  
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
@@ -73,6 +75,8 @@ class MagangController extends Controller
         $magang->nim = request('nim');
         $magang->role = request('role');
         $magang->division = request('division');
+        $magang->start = request('start');
+        $magang->finish = request('finish');
         $magang->sekolah = request('sekolah');
         $magang->telephone = request('telephone');
         $magang->status = request('status');
@@ -80,7 +84,7 @@ class MagangController extends Controller
         
         $magang->save();
 
-        return redirect("/magang")->with('success',"magang Created Successfully");
+        return redirect("/magang")->with('success',"Magang Created Successfully");
     }
     
 
@@ -110,7 +114,9 @@ class MagangController extends Controller
             'nim' => 'required|max:50',
             'sekolah' =>  'required|max:100',  
             'role' =>  'required',  
-            'division' =>  'required',  
+            'division' =>  'required',
+            'start' =>  'date|required',  
+            'finish' =>  'date|required',  
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
@@ -137,6 +143,8 @@ class MagangController extends Controller
         $magang->nim = request('nim');
         $magang->role = request('role');
         $magang->division = request('division');
+        $magang->start = request('start');
+        $magang->finish = request('finish');
         $magang->sekolah = request('sekolah');
         $magang->telephone = request('telephone');
         $magang->status = request('status');

@@ -1,5 +1,5 @@
 @extends('users.master')
-@section('title', 'Karyawan - Dashboard Management')
+@section('title', 'Magang - Dashboard Management')
 
 @section('content')
 
@@ -70,6 +70,30 @@
                                 <label for="status">Status</label>
                                 <input name="status" required type="text" class="form-control" id="status"
                                     value="{{ old('status') }}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="start">Mulai Magang</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ old('start') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="finish">Selesai Magang</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ old('finish') }}">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

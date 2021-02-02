@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/', 'MainController@index')->name('dashboard.index');
 	Route::get('/dashboard', 'MainController@index')->name('dashboard.index');
 	//logout
-	Route::get('/logout', 'AuthManageController@logoutProcess');
+	// Route::get('/logout', 'AuthManageController@logoutProcess');
 
 	// ------------------------- Fitur Cari -------------------------
 	Route::get('/search/{word}', 'SearchManageController@searchPage');

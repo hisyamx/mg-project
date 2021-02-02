@@ -5,6 +5,7 @@
 <!-- Main content -->
     <!-- Header -->
     <div class="header bg-default pb-6">
+        @include('layouts.message')
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -164,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(count($division) >= 1 )
+                    {{-- @if(count($division) >= 1 ) --}}
                     <div class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">
@@ -189,7 +190,7 @@
                             @endforeach
                         </table>
                     </div>
-                    @endif
+                    {{-- @endif --}}
                 </div>
             </div>
         </div>
