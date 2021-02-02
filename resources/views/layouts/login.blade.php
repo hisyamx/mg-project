@@ -67,55 +67,84 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary border-0 mb-0">
-                        <div class="card-body px-lg-5 py-lg-5">
+
+                        <div class="card-body px-lg-5 py-lg-3">
                             <form action="{{ route('login') }}" method="post" name="login_form" role="form">
                                 @csrf
-                                <div class="form-group row mt-3 mb-3">
+                                <div class="form-group mt-3 mb-3">
                                     <label for="email" class="label">Email</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" type="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="Email" name="email" type="email" value="{{ old('email') }}"
+                                            required autocomplete="email" autofocus>
                                         @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                         <div class="input-group-append">
                                             <span class="input-group-text check-value" id="email_error"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="password" class="label">Password</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" type="password" required autocomplete="current-password">
+                                        <input class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="Password" name="password" type="password" required
+                                            autocomplete="current-password">
                                         @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                         <div class="input-group-append">
                                             <span class="input-group-text check-value" id="password_error"></span>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id="remember" name="remember" type="checkbox"
+                                        {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="remember">
+                                        <span class="text-muted">Remember me</span>
+                                    </label>
+                                </div>
                                 <div class="text-center form-group">
-                                    <button type="submit" class="btn btn-primary my-4 submit-btn btn-block">Login</button>
+                                    <button type="submit"
+                                        class="btn btn-primary mt-4 submit-btn btn-block">Login</button>
                                 </div>
                             </form>
                         </div>
                     </div>
+
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            @if (Route::has('password.request'))
+                                <a class="text-light" href="{{ route('password.request') }}">
+                                    <small>Forgot password?</small>
+                                </a>
+                            @endif
+                        </div>
+
+                        <div class="col-6 text-right">
+                            <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <!-- Footer -->
-    <footer class="py-5 mb-3" id="footer-main">
+    <footer class="mb-5" id="footer-main">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12">
@@ -138,7 +167,7 @@
     <script src="{{asset('/assets/js/argon.js?v=1.2.0')}}"></script>
     <script src="{{asset('/js/login/script.js')}}"></script>
     <script>
-        @if ($message = Session::get('create_success'))
+        @if($message = Session::get('create_success'))
         swal(
             "Berhasil!",
             "{{ $message }}",
@@ -146,13 +175,14 @@
         );
         @endif
 
-        @if ($message = Session::get('login_failed'))
-            swal(
-                "Gagal!",
-                "{{ $message }}",
-                "error"
-            );
+        @if($message = Session::get('login_failed'))
+        swal(
+            "Gagal!",
+            "{{ $message }}",
+            "error"
+        );
         @endif
+
     </script>
 </body>
 

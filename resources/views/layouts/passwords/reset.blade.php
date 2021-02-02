@@ -1,65 +1,147 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Botika Dashboard Management.">
+    <meta name="author" content="Botika">
+    <title>Password Update</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/webp">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{asset('/assets')}}/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('/assets')}}/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+        type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{asset('/assets')}}/css/argon.css?v=1.2.0" type="text/css">
+</head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+<body class="bg-default">
+    <!-- Navbar -->
+    <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+                aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="/dashboard">
+                                <img src="{{asset('/assets')}}/img/botika.webp">
+                            </a>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="container mt-5">
+            <div class="header-body text-center mb-0">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+                        <a href="/dashboard">
+                            <img src="{{asset('/assets')}}/img/botika.webp" width="50px" height="50px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div class="container mt-5 pb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-7">
+                    <div class="card bg-secondary border-0 mb-0">
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                        <div class="card-body px-lg-5 py-lg-3">
+                            <form action="{{ route('password.update') }}" method="post" name="token" value="{{ $token }}" role="form">
+                                @csrf
+                                <div class="form-group mt-3 mb-3">
+                                    <label for="email" class="label">Email</label>
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"></i></span>
+                                        </div>
+                                        <input class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="Email" name="email" type="email" value="{{ old('email') }}"
+                                            required autocomplete="email" autofocus>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <div class="input-group-append">
+                                            <span class="input-group-text check-value" id="email_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center form-group">
+                                    <button type="submit"
+                                        class="btn btn-primary mt-4 submit-btn btn-block">Reset Password</button>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>                    
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    <!-- Footer -->
+    <footer class="mb-5" id="footer-main">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="copyright text-center text-muted">
+                        &copy; 2020 Powered By <a href="https://www.botika.online" class="font-weight-bold ml-1"
+                            target="_blank">Botika</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="{{asset('/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('/assets/vendor/js-cookie/js.cookie.js')}}"></script>
+    <script src="{{asset('/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
+    <script src="{{asset('/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
+    <!-- Argon JS -->
+    <script src="{{asset('/assets/js/argon.js?v=1.2.0')}}"></script>
+    <script src="{{asset('/js/login/script.js')}}"></script>
+    <script>
+        @if($message = Session::get('create_success'))
+        swal(
+            "Berhasil!",
+            "{{ $message }}",
+            "success"
+        );
+        @endif
+
+        @if($message = Session::get('login_failed'))
+        swal(
+            "Gagal!",
+            "{{ $message }}",
+            "error"
+        );
+        @endif
+
+    </script>
+</body>
+
+</html>

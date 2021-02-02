@@ -70,7 +70,7 @@
                         <div class="card-body px-lg-5 py-lg-5">
                             <form action="{{ route('register') }}" method="post" name="create_form" role="form">
                                 @csrf
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="name" class="label">Nama</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
@@ -84,7 +84,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="email" class="label">Email</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
@@ -98,7 +98,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="password" class="label">Password</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
@@ -112,7 +112,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="password-confirm" class="label">Confirm Password</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                         <div class="input-group-prepend">
@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center form-group">
-                                    <button type="submit" class="btn btn-primary mt-4 submit-btn btn-block">Create account</button>
+                                    <button type="submit" class="btn btn-primary mt-5 submit-btn btn-block">Create account</button>
                                 </div>
                             </form>
                         </div>
