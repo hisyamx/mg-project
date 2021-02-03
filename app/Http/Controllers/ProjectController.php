@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Project;
 use App\Division;
+use App\Karyawan;
 
 class ProjectController extends Controller
 {
@@ -27,6 +28,7 @@ class ProjectController extends Controller
 
     public function create()
     {
+        $karyawan = Karyawan::all();
         $division = Division::all();
         
         if(count($division) <  1){

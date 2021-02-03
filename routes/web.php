@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AccessManageController;
-use App\Http\Controllers\AuthManageController;
+// use App\Http\Controllers\AccessManageController;
+// use App\Http\Controllers\AuthManageController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MagangController;

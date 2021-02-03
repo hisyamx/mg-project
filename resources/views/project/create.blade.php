@@ -58,18 +58,18 @@
                                     <form>
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <select required id="karyawan" class="form-control" name="karyawan">
+                                                <select required id="karyawan" class="form-control">
                                                     <option selected disabled>Select Users</option>
-                                                    @foreach($karyawan AS $kryw)
+                                                    {{-- @foreach($karyawan['name'] AS $users) --}}
                                                     <option>
                                                         <div class="custom-control custom-checkbox mb-3">
                                                             <input class="custom-control-input" id="customCheck1"
-                                                                type="checkbox" value="{{$user->name}}">
+                                                                type="checkbox" value="{{$karyawan->name}}"  name="karyawan">
                                                             <label class="custom-control-label"
-                                                                for="customCheck1">{{$user->name}}</label>
+                                                                for="customCheck1">{{$karyawan->name}}</label>
                                                         </div>
                                                     </option>
-                                                    @endforeach;
+                                                    {{-- @endforeach; --}}
                                                 </select>
                 
                                             </div>

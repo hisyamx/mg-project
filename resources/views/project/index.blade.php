@@ -83,7 +83,7 @@
                                             <a class="dropdown-item"
                                                 href="{{ route('project.edit',$args->id) }}">Edit</a>
                                             <a class="dropdown-item"
-                                                href="{{ route('porject.show',$args->id) }}">Hapus</a>
+                                                href="{{ route('project.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>
@@ -108,12 +108,12 @@
                             <div class="timeline-content">                                
                                 <?php $i = 1; ?>
                                 @foreach($project AS $args)
-                                <small class="text-muted font-weight-bold">Start : {{ $project->start}}</small>
+                                {{-- <small class="text-muted font-weight-bold">Start : {{ $project->start}}</small>
                                 <small class="text-muted font-weight-bold">Target : {{ $project->target}}</small>
                                 <h5 class=" mt-3 mb-0">{{$project->name}}</h5>
-                                <p class=" text-sm mt-1 mb-0">{{$project->description}}</p>
+                                <p class=" text-sm mt-1 mb-0">{{$project->description}}</p> --}}
                                 <div class="mt-3">
-                                    <span class="badge badge-pill badge-success">{{$project->users}}</span>
+                                    {{-- <span class="badge badge-pill badge-success">{{$project->users}}</span> --}}
                                 </div>
                                 @endforeach
                             </div>

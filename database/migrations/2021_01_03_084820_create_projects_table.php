@@ -21,8 +21,8 @@ class CreateProjectsTable extends Migration
             $table->date('start');
             $table->date('finish')->nullable();
             $table->string('cover_image');
-            $table->string('Status')->default('Doing');
-            $table->text('Description')->nullable();
+            $table->string('status')->default('Doing');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
