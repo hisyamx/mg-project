@@ -174,7 +174,7 @@
                             <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                                 <!-- Dropdown header -->
                                 <div class="px-3 py-3">
-                                    <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong>
+                                    <h6 class="text-sm text-muted m-0">You have <strong class="text-primary"> list add.</strong>
                                         notifications.
                                     </h6>
                                 </div>
@@ -191,10 +191,10 @@
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">{{ Auth::user()->nama }}/h4>
+                                                        <h4 class="mb-0 text-sm">{{ Auth::user()->name }}</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
-                                                        <small>{{ Auth::user()->nama }}</small>
+                                                        <small>{{ Auth::user()->name }}</small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,7 +213,7 @@
                                         <img alt="image" src="{{asset('assets/img/botika_icon2.svg')}}">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
-                                        <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->nama }}</span>
+                                        <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
                                     </div>
                                 </div>
                             </a>

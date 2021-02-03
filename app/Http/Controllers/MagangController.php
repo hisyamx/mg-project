@@ -46,8 +46,9 @@ class MagangController extends Controller
             'sekolah' =>  'required|max:100',  
             'role' =>  'required',  
             'division' =>  'required',  
-            'start' =>  'date|required',  
-            'finish' =>  'date|required',  
+            'address' =>  'required',  
+            'start' =>  'required',  
+            'finish' =>  'nullable',  
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
@@ -75,6 +76,7 @@ class MagangController extends Controller
         $magang->nim = request('nim');
         $magang->role = request('role');
         $magang->division = request('division');
+        $magang->address = request('address');
         $magang->start = request('start');
         $magang->finish = request('finish');
         $magang->sekolah = request('sekolah');
@@ -115,6 +117,7 @@ class MagangController extends Controller
             'sekolah' =>  'required|max:100',  
             'role' =>  'required',  
             'division' =>  'required',
+            'address' =>  'required',
             'start' =>  'date|required',  
             'finish' =>  'date|required',  
             'telephone' =>  'required|min:10|max:15',  
@@ -143,6 +146,7 @@ class MagangController extends Controller
         $magang->nim = request('nim');
         $magang->role = request('role');
         $magang->division = request('division');
+        $magang->address = request('address');
         $magang->start = request('start');
         $magang->finish = request('finish');
         $magang->sekolah = request('sekolah');

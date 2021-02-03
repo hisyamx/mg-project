@@ -11,8 +11,8 @@
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/magang">magang</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Delete {{ $magang->name }}</li>
+                            <li class="breadcrumb-item"><a href="/magang">Magang</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Delete</li>
                         </ol>
                     </nav>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Delete Magang</h3>
+                            <h3 class="mb-0">Delete {{ $magang->name }}</h3>
                         </div>
                     </div>
                 </div>
@@ -67,9 +67,9 @@
                                 value="{{ $magang->name }}">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="kode">Kode</label>
-                            <input required type="text" class="form-control" id="kode" name="kode"
-                                placeholder="Nomor Induk" value="{{ $magang->kode }}">
+                            <label for="nim">NIM</label>
+                            <input required type="text" class="form-control" id="nim" name="nim"
+                                placeholder="Nomor Induk" value="{{ $magang->nim }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="role">Role</label>
@@ -83,6 +83,30 @@
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="start">Mulai Magang</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $magang->start }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="finish">Selesai Magang</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $magang->finish }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <hr class="my-4" />
                     <div class="form-row">
                         <div class="form-group col-md-6">

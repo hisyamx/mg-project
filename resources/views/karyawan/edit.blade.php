@@ -12,7 +12,7 @@
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit {{ $karyawan->name }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>
                     </nav>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Edit Karyawan</h3>
+                            <h3 class="mb-0">Edit {{ $karyawan->name }}</h3>
                         </div>
                     </div>
                 </div>
@@ -109,6 +109,30 @@
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="start">Mulai</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $karyawan->start }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="finish">Selesai</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $karyawan->finish }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="address">Address</label>
                         <input required type="text" class="form-control" id="address" placeholder="Alamat"

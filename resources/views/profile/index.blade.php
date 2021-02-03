@@ -19,16 +19,16 @@
                 </div>
                 <div class="card-body pt-7">
                     <div class="text-center">
-                        <h5 class="h3">{{ Auth::user()->nama }}<span class="font-weight-light"></span>
+                        <h5 class="h3">{{ Auth::user()->name }}<span class="font-weight-light"></span>
                         </h5>
                         <div class="h5 font-weight-300">
                             <i class="ni location_pin mr-2"></i>{{ Auth::user()->address }}
                         </div>
-                        <div class="h5 mt-4">
-                            <i class="ni business_briefcase-24 mr-2"></i>{{ Auth::user()->username }}
+                        <div>
+                            <i class="ni business_briefcase-24 mr-2"></i>{{ Auth::user()->email}}
                         </div>
                         <div>
-                            <i class="ni education_hat mr-2"></i>{{ Auth::user()->address }}
+                            <i class="ni education_hat mr-2"></i>{{ Auth::user()->password }}
                         </div>
                     </div>
                 </div>
@@ -48,24 +48,25 @@
                         <h6 class="heading-small text-muted mb-4">User information</h6>
                         <div class="col-lg-12">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-username">Username</label>
-                                        <input type="text" id="input-username" class="form-control" value=" {{ Auth::user()->username }}">
+                                        <label class="form-control-label" for="input-first-name">Nama</label>
+                                        <input type="text" id="input-first-name" class="form-control" value="{{ Auth::user()->name }}">
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-email">Email</label>
                                         <input type="email" id="input-email" class="form-control" value="{{ Auth::user()->email }}">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-first-name">Nama</label>
-                                        <input type="text" id="input-first-name" class="form-control" value="{{ Auth::user()->nama }}">
+                                        <label class="form-control-label" for="password">Password</label>
+                                        <input type="password" id="password" class="form-control" value=" {{ Auth::user()->password }}">
                                     </div>
                                 </div>
                             </div>

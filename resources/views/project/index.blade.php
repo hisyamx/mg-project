@@ -105,16 +105,17 @@
                             <span class="timeline-step badge-success">
                                 <i class="ni ni-bell-55"></i>
                             </span>
-                            <div class="timeline-content">
-                                <small class="text-muted font-weight-bold">10:30 AM</small>
-                                <h5 class=" mt-3 mb-0">New message</h5>
-                                <p class=" text-sm mt-1 mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cum
-                                    sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            <div class="timeline-content">                                
+                                <?php $i = 1; ?>
+                                @foreach($project AS $args)
+                                <small class="text-muted font-weight-bold">Start : {{ $project->start}}</small>
+                                <small class="text-muted font-weight-bold">Target : {{ $project->target}}</small>
+                                <h5 class=" mt-3 mb-0">{{$project->name}}</h5>
+                                <p class=" text-sm mt-1 mb-0">{{$project->description}}</p>
                                 <div class="mt-3">
-                                    <span class="badge badge-pill badge-success">design</span>
-                                    <span class="badge badge-pill badge-success">system</span>
-                                    <span class="badge badge-pill badge-success">creative</span>
+                                    <span class="badge badge-pill badge-success">{{$project->users}}</span>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

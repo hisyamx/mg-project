@@ -45,7 +45,9 @@ class KaryawanController extends Controller
             'kode' => 'required|min:4|max:50',
             'address' =>  'required|max:100',  
             'role' =>  'required|min:4',  
-            'division' =>  'required',  
+            'division' =>  'required',
+            'start' =>  'required',  
+            'finish' =>  'nullable',  
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
@@ -73,6 +75,8 @@ class KaryawanController extends Controller
         $karyawan->kode = request('kode');
         $karyawan->address = request('address');
         $karyawan->role = request('role');
+        $karyawan->start = request('start');
+        $karyawan->finish = request('finish');
         $karyawan->division = request('division');
         $karyawan->telephone = request('telephone');
         $karyawan->status = request('status');
@@ -111,6 +115,8 @@ class KaryawanController extends Controller
             'address' =>  'required|max:100',  
             'role' =>  'required|min:4',  
             'division' =>  'required',  
+            'start' =>  'required',  
+            'finish' =>  'nullable',
             'telephone' =>  'required|min:10|max:15',  
             'status' =>  'required',
             'cover_image' => 'image|nullable|max:1999'
@@ -137,6 +143,8 @@ class KaryawanController extends Controller
         $karyawan->kode = request('kode');
         $karyawan->address = request('address');
         $karyawan->role = request('role');
+        $project->start = request('start');
+        $project->finish = request('finish');
         $karyawan->division = request('division');
         $karyawan->telephone = request('telephone');
         $karyawan->status = request('status');

@@ -20,6 +20,8 @@ class CreateKaryawansTable extends Migration
             $table->string('address');
             $table->string('role');
             $table->string('division');
+            $table->date('start');
+            $table->date('finish')->nullable();
             $table->string('telephone');
             $table->string('status')->default('Active');
             $table->string('cover_image');

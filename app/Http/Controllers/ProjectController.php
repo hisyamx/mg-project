@@ -19,6 +19,7 @@ class ProjectController extends Controller
     public function index()
     {
         $division = Division::orderBy('name') -> get();
+        $karyawan = Karyawan::orderBy('name') -> get();
         $project = Project::orderBy('name')->paginate(20);
 
         return view("project.index",['project' => $project,'division' => $division]);
@@ -38,20 +39,21 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
         $division = Division::all();
-        return view("project.edit",['project' => $project],['division' => $division]);
+        $karyawan = Karyawan::all();
+        return view("project.edit",['project' => $project],['division' => $division],['karyawan' => $karyawan]);
     }
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:50',
-            'nim' => 'required|max:50',
-            'sekolah' =>  'required|max:100',  
-            'role' =>  'required',  
-            'division' =>  'required',  
-            'telephone' =>  'required|min:10|max:15',  
-            'status' =>  'required',
-            'cover_image' => 'image|nullable|max:1999'
+        $this->validate($request, [            
+        'name' => 'required|max:50',
+        'users' => 'required|max:50',
+        'division' =>  'required',
+        'start' =>  'required',  
+        'finish' =>  'nullable',  
+        'status' =>  'required',
+        'description' => 'required|max:999',
+        'cover_image' => 'image|nullable|max:1999'
         ]);
 
         // Handle File Upload
@@ -73,12 +75,12 @@ class ProjectController extends Controller
         $project = new Project();
 
         $project->name = request('name');
-        $project->nim = request('nim');
-        $project->role = request('role');
+        $project->users = request('users');
         $project->division = request('division');
-        $project->sekolah = request('sekolah');
-        $project->telephone = request('telephone');
+        $project->start = request('start');
+        $project->finish = request('finish');
         $project->status = request('status');
+        $project->description = request('description');
         $project->cover_image = $fileNameToStore;
         
         $project->save();
@@ -110,12 +112,12 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'nim' => 'required|max:50',
-            'sekolah' =>  'required|max:100',  
-            'role' =>  'required',  
-            'division' =>  'required',  
-            'telephone' =>  'required|min:10|max:15',  
+            'users' => 'required|max:50',
+            'division' =>  'required',
+            'start' =>  'required',  
+            'finish' =>  'nullable',  
             'status' =>  'required',
+            'description' => 'required|max:999',
             'cover_image' => 'image|nullable|max:1999'
         ]);
 
@@ -137,12 +139,12 @@ class ProjectController extends Controller
         }
 
         $project->name = request('name');
-        $project->nim = request('nim');
-        $project->role = request('role');
+        $project->users = request('users');
         $project->division = request('division');
-        $project->sekolah = request('sekolah');
-        $project->telephone = request('telephone');
+        $project->start = request('start');
+        $project->finish = request('finish');
         $project->status = request('status');
+        $project->description = request('description');
         if($request->hasFile('cover_image')){
             $project->cover_image = $fileNameToStore;
         }
@@ -159,11 +161,4 @@ class ProjectController extends Controller
 
         return view('project.single',['project' => $project,'division' => $division]);
     }
-
-    public function pay($id)
-    {
-        $division = Division::orderBy('name') -> get();
-        $project = project::findOrFail($id);
-        return view("project.pay",['project' => $project,'division' => $division]);
-    }    
 }

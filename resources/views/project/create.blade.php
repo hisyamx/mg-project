@@ -1,5 +1,5 @@
 @extends('users.master')
-@section('title', 'Karyawan - Dashboard Management')
+@section('title', 'Project - Dashboard Management')
 
 @section('content')
 
@@ -12,7 +12,7 @@
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/karyawan">Magang</a></li>
+                            <li class="breadcrumb-item"><a href="/project">project</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
                     </nav>
@@ -27,25 +27,23 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('magang.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('project.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                                <label for="name">Fullname</label>
+                                <label for="name">Project Name</label>
                                 <input required type="text" class="form-control" id="name" name="name"
                                     value="{{ old('name') }}">
                             </div>
+                            
                             <div class="form-group col-md-4">
-                                <label for="nim">NIM</label>
-                                <input required type="text" class="form-control" id="nim" name="nim"
-                                    placeholder="Nomor Induk" value="{{ old('nim') }}">
+                                <label for="status">Status</label>
+                                <input name="status" required type="text" class="form-control" id="status"
+                                    value="{{ old('status') }}">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="role">Role</label>
-                                <input required type="text" class="form-control" id="role" name="role"
-                                    value="{{ old('role') }}">
-                            </div>
-                            <div class="form-group col-md-6">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
                                 <label for="division">Division</label>
                                 <select required id="division" class="form-control" name="division">
                                     <option selected disabled>Divisi</option>
@@ -54,29 +52,67 @@
                                     @endforeach;
                                 </select>
                             </div>
+                            <div class="form-group col-md-8">
+                                <label for="users">Users</label>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <select required id="karyawan" class="form-control" name="karyawan">
+                                                    <option selected disabled>Select Users</option>
+                                                    @foreach($karyawan AS $kryw)
+                                                    <option>
+                                                        <div class="custom-control custom-checkbox mb-3">
+                                                            <input class="custom-control-input" id="customCheck1"
+                                                                type="checkbox" value="{{$user->name}}">
+                                                            <label class="custom-control-label"
+                                                                for="customCheck1">{{$user->name}}</label>
+                                                        </div>
+                                                    </option>
+                                                    @endforeach;
+                                                </select>
+                
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="sekolah">Sekolah</label>
-                                <input name="sekolah" required type="text" class="form-control" id="sekolah"
-                                    value="{{ old('sekolah') }}">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="start">Mulai project</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="start" id="start" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ old('start') }}">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="telephone">Telephone</label>
-                                <input name="telephone" required type="number" class="form-control" id="telephone"
-                                    value="{{ old('telephone') }}">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="status">Status</label>
-                                <input name="status" required type="text" class="form-control" id="status"
-                                    value="{{ old('status') }}">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="target">Selesai project</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="target" id="target" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ old('finish') }}">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
+                            {{-- <div class="form-group">
+                                <label for="description">Description</label>
+                                <input required type="text" class="form-control" id="description"
+                                    placeholder="Project Description" name="description" value="{{ old('description') }}">
+                            </div> --}}
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
-                                name="address" value="{{ old('address') }}">
+                            <label for="description">Description</label>
+                            <textarea required class="form-control" id="exampleFormControlTextarea2" rows="3" resize="none" placeholder="Project Description">{{ old('description') }}</textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>
