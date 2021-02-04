@@ -35,7 +35,7 @@
                                 <input required type="text" class="form-control" id="name" name="name"
                                     value="{{ old('name') }}">
                             </div>
-                            
+
                             <div class="form-group col-md-4">
                                 <label for="status">Status</label>
                                 <input name="status" required type="text" class="form-control" id="status"
@@ -53,31 +53,16 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-8">
-                                <label for="users">Users</label>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <select required id="karyawan" class="form-control">
-                                                    <option selected disabled>Select Users</option>
-                                                    {{-- @foreach($karyawan['name'] AS $users) --}}
-                                                    <option>
-                                                        <div class="custom-control custom-checkbox mb-3">
-                                                            <input class="custom-control-input" id="customCheck1"
-                                                                type="checkbox" value="{{$karyawan->name}}"  name="karyawan">
-                                                            <label class="custom-control-label"
-                                                                for="customCheck1">{{$karyawan->name}}</label>
-                                                        </div>
-                                                    </option>
-                                                    {{-- @endforeach; --}}
-                                                </select>
-                
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <label for="pj">Userss</label>
+                                <select required id="pj" class="form-control" name="pj">
+                                    <option selected disabled>Pilih Users</option>
+                                    @foreach($division AS $div)
+                                    <option value="{{$div->headof}}">{{$div->headof}}</option>
+                                    @endforeach;
+                                </select>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
@@ -93,26 +78,21 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="target">Selesai project</label>
+                                    <label for="finish">Selesai project</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
-                                        <input name="target" id="target" class="date form-control datepicker"
+                                        <input name="finish" id="finish" class="date form-control datepicker"
                                             placeholder="Select date" type="text" value="{{ old('finish') }}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                            {{-- <div class="form-group">
-                                <label for="description">Description</label>
-                                <input required type="text" class="form-control" id="description"
-                                    placeholder="Project Description" name="description" value="{{ old('description') }}">
-                            </div> --}}
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea required class="form-control" id="exampleFormControlTextarea2" rows="3" resize="none" placeholder="Project Description">{{ old('description') }}</textarea>
+                            <textarea required class="form-control" name="description" id="description" rows="3"
+                                resize="none" placeholder="Project Description" value="{{ old('description') }}"></textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>

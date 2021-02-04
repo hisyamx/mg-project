@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Auth;
-use Session;
-use App\Acces;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 use App\Project;
 use App\Division;
-use App\Karyawan;
 
 class ProjectController extends Controller
 {
@@ -20,7 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         $division = Division::orderBy('name') -> get();
-        $karyawan = Karyawan::orderBy('name') -> get();
+        // $karyawan = Karyawan::orderBy('name') -> get();
         $project = Project::orderBy('name')->paginate(20);
 
         return view("project.index",['project' => $project,'division' => $division]);
@@ -28,9 +23,8 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $karyawan = Karyawan::all();
         $division = Division::all();
-        
+        // $karyawan = Karyawan::all();        
         if(count($division) <  1){
             return redirect("/division")->with("error","You must create a division before creating an project");
        }
@@ -41,21 +35,21 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
         $division = Division::all();
-        $karyawan = Karyawan::all();
+        // $karyawan = Karyawan::all();
         return view("project.edit",['project' => $project],['division' => $division],['karyawan' => $karyawan]);
     }
 
     public function store(Request $request)
     {
-        $this->validate($request, [            
-        'name' => 'required|max:50',
-        'users' => 'required|max:50',
-        'division' =>  'required',
-        'start' =>  'required',  
-        'finish' =>  'nullable',  
-        'status' =>  'required',
-        'description' => 'required|max:999',
-        'cover_image' => 'image|nullable|max:1999'
+        $this->validate($request, [ 
+            'name' => 'required|max:50',
+            'status' =>  'required',
+            'division' =>  'required',
+            'pj' => 'required',
+            'start' =>  'required',  
+            'finish' =>  'nullable',  
+            'description' => 'required|max:999',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
 
         // Handle File Upload
@@ -77,11 +71,11 @@ class ProjectController extends Controller
         $project = new Project();
 
         $project->name = request('name');
-        $project->users = request('users');
+        $project->status = request('status');
         $project->division = request('division');
+        $project->pj = request('pj');
         $project->start = request('start');
         $project->finish = request('finish');
-        $project->status = request('status');
         $project->description = request('description');
         $project->cover_image = $fileNameToStore;
         
@@ -114,11 +108,11 @@ class ProjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'users' => 'required|max:50',
+            'status' =>  'required',
             'division' =>  'required',
+            'pj' => 'required',
             'start' =>  'required',  
             'finish' =>  'nullable',  
-            'status' =>  'required',
             'description' => 'required|max:999',
             'cover_image' => 'image|nullable|max:1999'
         ]);
@@ -141,11 +135,11 @@ class ProjectController extends Controller
         }
 
         $project->name = request('name');
-        $project->users = request('users');
+        $project->status = request('status');
         $project->division = request('division');
+        $project->pj = request('pj');
         $project->start = request('start');
         $project->finish = request('finish');
-        $project->status = request('status');
         $project->description = request('description');
         if($request->hasFile('cover_image')){
             $project->cover_image = $fileNameToStore;

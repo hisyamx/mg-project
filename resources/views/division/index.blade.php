@@ -37,7 +37,7 @@
                         <label for="headof">Kepala Divisi</label>
                         <input type="text" class="form-control" id="headof" name="headof" required value="{{ old('headof') }}">
                         </div>
-                        <div class="col-md-3 col-12">
+                        <div class="col-sm-3 col-12">
                         <label for="status">Status Divisi</label>
                         <input type="text" class="form-control" id="status" name="status" required value="{{ old('status') }}">
                         </div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\AccessManageController;
 // use App\Http\Controllers\AuthManageController;
 use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MagangController;
 use App\Http\Controllers\MainController;
@@ -13,7 +14,7 @@ use App\Http\Controllers\ProjectController;
 
 
 Auth::routes();
-// });
+
 // Route::get('/home', 'HomeController@index')->name('home');	
 
 
@@ -24,9 +25,6 @@ Auth::routes();
 // Route::group(['middleware' => ['auth', 'checkRole:admin,user']], function(){
 Route::group(['middleware' => ['auth']], function(){
 
-	// Route::get('/', function () {
-	// 	return view('pages.index');
-	// });
 	// main
 	Route::get('/', 'MainController@index')->name('dashboard.index');
 	Route::get('/dashboard', 'MainController@index')->name('dashboard.index');
@@ -63,11 +61,12 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post("/division/edit/{id}",'DivisionController@update_record')->name('division.edit');
 	// Delete Request
 	Route::delete("/division/delete/{id}",'DivisionController@destroy')->name('division.delete');
-
+	
 	// ------------------------- Kelola Project -------------------------
 	// > Project
 	// Get Request
 	Route::get("/project",'ProjectController@index')->name('project.index');
+	Route::get("/project/timeline",'ProjectController@timeline')->name('project.timeline');
 	Route::get("/project/create",'ProjectController@create')->name('project.create');
 	Route::get("/project/edit/{id}","ProjectController@edit")->name("project.edit");
 	Route::get("/project/show/{id}","ProjectController@show")->name("project.show");
@@ -77,7 +76,8 @@ Route::group(['middleware' => ['auth']], function(){
 	// Route::post("/project/pay/{id}","PaymentReportController@create");
 	// Delete
 	Route::delete("/project/delete/{id}","ProjectController@destroy")->name("project.delete");
-	// End of karyawan
+	// End of project
+	
 	// ------------------------- Kelola Karyawan -------------------------
 	// > Karyawan
 	// Get Request
@@ -107,10 +107,28 @@ Route::group(['middleware' => ['auth']], function(){
 	// Delete
 	Route::delete("/magang/delete/{id}",'MagangController@destroy')->name("magang.delete");
 	// End of magang
+	
+	// ------------------------- Kelola status -------------------------
+	// > status
+//Get Requests
+	// Route::get("/status",'StatusController@index')->name('status.index');
+	//Post Requests
+	// Route::post("/status",'StatusController@store')->name('status.index');
+	// Delete Request
+	// Route::delete("/status/delete/{id}",'StatusController@destroy')->name('status.delete');
+
+	// ------------------------- Kelola Akun -------------------------
+	// > Akun
+	// Route::get('/account', 'UserManageController@viewAccount');
+	// Route::get('/account/new', 'UserManageController@viewNewAccount');
+	// Route::post('/account/create', 'UserManageController@createAccount');
+	// Route::get('/account/edit/{id}', 'UserManageController@editAccount');
+	// Route::post('/account/update', 'UserManageController@updateAccount');
+	// Route::get('/account/delete/{id}', 'UserManageController@deleteAccount');
+	// Route::get('/account/filter/{id}', 'UserManageController@filterTable');
+	// > Akses
+	// Route::get('/access', 'AccessManageController@viewAccess');
+	// Route::get('/access/change/{user}/{access}', 'AccessManageController@changeAccess');
+	// Route::get('/access/check/{user}', 'AccessManageController@checkAccess');
+	// Route::get('/access/sidebar', 'AccessManageController@sidebarRefresh');
 });
-
-// Route::get('user', function(){
-// 	dd(Auth::user());
-
-// 	// return dd("Masuk");
-// });

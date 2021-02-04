@@ -83,12 +83,12 @@
                                 <span class="nav-link-text">Magang</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('profile') ? 'active' : ''}}" href="/profile">
-                                <i class="ni ni-single-02 text-yellow"></i>
-                                <span class="nav-link-text">Profile</span>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->is('status') ? 'active' : ''}}" href="/status">
+                                <i class="ni ni-ungroup text-yellow"></i>
+                                <span class="nav-link-text">Status</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <!-- Divider -->
                     <hr class="my-3">
@@ -99,16 +99,56 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('project') ? 'active' : ''}}" href="/project">
+                            <a class="nav-link" href="#project" data-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="project">
                                 <i class="ni ni-spaceship text-red"></i>
                                 <span class="nav-link-text">Manage Project</span>
                             </a>
+                            <div class="collapse" id="project">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('project') ? 'active' : ''}}" href="/project">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Project </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}" href="/project/timeline">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Timeline </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('account') ? 'active' : ''}}" href="/account">
-                                <i class="ni ni-palette text-orange"></i>
+                            <a class="nav-link" href="#profile" data-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="profile">
+                                <i class="ni ni-single-02 text-yellow"></i>
                                 <span class="nav-link-text">Manage Account</span>
                             </a>
+                            <div class="collapse" id="profile">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('profile') ? 'active' : ''}}" href="/profile">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Profile </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}" href="/account">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Account </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('permission') ? 'active' : ''}}" href="/permission">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Permission </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                     <!-- Divider -->
@@ -174,7 +214,8 @@
                             <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                                 <!-- Dropdown header -->
                                 <div class="px-3 py-3">
-                                    <h6 class="text-sm text-muted m-0">You have <strong class="text-primary"> list add.</strong>
+                                    <h6 class="text-sm text-muted m-0">You have <strong class="text-primary"> list
+                                            add.</strong>
                                         notifications.
                                     </h6>
                                 </div>

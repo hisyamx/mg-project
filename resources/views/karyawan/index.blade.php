@@ -48,7 +48,7 @@
                         <?php $i = 1; ?>
                         @foreach($karyawan AS $args)
                         <tbody class="list">
-                            <tr>
+                            <tr data-entry-id="{{ $args->id }}">
                                 <td class="budget">
                                     {{$args->kode}}
                                 </td>

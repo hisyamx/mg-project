@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('division');
-            $table->string('users');
+            $table->string('pj');
             $table->date('start');
             $table->date('finish')->nullable();
             $table->string('cover_image');
