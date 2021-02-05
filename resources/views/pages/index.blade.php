@@ -19,7 +19,6 @@
                     </div>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="{{ route('project.create') }}" class="btn btn-sm btn-neutral">Tambah Project</a>
-                        {{-- <a href="/project" class="btn btn-sm btn-neutral">Tambah Project</a> --}}
                     </div>
                 </div>
                 <!-- Card stats -->
@@ -140,10 +139,13 @@
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
+                                            @if ($args->status == "Active")
                                             <i class="bg-success"></i>
-                                            {{-- <i class="bg-info"></i> //blue --}}
-                                            {{-- <i class="bg-success"></i> //green  --}}
                                             <span class="status">{{$args->status}}</span>
+                                            @else
+                                            <i class="bg-danger"></i>
+                                            <span class="status">{{$args->status}}</span>
+                                            @endif
                                         </span>
                                     </td>
                                 </tr>
@@ -194,6 +196,6 @@
                 </div>
             </div>
         </div>
-        
+
 
         @endsection

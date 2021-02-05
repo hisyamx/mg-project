@@ -49,7 +49,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $division = Division::all();
         // $karyawan = Karyawan::all();
-        return view("project.edit",['project' => $project],['division' => $division],['karyawan' => $karyawan]);
+        return view("project.edit",['project' => $project],['division' => $division]);
     }
 
     public function store(Request $request)
@@ -95,13 +95,13 @@ class ProjectController extends Controller
         
         $project->save();
 
-        return redirect("/project")->with('success',"project Created Successfully");
+        return redirect("/project")->with('success',"Project Created Successfully");
     }
     
 
     public function show($id)
     {
-        $project = Project::findOrFail($id);
+        $P = P::findOrFail($id);
         return view("project.show",['project' => $project]);
     }
 
@@ -115,7 +115,7 @@ class ProjectController extends Controller
             Storage::delete('public/cover_images/'.$project->cover_image);
         }
         
-        return redirect("/project")->with("success","project Deleted Successfully");
+        return redirect("/project")->with("success","Project Deleted Successfully");
     }
 
     public function update_record(Request $request,$id)

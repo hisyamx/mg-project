@@ -1,5 +1,5 @@
 @extends('users.master')
-@section('title', 'Karyawan - Dashboard Management')
+@section('title', 'Project - Dashboard Management')
 
 @section('content')
 
@@ -13,7 +13,7 @@
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/project">Project</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit {{ $project->name }</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit {{ $project->name }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -27,25 +27,23 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('project.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('project.edit', $project->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                                <label for="name">Fullname</label>
+                                <label for="name">Project Name</label>
                                 <input required type="text" class="form-control" id="name" name="name"
-                                    value="{{ old('name') }}">
+                                    value="{{ $project->name }}">
                             </div>
+
                             <div class="form-group col-md-4">
-                                <label for="nim">NIM</label>
-                                <input required type="text" class="form-control" id="nim" name="nim"
-                                    placeholder="Nomor Induk" value="{{ old('nim') }}">
+                                <label for="status">Status</label>
+                                <input name="status" required type="text" class="form-control" id="status"
+                                    value="{{ $project->status }}">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="role">Role</label>
-                                <input required type="text" class="form-control" id="role" name="role"
-                                    value="{{ old('role') }}">
-                            </div>
-                            <div class="form-group col-md-6">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
                                 <label for="division">Division</label>
                                 <select required id="division" class="form-control" name="division">
                                     <option selected disabled>Divisi</option>
@@ -54,29 +52,47 @@
                                     @endforeach;
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="sekolah">Sekolah</label>
-                                <input name="sekolah" required type="text" class="form-control" id="sekolah"
-                                    value="{{ old('sekolah') }}">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="telephone">Telephone</label>
-                                <input name="telephone" required type="number" class="form-control" id="telephone"
-                                    value="{{ old('telephone') }}">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="status">Status</label>
-                                <input name="status" required type="text" class="form-control" id="status"
-                                    value="{{ old('status') }}">
+                            <div class="form-group col-md-8">
+                                <label for="pj">Users</label>
+                                <select required id="pj" class="form-control" name="pj">
+                                    <option selected disabled>Pilih Users</option>
+                                    @foreach($division AS $div)
+                                    <option value="{{$div->headof}}">{{$div->headof}}</option>
+                                    @endforeach;
+                                </select>
                             </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="start">Mulai project</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="start" id="start" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ $project->start }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="finish">Selesai project</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="finish" id="finish" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ $project->finish }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
-                                name="address" value="{{ old('address') }}">
+                            <label for="description">Description</label>
+                            <textarea required class="form-control" name="description" id="description" rows="3"
+                                resize="none">{{ $project->description }}</textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>
@@ -85,7 +101,7 @@
                                 <label class="custom-file-label" for="customFile">Pilih</label>
                             </div>
                         </div> <br>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
                 </div>
             </div>

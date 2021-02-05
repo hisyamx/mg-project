@@ -8,5 +8,4 @@ use Carbon\Carbon;
 class Project extends Model
 {
   protected $table = "projects";
-  protected $dateFormat = 'dd/mm/yyyy';
 }

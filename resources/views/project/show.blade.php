@@ -1,5 +1,5 @@
 @extends('users.master')
-@section('title', 'project - Dashboard Management')
+@section('title', 'Project - Dashboard Management')
 
 @section('content')
 <!-- Header -->
@@ -23,30 +23,67 @@
     @include('layouts.message')
     <div class="row">
         <div class="col-12 grid-margin">
+
             <div class="card">
                 <div class="card-body">
-                    <a class="avatar">
-                        <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$project->cover_image)}}">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h5>NIM: {{ $project->nim }}</h5>
-                    <h5>Nama project: {{ $project->name }}</h5>
-                    <h5>Divisi: {{ $project->division }}</h5>
-                    <h5>Role: {{ $project->role }}</h5>
-                    <h5>Status: {{ $project->status }}</h5>
-                    <h5>Sekolah: {{ $project->sekolah }}</h5>
-                    <h5>Alamat: {{ $project->address }}</h5>
-                    <h5>Date Created: {{ $project->created_at }}</h5>  
-                    <h5>Last Updated: {{ $project->updated_at }}</h5><br>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="name">Project Name</label>
+                            <input required type="text" class="form-control" id="name" name="name"
+                                value="{{ $project->name }}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="status">Status</label>
+                            <input required type="text" class="form-control" id="status" name="status"
+                                placeholder="Nomor Induk" value="{{ $project->status }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="division">Division Responsible</label>
+                            <input required type="text" class="form-control" id="division" name="division"
+                            value="{{ $project->division }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pj">Users Responsible</label>
+                            <input required type="text" class="form-control" id="pj" name="pj"
+                                value="{{ $project->pj }}">
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="start">Mulai project</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $project->start }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="finish">Selesai project</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $project->finish }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea required type="text" class="form-control" id="description" placeholder="Alamat"
+                            name="description" rows="3" resize="none"> {{ $project->description }}</textarea>
+                    </div>
                     <form class="" action="{{ route('project.delete',$project->id) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
                     </form>
                 </div>
             </div>

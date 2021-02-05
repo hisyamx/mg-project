@@ -67,10 +67,13 @@
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        {{-- <i class="bg-info"></i> //blue --}}
-                                        {{-- <i class="bg-success"></i> //green  --}}
+                                        @if ($args->status == "Active")
+                                        <i class="bg-success"></i>
                                         <span class="status">{{$args->status}}</span>
+                                        @else
+                                        <i class="bg-danger"></i>
+                                        <span class="status">{{$args->status}}</span>
+                                        @endif
                                     </span>
                                 </td>
                                 <td class="text-right">
