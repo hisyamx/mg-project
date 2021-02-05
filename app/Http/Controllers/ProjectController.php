@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Project;
 use App\Division;
+use Carbon\Carbon;
 
 class ProjectController extends Controller
 {
@@ -17,8 +18,20 @@ class ProjectController extends Controller
         $division = Division::orderBy('name') -> get();
         // $karyawan = Karyawan::orderBy('name') -> get();
         $project = Project::orderBy('name')->paginate(20);
+        
 
         return view("project.index",['project' => $project,'division' => $division]);
+    }
+
+    
+    public function timeline()
+    {
+        $division = Division::orderBy('name') -> get();
+        // $karyawan = Karyawan::orderBy('name') -> get();
+        $project = Project::orderBy('name')->paginate(20);
+
+        return view("project.timeline",['project' => $project,'division' => $division]);
+
     }
 
     public function create()
@@ -50,8 +63,8 @@ class ProjectController extends Controller
             'finish' =>  'nullable',  
             'description' => 'required|max:999',
             'cover_image' => 'image|nullable|max:1999'
-        ]);
-
+            ]);
+            
         // Handle File Upload
         if($request->hasFile('cover_image')){
             // Get filename with the extension
@@ -75,6 +88,7 @@ class ProjectController extends Controller
         $project->division = request('division');
         $project->pj = request('pj');
         $project->start = request('start');
+        
         $project->finish = request('finish');
         $project->description = request('description');
         $project->cover_image = $fileNameToStore;

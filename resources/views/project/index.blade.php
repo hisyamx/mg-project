@@ -59,13 +59,13 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$division->name}}
+                                    {{$args->division}}
                                 </td>
                                 <td class="budget">
-                                    {{ $args->timelined_at }}
+                                    {{ $args->start }}
                                 </td>
                                 <td class="budget">
-                                    {{ $args->target }}
+                                    {{ $args->finish }}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">

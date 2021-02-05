@@ -53,7 +53,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-8">
-                                <label for="pj">Userss</label>
+                                <label for="pj">Users</label>
                                 <select required id="pj" class="form-control" name="pj">
                                     <option selected disabled>Pilih Users</option>
                                     @foreach($division AS $div)

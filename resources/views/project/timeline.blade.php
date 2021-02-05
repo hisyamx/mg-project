@@ -33,21 +33,22 @@
                 <div class="card-body">
                     <div class="timeline timeline-one-side" data-timeline-content="axis" data-timeline-axis-style="dashed">
                         <div class="timeline-block">
+                            <?php $i = 1; ?>
+                            @foreach($project AS $args)
                             <span class="timeline-step badge-success">
                                 <i class="ni ni-bell-55"></i>
                             </span>
                             <div class="timeline-content">                                
-                                <?php $i = 1; ?>
-                                @foreach($project AS $args)
-                                <small class="text-muted font-weight-bold">Start : {{ $project->start}}</small>
-                                <small class="text-muted font-weight-bold">Target : {{ $project->target}}</small>
-                                <h5 class=" mt-3 mb-0">{{$project->name}}</h5>
-                                <p class=" text-sm mt-1 mb-0">{{$project->description}}</p>
+                                <small class="text-muted font-weight-bold">Start : {{ $args->start}} | </small>
+                                <small class="text-muted font-weight-bold">Target : {{ $args->finish}}</small>
+                                <h5 class=" mt-3 mb-0">{{$args->name}}</h5>
+                                <p class=" text-sm mt-1 mb-0">{{$args->description}}</p>
                                 <div class="mt-3">
-                                    <span class="badge badge-pill badge-success">{{$project->pj}}</span>
+                                    <span class="badge badge-pill badge-success">{{$args->pj}}</span>
                                 </div>
-                                @endforeach
                             </div>
+                            <hr class="my-2" />
+                            @endforeach
                         </div>
                     </div>
                 </div>
