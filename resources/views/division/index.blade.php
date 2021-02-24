@@ -94,13 +94,6 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <!-- Button trigger modal -->
-                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ route('division.edit',$args->id) }}">
-                                                Edit
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="{{ route('division.show',$args->id) }}">
-                                                Delete
-                                            </button> --}}
                                             <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Edit</a>
                                             <a class="dropdown-item" href="{{ route('division.show',$args->id) }}">Delete</a>
                                         </div>
