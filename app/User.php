@@ -36,9 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
-    public function report()
+
+    public function scopeKaryawan($query)
     {
-        return $this->hasMany('App\PaymentRepot','paid_by');
+        return $query->where('role', 2);
+    }
+
+    public function scopeMagang($query)
+    {
+        return $query->where('role', 3);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Division;
 use Illuminate\Database\Seeder;
 
 class DivisionSeeder extends Seeder
@@ -11,17 +12,9 @@ class DivisionSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
- 
-    	for($i = 1; $i <= 10; $i++){
- 
-    	      // insert data ke table pegawai menggunakan Faker
-    		DB::table('pegawai')->insert([
-    			'name' => $faker->name,
-    			'headof' => $faker->jobTitle,
-    			'status' => $faker->numberBetween(0,1)
-    		]);
- 
-    	}
+        Division::create([
+            'name' => 'IPTEK',
+            'head_user_id' => 2,
+        ]);
     }
 }

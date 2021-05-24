@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Division;
-use App\Karyawan;
-use App\Magang;
 use App\Project;
+use App\User;
 
 class MainController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -24,15 +19,17 @@ class MainController extends Controller
 
     public function index()
     {
-        $karyawan = Karyawan::all();
-        $latest_karyawan = Karyawan::orderBy('created_at','DESC')->limit(5)->get();
-        $magang = Magang::all();
-        $latest_magang = Magang::orderBy('created_at','DESC')->limit(5)->get();
-        $project = Project::all();
-        $latest_project = Project::orderBy('created_at','DESC')->limit(5)->get();
-
         $division = Division::all();
 
-        return view('pages.index',['karyawan' => $karyawan,'division' => $division,'magang' => $magang,'project' => $project,'latest_karyawan' => $latest_karyawan,'latest_magang' => $latest_magang,'latest_project' => $latest_project]);
+        $karyawan_count = User::karyawan()->count();
+        $latest_karyawan = User::karyawan()->take(5);
+
+        $magang_count = User::magang()->count();
+        $latest_magang = User::magang()->take(5);
+
+        $project_count = Project::count();
+        $latest_project = Project::all()->take(5);
+
+        return view('pages.index', compact(['division','karyawan_count','latest_karyawan','magang_count','latest_magang','project_count','latest_project']));
     }
 }

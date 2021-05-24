@@ -16,8 +16,8 @@ class CreateDivisionsTable extends Migration
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('headof');
-            $table->string('status')->default('Active');
+            $table->foreignId('head_user_id')->constrained('users');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

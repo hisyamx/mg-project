@@ -16,13 +16,15 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('division');
-            $table->string('pj');
-            $table->date('start');
-            $table->date('finish')->nullable();
-            $table->string('cover_image');
-            $table->string('status')->default('Doing');
+            $table->foreignId('division_id')->constrained('divisions');
+            $table->foreignId('pj_user_id')->constrained('users');
+            $table->string('cover_image')->nullable();
             $table->text('description')->nullable();
+
+            $table->boolean('active')->default(true);
+
+            $table->dateTime('start')->nullable();
+            $table->dateTime('finish')->nullable();
             $table->timestamps();
         });
     }
