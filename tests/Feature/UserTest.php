@@ -20,7 +20,7 @@ class UserTest extends TestCase
     public function test_a_dashboard_can_acceseed_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->get('/dashboard');
+        $response = $user->get('/admin/dashboard');
         $response->assertStatus(200);
     }
 
@@ -29,7 +29,7 @@ class UserTest extends TestCase
     public function test_a_karyawan_can_added_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->json('POST', '/karyawan/create', [
+        $response = $user->json('POST', '/admin/karyawan/create', [
             'code' => 'ABCDE',
             'name' => 'Fitra Nabiila',
             'email' => 'fitra@mail.com',
@@ -43,27 +43,27 @@ class UserTest extends TestCase
             'division_id' => 1,
         ]);
 
-        $response->assertRedirect('/karyawan');
+        $response->assertRedirect('/admin/karyawan');
     }
 
     public function test_a_karyawan_can_viewed_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->get('/karyawan/show/2');
+        $response = $user->get('/admin/karyawan/show/2');
         $response->assertStatus(200);
     }
 
     public function test_a_karyawan_can_edited_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->get('/karyawan/edit/2');
+        $response = $user->get('/admin/karyawan/edit/2');
         $response->assertStatus(200);
     }
 
     public function test_a_karyawan_can_updated_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->json('POST', '/karyawan/edit/2', [
+        $response = $user->json('POST', '/admin/karyawan/edit/2', [
             'code' => 'ABCDE',
             'name' => 'Fitra Nabiila',
             'email' => 'hisyamk@mail.com',
@@ -77,14 +77,14 @@ class UserTest extends TestCase
             'division_id' => 1,
         ]);
 
-        $response->assertRedirect('/karyawan');
+        $response->assertRedirect('/admin/karyawan');
     }
 
     public function test_a_karyawan_can_destroyed_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->json('DELETE', '/karyawan/delete/5');
-        $response->assertRedirect('/karyawan');
+        $response = $user->json('DELETE', '/admin/karyawan/delete/5');
+        $response->assertRedirect('/admin/karyawan');
     }
 
 
@@ -92,7 +92,7 @@ class UserTest extends TestCase
     public function test_a_magang_can_added_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->json('POST', '/magang/create', [
+        $response = $user->json('POST', '/admin/magang/create', [
             'code' => 'ABCDE',
             'name' => 'Fitra Nabiila',
             'email' => 'fitra@mail.com',
@@ -106,27 +106,27 @@ class UserTest extends TestCase
             'division_id' => 1,
         ]);
 
-        $response->assertRedirect('/magang');
+        $response->assertRedirect('/admin/magang');
     }
 
     public function test_a_magang_can_viewed_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->get('/magang/show/2');
+        $response = $user->get('/admin/magang/show/2');
         $response->assertStatus(200);
     }
 
     public function test_a_magang_can_edited_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->get('/magang/edit/2');
+        $response = $user->get('/admin/magang/edit/2');
         $response->assertStatus(200);
     }
 
     public function test_a_magang_can_updated_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->json('POST', '/magang/edit/6', [
+        $response = $user->json('POST', '/admin/magang/edit/6', [
             'code' => 'ABCDE',
             'name' => 'Fitra Nabiilas',
             'email' => 'hisyamks@mail.com',
@@ -140,13 +140,13 @@ class UserTest extends TestCase
             'division_id' => 1,
         ]);
 
-        $response->assertRedirect('/magang');
+        $response->assertRedirect('/admin/magang');
     }
 
     public function test_a_magang_can_destroyed_by_admin()
     {
         $user = $this->actingAs(User::find(1));
-        $response = $user->json('DELETE', '/magang/delete/6');
-        $response->assertRedirect('/magang');
+        $response = $user->json('DELETE', '/admin/magang/delete/6');
+        $response->assertRedirect('/admin/magang');
     }
 }

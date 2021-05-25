@@ -24,7 +24,7 @@ class MagangController extends Controller
         $division = Division::all();
 
         if (count($division) <  1) {
-            return redirect("/division")->with("error", "You must create a division before creating an magang");
+            return redirect(route("division.index"))->with("error", "You must create a division before creating an magang");
         }
         return view("magang.create", ['division' => $division]);
     }
@@ -86,7 +86,7 @@ class MagangController extends Controller
 
         $user->save();
 
-        return redirect("/magang")->with('success', "Magang Created Successfully");
+        return redirect(route("magang.index"))->with('success', "Magang Created Successfully");
     }
 
 
@@ -106,7 +106,7 @@ class MagangController extends Controller
             Storage::delete('public/cover_images/'.$magang->cover_image);
         }
 
-        return redirect("/magang")->with("success", "Magang Deleted Successfully");
+        return redirect(route("magang.index"))->with("success", "Magang Deleted Successfully");
     }
 
     public function update_record(Request $request, $id)
@@ -160,7 +160,7 @@ class MagangController extends Controller
 
         $user->save(); //this will UPDATE the record
 
-        return redirect("/magang")->with("success", "Account was updated successfully");
+        return redirect(route("magang.index"))->with("success", "Account was updated successfully");
     }
 
     // public function pay($id)

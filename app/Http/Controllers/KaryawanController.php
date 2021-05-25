@@ -84,7 +84,7 @@ class KaryawanController extends Controller
         $user->cover_image = $request->cover_image;
 
         if ($user->save()) {
-            return redirect("/karyawan")->with('success', "karyawan Created Successfully");
+            return redirect(route('karyawan.index'))->with('success', "karyawan Created Successfully");
         }
     }
 
@@ -105,7 +105,7 @@ class KaryawanController extends Controller
             Storage::delete('public/cover_images/'.$karyawan->cover_image);
         }
 
-        return redirect("/karyawan")->with("success", "karyawan Deleted Successfully");
+        return redirect(route('karyawan.index'))->with("success", "karyawan Deleted Successfully");
     }
 
     public function update_record(Request $request, $id)
@@ -157,7 +157,7 @@ class KaryawanController extends Controller
 
         $user->save(); //this will UPDATE the record
 
-        return redirect("/karyawan")->with("success", "Karyawan was updated successfully");
+        return redirect(route('karyawan.index'))->with("success", "Karyawan was updated successfully");
     }
 
     // public function pay($id)
