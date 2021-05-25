@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Division;
 use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
@@ -29,7 +31,7 @@ class KaryawanController extends Controller
 
     public function edit($id)
     {
-        $karyawan = Karyawan::findOrFail($id);
+        $karyawan = User::findOrFail($id);
         $division = Division::all();
         return view("karyawan.edit", ['karyawan' => $karyawan], ['division' => $division]);
     }
@@ -37,16 +39,17 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:50',
-            'kode' => 'required|min:4|max:50',
-            'address' =>  'required|max:100',
-            'role' =>  'required|min:4',
-            'division' =>  'required',
-            'start' =>  'required',
-            'finish' =>  'nullable',
-            'telephone' =>  'required|min:10|max:15',
-            'status' =>  'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'code' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+            'telephone' => 'required',
+            'address' => 'required',
+            'division_id' => 'required',
+            'start' => 'required',
+            'finish' => 'nullable',
+            'cover_image' => 'nullable',
         ]);
 
         // Handle File Upload
@@ -65,34 +68,36 @@ class KaryawanController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
-        $karyawan = new Karyawan();
 
-        $karyawan->name = request('name');
-        $karyawan->kode = request('kode');
-        $karyawan->address = request('address');
-        $karyawan->role = request('role');
-        $karyawan->start = request('start');
-        $karyawan->finish = request('finish');
-        $karyawan->division = request('division');
-        $karyawan->telephone = request('telephone');
-        $karyawan->status = request('status');
-        $karyawan->cover_image = $fileNameToStore;
+        $user = new User();
 
-        $karyawan->save();
+        $user->code = $request->code;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->telephone = $request->telephone;
+        $user->address = $request->address;
+        $user->division_id = $request->division_id;
+        $user->start = Carbon::make($request->start);
+        $user->finish = Carbon::make($request->finish);
+        $user->cover_image = $request->cover_image;
 
-        return redirect("/karyawan")->with('success', "karyawan Created Successfully");
+        if ($user->save()) {
+            return redirect("/karyawan")->with('success', "karyawan Created Successfully");
+        }
     }
 
 
     public function show($id)
     {
-        $karyawan = Karyawan::findOrFail($id);
+        $karyawan = User::findOrFail($id);
         return view("karyawan.show", ['karyawan' => $karyawan]);
     }
 
     public function destroy($id)
     {
-        $karyawan = Karyawan::findOrFail($id);
+        $karyawan = User::findOrFail($id);
         $karyawan->delete();
 
         if ($karyawan->cover_image != 'noimage.jpg') {
@@ -106,19 +111,20 @@ class KaryawanController extends Controller
     public function update_record(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:50',
-            'kode' => 'required|min:4|max:50',
-            'address' =>  'required|max:100',
-            'role' =>  'required|min:4',
-            'division' =>  'required',
-            'start' =>  'required',
-            'finish' =>  'nullable',
-            'telephone' =>  'required|min:10|max:15',
-            'status' =>  'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'code' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+            'telephone' => 'required',
+            'address' => 'required',
+            'division_id' => 'required',
+            'start' => 'required',
+            'finish' => 'nullable',
+            'cover_image' => 'nullable',
         ]);
 
-        $karyawan = Karyawan::findOrFail($id);
+        $user = User::findOrFail($id);
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
             // Get filename with the extension
@@ -132,23 +138,24 @@ class KaryawanController extends Controller
             // Upload Image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
             // Delete file if exists
-            Storage::delete('public/cover_images/'.$karyawan->cover_image);
+            Storage::delete('public/cover_images/'.$user->cover_image);
         }
 
-        $karyawan->name = request('name');
-        $karyawan->kode = request('kode');
-        $karyawan->address = request('address');
-        $karyawan->role = request('role');
-        $project->start = request('start');
-        $project->finish = request('finish');
-        $karyawan->division = request('division');
-        $karyawan->telephone = request('telephone');
-        $karyawan->status = request('status');
+        $user->code = $request->code;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->telephone = $request->telephone;
+        $user->address = $request->address;
+        $user->division_id = $request->division_id;
+        $user->start = Carbon::make($request->start);
+        $user->finish = Carbon::make($request->finish);
+
         if ($request->hasFile('cover_image')) {
-            $karyawan->cover_image = $fileNameToStore;
+            $user->cover_image = $fileNameToStore;
         }
 
-        $karyawan->save(); //this will UPDATE the record
+        $user->save(); //this will UPDATE the record
 
         return redirect("/karyawan")->with("success", "Karyawan was updated successfully");
     }

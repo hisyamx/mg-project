@@ -33,12 +33,12 @@
                             <div class="form-group col-md-8">
                                 <label for="name">Fullname</label>
                                 <input required type="text" class="form-control" id="name" name="name"
-                                value="{{ old('name') }}">
+                                    value="{{ old('name') }}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="kode">Kode</label>
-                                <input required type="text" class="form-control" id="kode" name="kode" placeholder="BT-001"
-                                    value="{{ old('kode') }}">
+                                <input required type="text" class="form-control" id="kode" name="kode"
+                                    placeholder="BT-001" value="{{ old('kode') }}">
                             </div>
                         </div>
                         <div class="form-row">
@@ -52,7 +52,7 @@
                                 <select required id="division" class="form-control" name="division">
                                     <option selected disabled>Divisi</option>
                                     @foreach($division AS $div)
-                                    <option value="{{$div->name}}">{{$div->name}}</option>
+                                    <option value="{{$div->id}}">{{$div->name}}</option>
                                     @endforeach;
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                                     value="{{ old('status') }}">
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
@@ -78,7 +78,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
-                                        <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ old('start') }}">
+                                        <input name="start" id="start" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ old('start') }}">
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +90,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
-                                        <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ old('finish') }}">
+                                        <input name="finish" id="finish" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ old('finish') }}">
                                     </div>
                                 </div>
                             </div>

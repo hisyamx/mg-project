@@ -30,7 +30,8 @@
                     <div class="col-lg-3 order-lg-2">
                         <div class="card-profile-image">
                             <a href="#">
-                                <img src="{{asset('storage/cover_images/'.$karyawan->cover_image)}}" class="rounded-circle">
+                                <img src="{{asset('storage/cover_images/'.$karyawan->cover_image)}}"
+                                    class="rounded-circle">
                             </a>
                         </div>
                     </div>
@@ -62,90 +63,93 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('karyawan.edit',$karyawan->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-row">
-                        <div class="form-group col-md-8">
-                            <label for="name">Fullname</label>
-                            <input required type="text" class="form-control" id="name" name="name"
-                            value="{{ $karyawan->name }}">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="kode">Kode</label>
-                            <input required type="text" class="form-control" id="kode" name="kode"
-                                placeholder="Nomor Induk" value="{{ $karyawan->kode }}">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="role">Role</label>
-                            <input required type="text" class="form-control" id="role" name="role"
-                                value="{{ $karyawan->role }}">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="division">Division</label>
-                            <select required id="division" class="form-control" name="division">
-                                <option selected disabled>Divisi</option>
-                                @foreach($division AS $args)
-                                <option value="{{$args->name}}" <?php 
+                    <form action="{{ route('karyawan.edit',$karyawan->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="name">Fullname</label>
+                                <input required type="text" class="form-control" id="name" name="name"
+                                    value="{{ $karyawan->name }}">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="kode">Kode</label>
+                                <input required type="text" class="form-control" id="code" name="kode"
+                                    placeholder="Nomor Induk" value="{{ $karyawan->code }}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="role">Role</label>
+                                <input required type="text" class="form-control" id="role" name="role"
+                                    value="{{ $karyawan->role }}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="division">Division</label>
+                                <select required id="division" class="form-control" name="division">
+                                    <option selected disabled>Divisi</option>
+                                    @foreach($division AS $args)
+                                    <option value="{{$args->name}}" <?php
                                 if($args->name == $karyawan->division){
                                     print "selected";
                                 }
                                 ?>>{{$args->name}}</option>
-                                @endforeach;
-                            </select>
+                                    @endforeach;
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <hr class="my-4" />
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="telephone">Telephone</label>
-                            <input name="telephone" required type="number" class="form-control" id="telephone"
-                            value="{{ $karyawan->telephone}}">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="status">Status</label>
-                            <input name="status" required type="text" class="form-control" id="status"
-                            value="{{ $karyawan->status }}">
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="start">Mulai</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        <hr class="my-4" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="telephone">Telephone</label>
+                                <input name="telephone" required type="number" class="form-control" id="telephone"
+                                    value="{{ $karyawan->telephone}}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="status">Status</label>
+                                <input name="status" required type="text" class="form-control" id="status"
+                                    value="{{ $karyawan->status }}">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="start">Mulai</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="start" id="start" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ $karyawan->start }}">
                                     </div>
-                                    <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $karyawan->start }}">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="finish">Selesai</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input name="finish" id="finish" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ $karyawan->finish }}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="finish">Selesai</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                    </div>
-                                    <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $karyawan->finish }}">
-                                </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
+                                name="address" value="{{ $karyawan->address }}">
+                        </div>
+                        <div class="form-row">
+                            <label> Tambahkan Foto (Optional)</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="cover_image">
+                                <label class="custom-file-label" for="customFile">Pilih</label>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input required type="text" class="form-control" id="address" placeholder="Alamat"
-                            name="address" value="{{ $karyawan->address }}">
-                    </div>
-                    <div class="form-row">
-                        <label> Tambahkan Foto (Optional)</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" name="cover_image">
-                            <label class="custom-file-label" for="customFile">Pilih</label>
-                        </div>
-                    </div> <br>
-                    <button type="submit" class="btn btn-warning">Edit</button>
+                        </div> <br>
+                        <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
                 </div>
             </div>
