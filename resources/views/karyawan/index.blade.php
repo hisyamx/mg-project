@@ -50,12 +50,20 @@
                         <tbody class="list">
                             <tr data-entry-id="{{ $args->id }}">
                                 <td class="budget">
-                                    {{$args->kode}}
+                                    {{$args->code}}
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="{{ route('division.edit',$args->id) }}" class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$args->cover_image)}}">
+                                        <a href="{{ route('division.edit',$args->id) }}" class="avatar rounded-circle
+                                            @php
+                                                $array = ['bg-primary', '', 'bg-warning', 'bg-danger'];
+                                                echo $array[array_rand($array, 1)];
+                                            @endphp
+                                            mr-3">
+                                            @if ($args->cover_image != null)
+                                            <img alt="Image placeholder"
+                                                src="{{asset('storage/cover_images/'.$args->cover_image)}}">
+                                            @endif
                                         </a>
                                         <div class="media-body">
                                             <span class="name mb-0 text-sm">{{$args->name}}</span>
@@ -63,16 +71,16 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->division}}
+                                    {{$args->division->name}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->status == "Active")
+                                        @if ($args->finish == null)
                                         <i class="bg-success"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Aktif</span>
                                         @else
                                         <i class="bg-danger"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Tidak Aktif</span>
                                         @endif
                                     </span>
                                 </td>
@@ -83,8 +91,10 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ route('karyawan.edit',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('karyawan.show',$args->id) }}">Hapus</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('karyawan.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('karyawan.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>

@@ -22,7 +22,6 @@
             display: none !important
         }
     }
-
 </style>
 </head>
 
@@ -60,34 +59,38 @@
                     <!-- Nav items -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('dashboard') ? 'active' : ''}}" href="/dashboard">
+                            <a class="nav-link {{ request()->route()->named('dashboard.index') ? 'active' : ''}}"
+                                href="{{ route('dashboard.index')}}">
                                 <i class="ni ni-shop text-blue"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('division') ? 'active' : ''}}" href="/division">
+                            <a class="nav-link {{ request()->route()->named('division.index') ? 'active' : ''}}"
+                                href="{{ route('division.index')}}">
                                 <i class="ni ni-ui-04 text-pink"></i>
                                 <span class="nav-link-text">Division</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('karyawan') ? 'active' : ''}}" href="/karyawan">
+                            <a class="nav-link {{ request()->route()->named('karyawan.index') ? 'active' : ''}}"
+                                href="{{ route('karyawan.index')}}">
                                 <i class="ni ni-bullet-list-67 text-primary"></i>
                                 <span class="nav-link-text">Karyawan</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('magang') ? 'active' : ''}}" href="/magang">
+                            <a class="nav-link {{ request()->route()->named('magang.index') ? 'active' : ''}}"
+                                href="{{ route('magang.index')}}">
                                 <i class="ni ni-bullet-list-67 text-success"></i>
                                 <span class="nav-link-text">Magang</span>
                             </a>
                         </li>
                         {{-- <li class="nav-item">
                             <a class="nav-link {{ request()->is('status') ? 'active' : ''}}" href="/status">
-                                <i class="ni ni-ungroup text-yellow"></i>
-                                <span class="nav-link-text">Status</span>
-                            </a>
+                        <i class="ni ni-ungroup text-yellow"></i>
+                        <span class="nav-link-text">Status</span>
+                        </a>
                         </li> --}}
                     </ul>
                     <!-- Divider -->
@@ -107,13 +110,15 @@
                             <div class="collapse" id="project">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('project') ? 'active' : ''}}" href="/project">
+                                        <a class="nav-link {{ request()->is('project') ? 'active' : ''}}"
+                                            href="/project">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Project </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}" href="/project/timeline">
+                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
+                                            href="/project/timeline">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Timeline </span>
                                         </a>
@@ -130,19 +135,22 @@
                             <div class="collapse" id="profile">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('profile') ? 'active' : ''}}" href="/profile">
+                                        <a class="nav-link {{ request()->is('profile') ? 'active' : ''}}"
+                                            href="/profile">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Profile </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}" href="/account">
+                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
+                                            href="/account">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Account </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('permission') ? 'active' : ''}}" href="/permission">
+                                        <a class="nav-link {{ request()->is('permission') ? 'active' : ''}}"
+                                            href="/permission">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Permission </span>
                                         </a>

@@ -41,13 +41,13 @@
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">Nama Project</th>
                                 <th scope="col" class="sort" data-sort="status">Division Responsible</th>
+                                <th scope="col" class="sort" data-sort="status">PJ</th>
                                 <th scope="col" class="sort" data-sort="status">Started</th>
                                 <th scope="col" class="sort" data-sort="status">Target Finisih</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <?php $i = 1; ?>
                         @foreach($project AS $args)
                         <tbody class="list">
                             <tr>
@@ -59,7 +59,10 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->division}}
+                                    {{$args->division->name}}
+                                </td>
+                                <td class="budget">
+                                    {{$args->pj_user->name}}
                                 </td>
                                 <td class="budget">
                                     {{ $args->start }}

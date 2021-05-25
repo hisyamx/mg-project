@@ -38,25 +38,26 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="sort" data-sort="name">NIM</th>
+                                <th scope="col" class="sort" data-sort="name">ID</th>
                                 <th scope="col" class="sort" data-sort="name">Nama</th>
                                 <th scope="col" class="sort" data-sort="budget">Divisi</th>
-                                <th scope="col" class="sort" data-sort="completion">Sekolah</th>
+                                <th scope="col" class="sort" data-sort="completion">Instansi</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <?php $i = 1; ?>
                         @foreach($magang AS $args)
                         <tbody class="list">
                             <tr>
                                 <td class="budget">
-                                    {{$args->nim}}
+                                    {{$args->code}}
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="{{ route('magang.edit',$args->id) }}" class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="{{asset('storage/cover_images/'.$args->cover_image)}}">
+                                        <a href="{{ route('magang.edit',$args->id) }}"
+                                            class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder"
+                                                src="{{asset('storage/cover_images/'.$args->cover_image)}}">
                                         </a>
                                         <div class="media-body">
                                             <span class="name mb-0 text-sm">{{$args->name}}</span>
@@ -64,19 +65,19 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->division}}
+                                    {{$args->division->name}}
                                 </td>
                                 <td class="budget">
-                                    {{$args->sekolah}}
+                                    {{$args->instansi}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->status == "Active")
+                                        @if ($args->finish == null)
                                         <i class="bg-success"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Aktif</span>
                                         @else
                                         <i class="bg-danger"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Tidak Aktif</span>
                                         @endif
                                     </span>
                                 </td>
@@ -87,8 +88,10 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ route('magang.edit',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('magang.show',$args->id) }}">Hapus</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('magang.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('magang.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>

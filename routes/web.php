@@ -22,10 +22,13 @@ Auth::routes();
 // Route::post('/first_account', 'UserManageController@firstAccount');
 
 // Route::group(['middleware' => ['auth', 'checkRole:admin,user']], function(){
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     // main
-    Route::get('/', 'MainController@index')->name('dashboard.index');
+    Route::get('/', function () {
+        redirect('/dashboard');
+    });
+
     Route::get('/dashboard', 'MainController@index')->name('dashboard.index');
     //logout
     // Route::get('/logout', 'AuthManageController@logoutProcess');
