@@ -14,6 +14,10 @@ use App\Http\Controllers\ProjectController;
 
 Auth::routes();
 
+Route::get('/', function () {
+    return redirect(route('login'));
+    // return dump('123');
+});
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -22,14 +26,8 @@ Auth::routes();
 // Route::post('/first_account', 'UserManageController@firstAccount');
 
 // Route::group(['middleware' => ['auth', 'checkRole:admin,user']], function(){
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-
-    // main
-    Route::get('/', function () {
-        redirect('/dashboard');
-    });
-
-    Route::get('/dashboard', 'MainController@index')->name('dashboard.index');
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::get('/dashboard', 'Admin\MainController@index')->name('admin.dashboard.index');
     //logout
     // Route::get('/logout', 'AuthManageController@logoutProcess');
 
@@ -55,59 +53,64 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // ------------------------- Kelola Division -------------------------
     // > Division
     //Get Requests
-    Route::get("/division", 'DivisionController@index')->name('division.index');
-    Route::get("/division/edit/{id}", 'DivisionController@edit')->name('division.edit');
-    Route::get("/division/show/{id}", 'DivisionController@show')->name('division.show');
+    Route::get("/division", 'Admin\DivisionController@index')->name('admin.division.index');
+    Route::get("/division/edit/{id}", 'Admin\DivisionController@edit')->name('admin.division.edit');
+    Route::get("/division/show/{id}", 'Admin\DivisionController@show')->name('admin.division.show');
     //Post Requests
-    Route::post("/division", 'DivisionController@store')->name('division.index');
-    Route::post("/division/edit/{id}", 'DivisionController@update_record')->name('division.edit');
+    Route::post("/division", 'Admin\DivisionController@store')->name('admin.division.index');
+    Route::post("/division/edit/{id}", 'Admin\DivisionController@update_record')->name('admin.division.edit');
     // Delete Request
-    Route::delete("/division/delete/{id}", 'DivisionController@destroy')->name('division.delete');
+    Route::delete("/division/delete/{id}", 'Admin\DivisionController@destroy')->name('admin.division.delete');
 
     // ------------------------- Kelola Project -------------------------
     // > Project
     // Get Request
-    Route::get("/project", 'ProjectController@index')->name('project.index');
-    Route::get("/project/timeline", 'ProjectController@timeline')->name('project.timeline');
-    Route::get("/project/create", 'ProjectController@create')->name('project.create');
-    Route::get("/project/edit/{id}", "ProjectController@edit")->name("project.edit");
-    Route::get("/project/show/{id}", "ProjectController@show")->name("project.show");
+    Route::get("/project", 'Admin\ProjectController@index')->name('admin.project.index');
+    Route::get("/project/timeline", 'Admin\ProjectController@timeline')->name('admin.project.timeline');
+    Route::get("/project/create", 'Admin\ProjectController@create')->name('admin.project.create');
+    Route::get("/project/edit/{id}", "Admin\ProjectController@edit")->name('admin.project.edit');
+    Route::get("/project/show/{id}", "Admin\ProjectController@show")->name('admin.project.show');
     //Post Request
-    Route::post("/project/create", "ProjectController@store");
-    Route::post("/project/edit/{id}", "ProjectController@update_record")->name("project.edit");
+    Route::post("/project/create", "Admin\ProjectController@store");
+    Route::post("/project/edit/{id}", "Admin\ProjectController@update_record")->name('admin.project.edit');
     // Route::post("/project/pay/{id}","PaymentReportController@create");
     // Delete
-    Route::delete("/project/delete/{id}", "ProjectController@destroy")->name("project.delete");
+    Route::delete("/project/delete/{id}", "Admin\ProjectController@destroy")->name('admin.project.delete');
+
+    // Custom Action
+    Route::get("/project/edit/{project_id}/drop/user/{user_id}", "Admin\ProjectController@dropUser")->name('admin.project.drop.user');
+    Route::get("/project/edit/{project_id}/add/user", "Admin\ProjectController@addUser")->name('admin.project.add.user');
+
     // End of project
 
     // ------------------------- Kelola Karyawan -------------------------
     // > Karyawan
     // Get Request
-    Route::get("/karyawan", 'KaryawanController@index')->name('karyawan.index');
-    Route::get("/karyawan/create", 'KaryawanController@create')->name('karyawan.create');
-    Route::get("/karyawan/edit/{id}", 'KaryawanController@edit')->name("karyawan.edit");
-    Route::get("/karyawan/show/{id}", 'KaryawanController@show')->name("karyawan.show");
+    Route::get("/karyawan", 'Admin\KaryawanController@index')->name('admin.karyawan.index');
+    Route::get("/karyawan/create", 'Admin\KaryawanController@create')->name('admin.karyawan.create');
+    Route::get("/karyawan/edit/{id}", 'Admin\KaryawanController@edit')->name('admin.karyawan.edit');
+    Route::get("/karyawan/show/{id}", 'Admin\KaryawanController@show')->name('admin.karyawan.show');
     //Post Request
-    Route::post("/karyawan/create", 'KaryawanController@store');
-    Route::post("/karyawan/edit/{id}", 'KaryawanController@update_record')->name("karyawan.edit");
+    Route::post("/karyawan/create", 'Admin\KaryawanController@store');
+    Route::post("/karyawan/edit/{id}", 'Admin\KaryawanController@update_record')->name('admin.karyawan.edit');
     // Route::post("/karyawan/pay/{id}",'PaymentReportController@create');
     // Delete
-    Route::delete("/karyawan/delete/{id}", 'KaryawanController@destroy')->name("karyawan.delete");
+    Route::delete("/karyawan/delete/{id}", 'Admin\KaryawanController@destroy')->name('admin.karyawan.delete');
     // End of karyawan
 
     // ------------------------- Kelola Magang -------------------------
     // > Magang
     // Get Request
-    Route::get("/magang", 'MagangController@index')->name('magang.index');
-    Route::get("/magang/create", 'MagangController@create')->name('magang.create');
-    Route::get("/magang/edit/{id}", 'MagangController@edit')->name("magang.edit");
-    Route::get("/magang/show/{id}", 'MagangController@show')->name("magang.show");
+    Route::get("/magang", 'Admin\MagangController@index')->name('admin.magang.index');
+    Route::get("/magang/create", 'Admin\MagangController@create')->name('admin.magang.create');
+    Route::get("/magang/edit/{id}", 'Admin\MagangController@edit')->name("admin.magang.edit");
+    Route::get("/magang/show/{id}", 'Admin\MagangController@show')->name("admin.magang.show");
     //Post Request
-    Route::post("/magang/create", 'MagangController@store');
-    Route::post("/magang/edit/{id}", 'MagangController@update_record')->name("magang.edit");
+    Route::post("/magang/create", 'Admin\MagangController@store');
+    Route::post("/magang/edit/{id}", 'Admin\MagangController@update_record')->name("admin.magang.edit");
     // Route::post("/magang/pay/{id}",'PaymentReportController@create');
     // Delete
-    Route::delete("/magang/delete/{id}", 'MagangController@destroy')->name("magang.delete");
+    Route::delete("/magang/delete/{id}", 'Admin\MagangController@destroy')->name("admin.magang.delete");
     // End of magang
 
     // ------------------------- Kelola status -------------------------
@@ -133,4 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::get('/access/change/{user}/{access}', 'AccessManageController@changeAccess');
     // Route::get('/access/check/{user}', 'AccessManageController@checkAccess');
     // Route::get('/access/sidebar', 'AccessManageController@sidebarRefresh');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'user'], function () {
 });

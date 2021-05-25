@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Division;
@@ -24,7 +25,7 @@ class KaryawanController extends Controller
         $division = Division::all();
 
         if (count($division) <  1) {
-            return redirect("/division")->with("error", "You must create a division before creating an karyawan");
+            return redirect("division.index")->with("error", "You must create a division before creating an karyawan");
         }
         return view("karyawan.create", ['division' => $division]);
     }

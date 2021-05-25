@@ -11,7 +11,7 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="division.index"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
@@ -27,7 +27,7 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('karyawan.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.karyawan.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">

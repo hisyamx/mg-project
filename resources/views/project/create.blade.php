@@ -11,7 +11,7 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="dasboard.index"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/project">Project</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
@@ -27,7 +27,7 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('project.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.project.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">
@@ -92,7 +92,8 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea required class="form-control" name="description" id="description" rows="3"
-                                resize="none" placeholder="Project Description" value="{{ old('description') }}"></textarea>
+                                resize="none" placeholder="Project Description"
+                                value="{{ old('description') }}"></textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>

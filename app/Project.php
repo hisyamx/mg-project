@@ -8,6 +8,10 @@ use Carbon\Carbon;
 class Project extends Model
 {
     protected $table = "projects";
+    protected $dates = [
+        'start',
+        'finish'
+    ];
 
     public function division()
     {
@@ -17,5 +21,10 @@ class Project extends Model
     public function pj_user()
     {
         return $this->hasOne(User::class, 'id', 'pj_user_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_project_pivots', 'project_id', 'user_id');
     }
 }

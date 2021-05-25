@@ -10,7 +10,7 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="dasboard.index"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/magang">Magang</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Delete</li>
                         </ol>
@@ -91,7 +91,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $magang->start }}">
+                                    <input name="start" id="start" class="date form-control datepicker"
+                                        placeholder="Select date" type="text" value="{{ $magang->start }}">
                                 </div>
                             </div>
                         </div>
@@ -102,7 +103,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $magang->finish }}">
+                                    <input name="finish" id="finish" class="date form-control datepicker"
+                                        placeholder="Select date" type="text" value="{{ $magang->finish }}">
                                 </div>
                             </div>
                         </div>
@@ -126,7 +128,7 @@
                         <input required type="text" class="form-control" id="address" placeholder="Alamat"
                             name="address" value="{{ $magang->address }}">
                     </div>
-                    <form class="" action="{{ route('magang.delete',$magang->id) }}" method="POST">
+                    <form class="" action="{{ route('admin.magang.delete',$magang->id) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete</button>
@@ -140,7 +142,7 @@
 
     @endsection
     <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('magang.delete',$args->id) }}"
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('admin.magang.delete',$args->id) }}"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -161,7 +163,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form class="" action="{{ route('magang.edit',$magang->id) }}" method="POST">
+                <form class="" action="{{ route('admin.magang.edit',$magang->id) }}" method="POST">
                     @csrf
                     @method("DELETE")
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

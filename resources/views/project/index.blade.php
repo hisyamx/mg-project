@@ -10,14 +10,15 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/project">Project</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index')}}"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.project.index')}}">Project</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="/project/create" class="btn btn-sm btn-neutral">Tambah Project</a>
-                    <a href="/project/timeline" class="btn btn-sm btn-neutral">Timeline Project</a>
+                    <a href="{{ route('admin.project.create')}}" class="btn btn-sm btn-neutral">Tambah Project</a>
+                    <a href="{{ route('admin.project.timeline')}}" class="btn btn-sm btn-neutral">Project Timeline</a>
                 </div>
 
             </div>
@@ -40,8 +41,9 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">Nama Project</th>
-                                <th scope="col" class="sort" data-sort="status">Division Responsible</th>
-                                <th scope="col" class="sort" data-sort="status">PJ</th>
+                                <th scope="col" class="sort" data-sort="status">Responsible Division</th>
+                                <th scope="col" class="sort" data-sort="status">Responsible Person</th>
+                                <th scope="col" class="sort" data-sort="status">Member Count</th>
                                 <th scope="col" class="sort" data-sort="status">Started</th>
                                 <th scope="col" class="sort" data-sort="status">Target Finisih</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
@@ -65,19 +67,27 @@
                                     {{$args->pj_user->name}}
                                 </td>
                                 <td class="budget">
-                                    {{ $args->start }}
+                                    {{$args->users->count()}}
                                 </td>
                                 <td class="budget">
-                                    {{ $args->finish }}
+                                    {{ $args->start != null ? $args->start->isoFormat('D MMMM Y') : '' }}
+                                </td>
+                                <td class="budget">
+                                    {{ $args->finish != null ? $args->finish->isoFormat('D MMMM Y') : '' }}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->status == "Active")
-                                        <i class="bg-success"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        @if ($args->postponed)
+                                        <i class="bg-warning"></i>
+                                        <span class="status">Postponed</span>
                                         @else
+                                        @if ($args->finish == null || $args->finish->greaterThan(Carbon\Carbon::now()))
                                         <i class="bg-danger"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">On going</span>
+                                        @else
+                                        <i class="bg-success"></i>
+                                        <span class="status">Finished</span>
+                                        @endif
                                         @endif
                                     </span>
                                 </td>
@@ -89,9 +99,9 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item"
-                                                href="{{ route('project.edit',$args->id) }}">Edit</a>
+                                                href="{{ route('admin.project.edit',$args->id) }}">Edit</a>
                                             <a class="dropdown-item"
-                                                href="{{ route('project.show',$args->id) }}">Hapus</a>
+                                                href="{{ route('admin.project.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>

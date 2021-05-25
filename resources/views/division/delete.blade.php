@@ -29,7 +29,7 @@
                     <h5>Kepala Divisi: {{ $division->headof }}</h5>
                     <h5>Status Divisi: {{ $division->status }}</h5>
                     <h5>Last Updated: {{ $division->updated_at }}</h5><br>
-                    <form class="" action="{{ route('division.delete',$division->id) }}" method="POST">
+                    <form class="" action="{{ route('admin.division.delete',$division->id) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete</button>
@@ -41,7 +41,7 @@
 
     @endsection;
     <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('division.delete',$args->id) }}"
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('admin.division.delete',$args->id) }}"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form class="" action="{{ route('division.edit',$division->id) }}" method="POST">
+                <form class="" action="{{ route('admin.admin.division.edit',$division->id) }}" method="POST">
                     @csrf
                     @method("DELETE")
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -11,8 +11,10 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/project">Project</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i
+                                        class="fas fa-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.project.index') }}">Project</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit {{ $project->name }}</li>
                         </ol>
                     </nav>
@@ -27,7 +29,8 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('project.edit', $project->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.project.edit', $project->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">
@@ -103,6 +106,65 @@
                         </div> <br>
                         <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
+
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <h1>Anggota</h1>
+                        </div>
+                        <div class="col-6 text-right">
+                            <a href="{{ route('admin.project.add.user', $project->id) }}" class="btn btn-primary">Tambah
+                                Angota</a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="sort" data-sort="name">ID</th>
+                                    <th scope="col" class="sort" data-sort="name">Nama</th>
+                                    <th scope="col" class="sort" data-sort="name">Bidang</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+
+                            @foreach($project->users AS $args)
+                            <tbody class="list">
+                                <tr>
+                                    <th scope="row">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <span class="name mb-0 text-sm">{{$args->id}}</span>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="budget">
+                                        {{$args->name}}
+                                    </td>
+                                    <td class="budget">
+                                        {{$args->division->name}}
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                {{-- <a class="dropdown-item"
+                                                    href="{{ route('admin.admin.division.edit',$args->id) }}">Edit</a>
+                                                --}}
+                                                <a class="dropdown-item"
+                                                    href="{{ route('admin.project.drop.user', ['project_id' => $project->id, 'user_id' => $args->id]) }}">Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>

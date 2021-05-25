@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'code' => "ABC123",
             'name' => 'Admin',
             'email' => 'admindemo@mail.com',
-            'password' => Hash::make("admindemo"),
+            'password' => Hash::make("123123"),
             'role' => 1,
             'telephone' => "12345678",
             'address' => "abc",

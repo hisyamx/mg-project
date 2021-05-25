@@ -13,12 +13,12 @@
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href=""><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active"><a href="dasboard.index">Dashboard</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="{{ route('project.create') }}" class="btn btn-sm btn-neutral">Tambah Project</a>
+                    <a href="{{ route('admin.project.create') }}" class="btn btn-sm btn-neutral">Tambah Project</a>
                 </div>
             </div>
             <!-- Card stats -->
@@ -112,7 +112,7 @@
                             <h3 class="mb-0">Project</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="{{route('project.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
+                            <a href="{{route('admin.project.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Nama Project</th>
-                                <th scope="col">Division Responsible</th>
+                                <th scope="col">Responsible Person</th>
+                                <th scope="col">Responsible Division</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
@@ -133,7 +134,10 @@
                                     {{$args->name}}
                                 </th>
                                 <td>
-                                    {{$args->name}}
+                                    {{$args->pj_user->name}}
+                                </td>
+                                <td>
+                                    {{$args->division->name}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
@@ -161,7 +165,7 @@
                             <h3 class="mb-0">Division</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="{{route('division.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
+                            <a href="{{route('admin.division.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                         </div>
                     </div>
                 </div>

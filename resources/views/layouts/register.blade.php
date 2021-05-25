@@ -31,7 +31,7 @@
                 <div class="navbar-collapse-header">
                     <div class="row">
                         <div class="col-6 collapse-brand">
-                            <a href="/dashboard">
+                            <a href="dasboard.index">
                                 <img src="{{asset('/assets')}}/img/botika.webp">
                             </a>
                         </div>
@@ -55,7 +55,7 @@
             <div class="header-body text-center mb-0">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <a href="/dashboard">
+                        <a href="dasboard.index">
                             <img src="{{asset('/assets')}}/img/botika.webp" width="50px" height="50px">
                         </a>
                     </div>
@@ -77,12 +77,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></span>
                                         </div>
-                                        <input class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nama" type="text">
+                                        <input class="form-control @error('name') is-invalid @enderror" name="name"
+                                            value="{{ old('name') }}" required autocomplete="name" autofocus
+                                            placeholder="Nama" type="text">
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -91,11 +93,13 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></span>
                                         </div>
-                                        <input class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" type="email">
+                                        <input class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}" required autocomplete="email" placeholder="Email"
+                                            type="email">
                                         @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -105,7 +109,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input id="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password" placeholder="Password" name="password" type="password">
+                                        <input id="password"
+                                            class="form-control @error('password') is-invalid @enderror" required
+                                            autocomplete="new-password" placeholder="Password" name="password"
+                                            type="password">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -119,12 +126,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"></i></span>
                                         </div>
-                                        <input id="password-confirm" class="form-control " name="password_confirmation" required autocomplete="new-password" placeholder="Password" type="password">
-                                        
+                                        <input id="password-confirm" class="form-control " name="password_confirmation"
+                                            required autocomplete="new-password" placeholder="Password" type="password">
+
                                     </div>
                                 </div>
                                 <div class="text-center form-group">
-                                    <button type="submit" class="btn btn-primary mt-5 submit-btn btn-block">Create account</button>
+                                    <button type="submit" class="btn btn-primary mt-5 submit-btn btn-block">Create
+                                        account</button>
                                 </div>
                             </form>
                         </div>

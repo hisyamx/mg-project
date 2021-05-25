@@ -10,8 +10,8 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/division">Division</a></li>
+                            <li class="breadcrumb-item"><a href="division.index"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="division.index">Division</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -26,24 +26,27 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <form class="mb-0" action="{{ route('division.index') }}" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-sm-4 col-12">
-                        <label for="name">Nama Divisi</label>
-                        <input type="text" class="form-control" id="name" name="name" required value="{{ old('name') }}">
+                    <form class="mb-0" action="{{ route('admin.division.index') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-sm-4 col-12">
+                                <label for="name">Nama Divisi</label>
+                                <input type="text" class="form-control" id="name" name="name" required
+                                    value="{{ old('name') }}">
+                            </div>
+                            <div class="col-sm-5 col-12">
+                                <label for="headof">Kepala Divisi</label>
+                                <input type="text" class="form-control" id="headof" name="headof" required
+                                    value="{{ old('headof') }}">
+                            </div>
+                            <div class="col-sm-3 col-12">
+                                <label for="status">Status Divisi</label>
+                                <input type="text" class="form-control" id="status" name="status" required
+                                    value="{{ old('status') }}">
+                            </div>
                         </div>
-                        <div class="col-sm-5 col-12">
-                        <label for="headof">Kepala Divisi</label>
-                        <input type="text" class="form-control" id="headof" name="headof" required value="{{ old('headof') }}">
-                        </div>
-                        <div class="col-sm-3 col-12">
-                        <label for="status">Status Divisi</label>
-                        <input type="text" class="form-control" id="status" name="status" required value="{{ old('status') }}">
-                        </div>
-                    </div>
-                    <br>
-                    <button class="btn btn-neutral" type="submit">Tambah</button>
+                        <br>
+                        <button class="btn btn-neutral" type="submit">Tambah</button>
                     </form>
                 </div>
                 <!-- Card header -->
@@ -74,16 +77,16 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->headof}}
+                                    {{$args->user->name}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                         @if ($args->status == "Active")
                                         <i class="bg-success"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Aktif</span>
                                         @else
                                         <i class="bg-danger"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Tidak Aktif</span>
                                         @endif
                                     </span>
                                 </td>
@@ -94,11 +97,13 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="{{ route('division.edit',$args->id) }}">Edit</a>
-                                            <a class="dropdown-item" href="{{ route('division.show',$args->id) }}">Delete</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('admin.division.edit',$args->id) }}">Edit</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('admin.division.show',$args->id) }}">Delete</a>
                                         </div>
                                     </div>
-                                    </td>
+                                </td>
                             </tr>
                         </tbody>
                         @endforeach

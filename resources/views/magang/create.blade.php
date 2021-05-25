@@ -11,7 +11,7 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="dasboard.index"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/magang">Magang</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
@@ -27,7 +27,7 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('magang.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.magang.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-8">
@@ -80,7 +80,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
-                                        <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ old('start') }}">
+                                        <input name="start" id="start" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ old('start') }}">
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +92,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
-                                        <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ old('finish') }}">
+                                        <input name="finish" id="finish" class="date form-control datepicker"
+                                            placeholder="Select date" type="text" value="{{ old('finish') }}">
                                     </div>
                                 </div>
                             </div>

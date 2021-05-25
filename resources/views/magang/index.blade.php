@@ -10,14 +10,14 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i
                                         class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('magang.index') }}">Magang</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.magang.index') }}">Magang</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="{{ route('magang.create') }}" class="btn btn-sm btn-neutral">Tambah Data Magang</a>
+                    <a href="{{ route('admin.magang.create') }}" class="btn btn-sm btn-neutral">Tambah Data Magang</a>
                 </div>
             </div>
         </div>
@@ -54,10 +54,16 @@
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="{{ route('magang.edit',$args->id) }}"
-                                            class="avatar rounded-circle mr-3">
+                                        <a href="{{ route('admin.magang.edit',$args->id) }}" class="avatar rounded-circle
+                                            @php
+                                                $array = ['bg-primary', '', 'bg-warning', 'bg-danger'];
+                                                echo $array[array_rand($array, 1)];
+                                            @endphp
+                                            mr-3">
+                                            @if ($args->cover_image != null)
                                             <img alt="Image placeholder"
                                                 src="{{asset('storage/cover_images/'.$args->cover_image)}}">
+                                            @endif
                                         </a>
                                         <div class="media-body">
                                             <span class="name mb-0 text-sm">{{$args->name}}</span>
@@ -89,9 +95,9 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item"
-                                                href="{{ route('magang.edit',$args->id) }}">Edit</a>
+                                                href="{{ route('admin.magang.edit',$args->id) }}">Edit</a>
                                             <a class="dropdown-item"
-                                                href="{{ route('magang.show',$args->id) }}">Hapus</a>
+                                                href="{{ route('admin.magang.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>

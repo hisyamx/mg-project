@@ -10,7 +10,7 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="division.index"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('karyawan.edit',$karyawan->id) }}" method="POST"
+                    <form action="{{ route('admin.karyawan.edit',$karyawan->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
@@ -160,7 +160,7 @@
     @endsection
 
     <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('karyawan.edit',$args->id) }}"
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('admin.karyawan.edit',$args->id) }}"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -173,7 +173,7 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-body">
-                        <form class="mb-5" action="{{ route('karyawan.edit',$karyawan->id) }}" method="POST">
+                        <form class="mb-5" action="{{ route('admin.karyawan.edit',$karyawan->id) }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">

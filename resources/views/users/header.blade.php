@@ -31,7 +31,7 @@
         <div class="scrollbar-inner">
             <!-- Brand -->
             <div class="sidenav-header d-flex align-items-center">
-                <a class="navbar-brand" href="/dashboard">
+                <a class="navbar-brand" href="dasboard.index">
                     <img src="{{asset('assets/img/botika.webp')}}" class="navbar-brand-img" alt="...">
                 </a>
                 <div class=" ml-auto ">
@@ -59,29 +59,29 @@
                     <!-- Nav items -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->named('dashboard.index') ? 'active' : ''}}"
-                                href="{{ route('dashboard.index')}}">
+                            <a class="nav-link {{ request()->route()->named('admin.dashboard.index') ? 'active' : ''}}"
+                                href="{{ route('admin.dashboard.index')}}">
                                 <i class="ni ni-shop text-blue"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->named('division.index') ? 'active' : ''}}"
-                                href="{{ route('division.index')}}">
+                            <a class="nav-link {{ request()->route()->named('admin.division.index') ? 'active' : ''}}"
+                                href="{{ route('admin.division.index')}}">
                                 <i class="ni ni-ui-04 text-pink"></i>
                                 <span class="nav-link-text">Division</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->named('karyawan.index') ? 'active' : ''}}"
-                                href="{{ route('karyawan.index')}}">
+                            <a class="nav-link {{ request()->route()->named('admin.karyawan.index') ? 'active' : ''}}"
+                                href="{{ route('admin.karyawan.index')}}">
                                 <i class="ni ni-bullet-list-67 text-primary"></i>
                                 <span class="nav-link-text">Karyawan</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->named('magang.index') ? 'active' : ''}}"
-                                href="{{ route('magang.index')}}">
+                            <a class="nav-link {{ request()->route()->named('admin.magang.index') ? 'active' : ''}}"
+                                href="{{ route('admin.magang.index')}}">
                                 <i class="ni ni-bullet-list-67 text-success"></i>
                                 <span class="nav-link-text">Magang</span>
                             </a>
@@ -110,15 +110,15 @@
                             <div class="collapse" id="project">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('project') ? 'active' : ''}}"
-                                            href="/project">
+                                        <a class="nav-link {{ request()->route()->named('admin.project.index') ? 'active' : ''}}"
+                                            href="{{ route('admin.project.index') }}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Project </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
-                                            href="/project/timeline">
+                                            href="{{ route('admin.project.timeline')}}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Timeline </span>
                                         </a>

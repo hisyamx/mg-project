@@ -21,7 +21,7 @@ class CreateProjectsTable extends Migration
             $table->string('cover_image')->nullable();
             $table->text('description')->nullable();
 
-            $table->boolean('active')->default(true);
+            $table->boolean('postponed')->default(false);
 
             $table->dateTime('start')->nullable();
             $table->dateTime('finish')->nullable();

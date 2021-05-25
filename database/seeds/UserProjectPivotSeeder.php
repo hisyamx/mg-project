@@ -1,9 +1,9 @@
 <?php
 
-use App\Project;
+use App\UserProjectPivot;
 use Illuminate\Database\Seeder;
 
-class ProjectSeeder extends Seeder
+class UserProjectPivotSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        factory(Project::class, 50)->create();
+        factory(UserProjectPivot::class, 500)->create();
     }
 }

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use App\User;
 use App\Project;
 use App\Division;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -24,9 +26,8 @@ class ProjectController extends Controller
 
     public function timeline()
     {
-        $division = Division::orderBy('name') -> get();
-        // $karyawan = Karyawan::orderBy('name') -> get();
-        $project = Project::orderBy('name')->paginate(20);
+        $division = Division::orderBy('name')->get();
+        $project = Project::orderBy('name')->with('pj_user')->paginate(20);
 
         return view("project.timeline", ['project' => $project,'division' => $division]);
     }
@@ -36,14 +37,14 @@ class ProjectController extends Controller
         $division = Division::all();
         // $karyawan = Karyawan::all();
         if (count($division) <  1) {
-            return redirect("/division")->with("error", "You must create a division before creating an project");
+            return redirect("division.index")->with("error", "You must create a division before creating an project");
         }
         return view("project.create", ['division' => $division]);
     }
 
     public function edit($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::with('users')->findOrFail($id);
         $division = Division::all();
         // $karyawan = Karyawan::all();
         return view("project.edit", ['project' => $project], ['division' => $division]);
@@ -92,7 +93,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect("/project")->with('success', "Project Created Successfully");
+        return redirect("project.index")->with('success', "Project Created Successfully");
     }
 
 
@@ -112,7 +113,7 @@ class ProjectController extends Controller
             Storage::delete('public/cover_images/'.$project->cover_image);
         }
 
-        return redirect("/project")->with("success", "Project Deleted Successfully");
+        return redirect("project.index")->with("success", "Project Deleted Successfully");
     }
 
     public function update_record(Request $request, $id)
@@ -158,7 +159,7 @@ class ProjectController extends Controller
 
         $project->save(); //this will UPDATE the record
 
-        return redirect("/project")->with("success", "Account was updated successfully");
+        return redirect("project.index")->with("success", "Account was updated successfully");
     }
 
     public function single($id)
@@ -167,5 +168,18 @@ class ProjectController extends Controller
         $division = Division::orderBy('name') -> get();
 
         return view('project.single', ['project' => $project,'division' => $division]);
+    }
+
+    public function dropUser($project_id, $user_id)
+    {
+        $project = Project::findOrFail($project_id);
+        $user = User::findOrFail($user_id);
+        $user->projects()->detach();
+        return redirect(route('admin.project.edit', ['id' => $project_id]));
+    }
+
+    public function addUser()
+    {
+        return dd('Edit user');
     }
 }

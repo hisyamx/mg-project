@@ -40,7 +40,7 @@
                         <div class="form-group col-md-6">
                             <label for="division">Division Responsible</label>
                             <input required type="text" class="form-control" id="division" name="division"
-                            value="{{ $project->division }}">
+                                value="{{ $project->division }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="pj">Users Responsible</label>
@@ -48,7 +48,7 @@
                                 value="{{ $project->pj }}">
                         </div>
                     </div>
-        
+
                     <div class="form-row">
                         <div class="col">
                             <div class="form-group">
@@ -57,7 +57,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input name="start" id="start" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $project->start }}">
+                                    <input name="start" id="start" class="date form-control datepicker"
+                                        placeholder="Select date" type="text" value="{{ $project->start }}">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +69,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input name="finish" id="finish" class="date form-control datepicker" placeholder="Select date" type="text" value="{{ $project->finish }}">
+                                    <input name="finish" id="finish" class="date form-control datepicker"
+                                        placeholder="Select date" type="text" value="{{ $project->finish }}">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +81,7 @@
                         <textarea required type="text" class="form-control" id="description" placeholder="Alamat"
                             name="description" rows="3" resize="none"> {{ $project->description }}</textarea>
                     </div>
-                    <form class="" action="{{ route('project.delete',$project->id) }}" method="POST">
+                    <form class="" action="{{ route('admin.project.delete',$project->id) }}" method="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" type="submit">Delete</button>
@@ -92,7 +94,7 @@
 
     @endsection;
     <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('project.delete',$args->id) }}"
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="{{ route('admin.project.delete',$args->id) }}"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -113,7 +115,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form class="" action="{{ route('project.edit',$project->id) }}" method="POST">
+                <form class="" action="{{ route('admin.project.edit',$project->id) }}" method="POST">
                     @csrf
                     @method("DELETE")
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -123,4 +125,3 @@
         </div>
     </div>
 </div> --}}
-

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Division;
+use App\Http\Controllers\Controller;
 
 class DivisionController extends Controller
 {
@@ -14,16 +15,15 @@ class DivisionController extends Controller
     public function index()
     {
         $division = Division::orderBy('name')->paginate(10);
-        return view("division.index",['division' => $division]);
+        return view("division.index", ['division' => $division]);
     }
- 
+
     public function store(Request $request)
     {
-
         $this->validate($request, [
-            'name' => 'required|max:30',           
-            'headof' => 'required|max:30',           
-            'status' => 'required|max:30'           
+            'name' => 'required|max:30',
+            'headof' => 'required|max:30',
+            'status' => 'required|max:30'
         ]);
 
         $division = new Division();
@@ -31,30 +31,30 @@ class DivisionController extends Controller
         $division->name = request('name');
         $division->headof = request('headof');
         $division->status = request('status');
-        
+
         $division->save();
 
-        return redirect("/division")->with("success","Division Created Successfully");
+        return redirect("division.index")->with("success", "Division Created Successfully");
     }
 
     public function show($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.delete",['division' => $division]);
+        return view("division.delete", ['division' => $division]);
     }
 
     public function destroy($id)
     {
         $division = Division::findOrFail($id);
         $division->delete();
-        
-        return redirect("/division")->with("success","Division Deleted Successfully");
+
+        return redirect("division.index")->with("success", "Division Deleted Successfully");
     }
 
     public function edit($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.edit",['division' => $division]);
+        return view("division.edit", ['division' => $division]);
     }
 
     public function update_record($id)
@@ -67,6 +67,6 @@ class DivisionController extends Controller
 
         $division->save(); //this will UPDATE the record with id=1
 
-        return redirect("/division")->with("success","Division Updated Successfully");
+        return redirect("division.index")->with("success", "Division Updated Successfully");
     }
 }

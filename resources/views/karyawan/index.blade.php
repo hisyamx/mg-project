@@ -10,14 +10,15 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i
                                         class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('karyawan.index') }}">Karyawan</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.karyawan.index') }}">Karyawan</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="{{ route('karyawan.create') }}" class="btn btn-sm btn-neutral">Tambah Data Karyawan</a>
+                    <a href="{{ route('admin.karyawan.create') }}" class="btn btn-sm btn-neutral">Tambah Data
+                        Karyawan</a>
                 </div>
             </div>
         </div>
@@ -54,7 +55,7 @@
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="{{ route('division.edit',$args->id) }}" class="avatar rounded-circle
+                                        <a href="{{ route('admin.karyawan.edit',$args->id) }}" class="avatar rounded-circle
                                             @php
                                                 $array = ['bg-primary', '', 'bg-warning', 'bg-danger'];
                                                 echo $array[array_rand($array, 1)];
@@ -92,9 +93,9 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item"
-                                                href="{{ route('karyawan.edit',$args->id) }}">Edit</a>
+                                                href="{{ route('admin.karyawan.edit',$args->id) }}">Edit</a>
                                             <a class="dropdown-item"
-                                                href="{{ route('karyawan.show',$args->id) }}">Hapus</a>
+                                                href="{{ route('admin.karyawan.show',$args->id) }}">Hapus</a>
                                         </div>
                                     </div>
                                 </td>
