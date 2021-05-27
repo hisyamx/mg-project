@@ -10,8 +10,9 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/magang">Magang</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route ('admin.magang.index')}}">Magang</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>
                     </nav>
@@ -30,8 +31,12 @@
                     <div class="col-lg-3 order-lg-2">
                         <div class="card-profile-image">
                             <a href="#">
-                                <img src="{{asset('storage/cover_images/'.$magang->cover_image)}}"
-                                    class="rounded-circle">
+                                @if ($magang->cover_image != null)
+                                <img alt="Image placeholder"
+                                    src="{{asset('storage/cover_images/'.$magang->cover_image)}}">
+                                @else
+                                <img alt="Image placeholder" src="{{asset('/assets')}}/img/user.png">
+                                @endif
                             </a>
                         </div>
                     </div>

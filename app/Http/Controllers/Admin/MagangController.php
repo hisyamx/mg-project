@@ -15,7 +15,7 @@ class MagangController extends Controller
     public function index()
     {
         $division = Division::orderBy('name')->get();
-        $magang = User::magang()->orderBy('name')->paginate(20);
+        $magang = User::magang()->orderBy('name')->paginate();
 
         return view("magang.index", ['magang' => $magang,'division' => $division]);
     }

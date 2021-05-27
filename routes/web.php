@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-// use App\Http\Controllers\AccessManageController;
-// use App\Http\Controllers\AuthManageController;
-use App\Http\Controllers\DivisionController;
-use App\Http\Controllers\StatusController;
-use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\MagangController;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
-
 Auth::routes();
 
 Route::get('/', function () {
@@ -35,29 +25,30 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/search/{word}', 'SearchManageController@searchPage');
 
     // ------------------------- Profile -------------------------
-    Route::get('/profile', 'ProfileManageController@viewProfile');
-    Route::post('/profile/update/data', 'ProfileManageController@changeData');
-    Route::post('/profile/update/password', 'ProfileManageController@changePassword');
-    Route::post('/profile/update/picture', 'ProfileManageController@changePicture');
+    Route::get('/profile', 'ProfileManageController@viewProfile')->name('admin.profile.index');
+    Route::post('/profile/update/data', 'ProfileManageController@changeData')->name('admin.profile.edit');
+    Route::post('/profile/update/password', 'ProfileManageController@changePassword')->name('admin.profile.password');
+    Route::post('/profile/update/picture', 'ProfileManageController@changePicture')->name('admin.profile.picture');
 
     // ------------------------- Kelola Akun -------------------------
     // > Akun
-    Route::get('/account', 'UserManageController@viewAccount');
-    Route::get('/account/new', 'UserManageController@viewNewAccount');
-    Route::post('/account/create', 'UserManageController@createAccount');
-    Route::get('/account/edit/{id}', 'UserManageController@editAccount');
-    Route::post('/account/update', 'UserManageController@updateAccount');
-    Route::get('/account/delete/{id}', 'UserManageController@deleteAccount');
-    Route::get('/account/filter/{id}', 'UserManageController@filterTable');
+    Route::get('/account', 'UserManageController@viewAccount')->name('admin.account.index');
+    Route::post('/account/create', 'UserManageController@createAccount')->name('admin.account.create');
+    Route::post("/account", 'Admin\DivisionController@store');
+    Route::get('/account/edit/{id}', 'UserManageController@editAccount')->name('admin.account.edit');
+    Route::post('/account/update', 'UserManageController@updateAccount')->name('admin.account.edit');
+    Route::get('/account/filter/{id}', 'UserManageController@filterTable')->name('admin.account.filter');
+    Route::delete("/account/delete/{id}", 'Admin\DivisionController@destroy')->name('admin.account.delete');
 
     // ------------------------- Kelola Division -------------------------
     // > Division
     //Get Requests
     Route::get("/division", 'Admin\DivisionController@index')->name('admin.division.index');
+    Route::get("/division/create", 'Admin\DivisionController@create')->name('admin.division.create');
     Route::get("/division/edit/{id}", 'Admin\DivisionController@edit')->name('admin.division.edit');
     Route::get("/division/show/{id}", 'Admin\DivisionController@show')->name('admin.division.show');
     //Post Requests
-    Route::post("/division", 'Admin\DivisionController@store')->name('admin.division.index');
+    Route::post("/division", 'Admin\DivisionController@store');
     Route::post("/division/edit/{id}", 'Admin\DivisionController@update_record')->name('admin.division.edit');
     // Delete Request
     Route::delete("/division/delete/{id}", 'Admin\DivisionController@destroy')->name('admin.division.delete');
@@ -78,8 +69,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::delete("/project/delete/{id}", "Admin\ProjectController@destroy")->name('admin.project.delete');
 
     // Custom Action
-    Route::get("/project/edit/{project_id}/drop/user/{user_id}", "Admin\ProjectController@dropUser")->name('admin.project.drop.user');
     Route::get("/project/edit/{project_id}/add/user", "Admin\ProjectController@addUser")->name('admin.project.add.user');
+    Route::get("/project/edit/{project_id}/add/user/{user_id}", "Admin\ProjectController@storeUser")->name('admin.project.store.user');
+    Route::get("/project/edit/{project_id}/drop/user/{user_id}", "Admin\ProjectController@dropUser")->name('admin.project.drop.user');
 
     // End of project
 
@@ -138,5 +130,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     // Route::get('/access/sidebar', 'AccessManageController@sidebarRefresh');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'user'], function () {
+Route::group(['prefix' => 'user'], function () {
 });

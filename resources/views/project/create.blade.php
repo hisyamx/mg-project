@@ -11,9 +11,10 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="dasboard.index"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/project">Project</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index')}}"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.project.index')}}">Project</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Project</li>
                         </ol>
                     </nav>
                 </div>

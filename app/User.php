@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $query->where('role', 3);
     }
+
+    public function getRole()
+    {
+        return $this->role == 2 ? 'Karyawan' : 'Magang';
+    }
 }

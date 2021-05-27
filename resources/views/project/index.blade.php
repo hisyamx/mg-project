@@ -20,7 +20,6 @@
                     <a href="{{ route('admin.project.create')}}" class="btn btn-sm btn-neutral">Tambah Project</a>
                     <a href="{{ route('admin.project.timeline')}}" class="btn btn-sm btn-neutral">Project Timeline</a>
                 </div>
-
             </div>
         </div>
     </div>

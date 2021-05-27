@@ -23,6 +23,11 @@ class Project extends Model
         return $this->hasOne(User::class, 'id', 'pj_user_id');
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'project');
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_project_pivots', 'project_id', 'user_id');

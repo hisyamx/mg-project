@@ -31,7 +31,7 @@
         <div class="scrollbar-inner">
             <!-- Brand -->
             <div class="sidenav-header d-flex align-items-center">
-                <a class="navbar-brand" href="dasboard.index">
+                <a class="navbar-brand" href="{{ route('admin.dashboard.index') }}">
                     <img src="{{asset('assets/img/botika.webp')}}" class="navbar-brand-img" alt="...">
                 </a>
                 <div class=" ml-auto ">
@@ -51,7 +51,6 @@
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                     <!-- Divider -->
                     <hr class="my-3">
-
                     <!-- Heading -->
                     <h6 class="navbar-heading p-0 text-muted">
                         <span class="docs-normal">Main</span>
@@ -86,21 +85,15 @@
                                 <span class="nav-link-text">Magang</span>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link {{ request()->is('status') ? 'active' : ''}}" href="/status">
-                        <i class="ni ni-ungroup text-yellow"></i>
-                        <span class="nav-link-text">Status</span>
-                        </a>
-                        </li> --}}
                     </ul>
                     <!-- Divider -->
                     <hr class="my-3">
                     <!-- Heading -->
                     <h6 class="navbar-heading p-0 text-muted">
-                        <span class="docs-normal">Users</span>
+                        <span class="docs-normal">Manage</span>
                     </h6>
                     <!-- Navigation -->
-                    <ul class="navbar-nav mb-md-3">
+                    <ul class="navbar-nav md-3">
                         <li class="nav-item">
                             <a class="nav-link" href="#project" data-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="project">
@@ -117,7 +110,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
+                                        <a class="nav-link {{ request()->route()->named('admin.project.timeline') ? 'active' : ''}}"
                                             href="{{ route('admin.project.timeline')}}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Timeline </span>
@@ -135,24 +128,72 @@
                             <div class="collapse" id="profile">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('profile') ? 'active' : ''}}"
-                                            href="/profile">
+                                        <a class="nav-link {{ request()->route()->named('admin.profile.index') ? 'active' : ''}}"
+                                            href="{{ route('admin.profile.index') }}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Profile </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
-                                            href="/account">
+                                        <a class="nav-link {{ request()->route()->named('admin.account.index') ? 'active' : ''}}"
+                                            href="{{ route('admin.account.index') }}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Account </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->is('permission') ? 'active' : ''}}"
-                                            href="/permission">
+                                        <a class="nav-link {{ request()->route()->named('admin.account.index') ? 'active' : ''}}"
+                                            href="{{ route('admin.account.index') }}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Permission </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Divider -->
+                    <hr class="my-3">
+                    <!-- Heading -->
+                    <h6 class="navbar-heading p-0 text-muted">
+                        <span class="docs-normal">Page User</span>
+                    </h6>
+                    <!-- Nav items -->
+                    <ul class="navbar-nav md-3">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->route()->named('admin.dashboard.index') ? 'active' : ''}}"
+                                href="{{ route('admin.dashboard.index')}}">
+                                <i class="ni ni-shop text-blue"></i>
+                                <span class="nav-link-text">Karyawan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->route()->named('admin.magang.index') ? 'active' : ''}}"
+                                href="{{ route('admin.magang.index')}}">
+                                <i class="ni ni-bullet-list-67 text-success"></i>
+                                <span class="nav-link-text">Magang</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#userproject" data-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="project">
+                                <i class="ni ni-spaceship text-red"></i>
+                                <span class="nav-link-text">Project</span>
+                            </a>
+                            <div class="collapse" id="userproject">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->route()->named('admin.project.index') ? 'active' : ''}}"
+                                            href="{{ route('admin.project.index') }}">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Project </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
+                                            href="{{ route('admin.project.timeline')}}">
+                                            <span class="sidenav-mini-icon"></span>
+                                            <span class="sidenav-normal"> Timeline </span>
                                         </a>
                                     </li>
                                 </ul>
@@ -267,11 +308,11 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu  dropdown-menu-right ">
-                                <a href="/profile" class="dropdown-item">
+                                <a href="{{ route('admin.profile.index') }}" class="dropdown-item">
                                     <i class="ni ni-single-02"></i>
                                     <span>Profile</span>
                                 </a>
-                                <a href="/account" class="dropdown-item">
+                                <a href="{{ route('admin.account.index') }}" class="dropdown-item">
                                     <i class="ni ni-settings-gear-65"></i>
                                     <span>Manage Account</span>
                                 </a>

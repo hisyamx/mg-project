@@ -36,16 +36,34 @@
                         data-timeline-axis-style="dashed">
                         <div class="timeline-block">
                             @foreach($project AS $args)
+                            @if ($args->postponed)
+                            <span class="timeline-step badge-warning">
+                                <i class="ni ni-bell-55"></i>
+                            </span>
+                            @else
+                            @if ($args->finish == null || $args->finish->greaterThan(Carbon\Carbon::now()))
+                            <span class="timeline-step badge-danger">
+                                <i class="ni ni-bell-55"></i>
+                            </span>
+                            @else
                             <span class="timeline-step badge-success">
                                 <i class="ni ni-bell-55"></i>
                             </span>
+                            @endif
+                            @endif
                             <div class="timeline-content">
-                                <small class="text-muted font-weight-bold">Start : {{ $args->start}} | </small>
-                                <small class="text-muted font-weight-bold">Target : {{ $args->finish}}</small>
+                                <small class="text-muted font-weight-bold">Start :
+                                    {{ $args->start != null ? $args->start->isoFormat('D MMMM Y') : '' }}
+                                    | </small>
+                                <small class="text-muted font-weight-bold">Target :
+                                    {{ $args->finish != null ? $args->finish->isoFormat('D MMMM Y') : '' }}
+                                </small>
                                 <h5 class=" mt-3 mb-0">{{$args->name}}</h5>
                                 <p class=" text-sm mt-1 mb-0">{{$args->description}}</p>
                                 <div class="mt-3">
-                                    <span class="badge badge-pill badge-success">{{$args->pj_user->name}}</span>
+                                    <span class="badge badge-pill badge-success">Penanggungjawab:
+                                        {{$args->pj_user->name}}</span>
+                                    <span class="badge badge-pill badge-primary">User: {{$args->user->name}}</span>
                                 </div>
                             </div>
                             <hr class="my-2" />

@@ -50,8 +50,8 @@
                                 <label for="division">Division</label>
                                 <select required id="division" class="form-control" name="division">
                                     <option selected disabled>Divisi</option>
-                                    @foreach($division AS $div)
-                                    <option value="{{$div->name}}">{{$div->name}}</option>
+                                    @foreach($divisions AS $division)
+                                    <option value="{{$division->name}}">{{$division->name}}</option>
                                     @endforeach;
                                 </select>
                             </div>
@@ -59,8 +59,8 @@
                                 <label for="pj">Users</label>
                                 <select required id="pj" class="form-control" name="pj">
                                     <option selected disabled>Pilih Users</option>
-                                    @foreach($division AS $div)
-                                    <option value="{{$div->headof}}">{{$div->headof}}</option>
+                                    @foreach($divisions AS $division)
+                                    <option value="{{$division->headof}}">{{$division->headof}}</option>
                                     @endforeach;
                                 </select>
                             </div>
@@ -110,11 +110,12 @@
                     <hr>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <h1>Anggota</h1>
+                            <h1>Anggota Project</h1>
                         </div>
-                        <div class="col-6 text-right">
-                            <a href="{{ route('admin.project.add.user', $project->id) }}" class="btn btn-primary">Tambah
-                                Angota</a>
+                        <div class="col-lg-6 col-5 text-right">
+                            <a href="{{ route('admin.project.add.user', $project->id)}}"
+                                class="btn btn-sm btn-neutral">Tambah Anggota
+                                Project</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -145,19 +146,8 @@
                                         {{$args->division->name}}
                                     </td>
                                     <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                {{-- <a class="dropdown-item"
-                                                    href="{{ route('admin.admin.division.edit',$args->id) }}">Edit</a>
-                                                --}}
-                                                <a class="dropdown-item"
-                                                    href="{{ route('admin.project.drop.user', ['project_id' => $project->id, 'user_id' => $args->id]) }}">Delete</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{ route('admin.project.drop.user', ['project_id' => $project->id, 'user_id' => $args->id]) }}"
+                                            type="button" class="btn btn-sm btn-primary">Drop</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -170,4 +160,4 @@
         </div>
     </div>
 
-    @endsection;
+    @endsection

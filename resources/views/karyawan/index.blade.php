@@ -46,7 +46,6 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <?php $i = 1; ?>
                         @foreach($karyawan AS $args)
                         <tbody class="list">
                             <tr data-entry-id="{{ $args->id }}">
@@ -228,7 +227,5 @@
             </div>
         </div> --}}
     </div>
-
-
 
     @endsection

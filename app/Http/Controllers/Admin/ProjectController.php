@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use App\Project;
 use App\Division;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectController extends Controller
 {
@@ -18,8 +19,7 @@ class ProjectController extends Controller
     }
     public function index()
     {
-        $project = Project::orderBy('name')->paginate(20);
-
+        $project = Project::orderBy('name')->with(['pj_user', 'division', 'users'])->paginate(20);
         return view("project.index", compact('project'));
     }
 
@@ -44,10 +44,9 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
-        $project = Project::with('users')->findOrFail($id);
-        $division = Division::all();
-        // $karyawan = Karyawan::all();
-        return view("project.edit", ['project' => $project], ['division' => $division]);
+        $project = Project::with(['users', 'division'])->findOrFail($id);
+        $divisions = Division::all();
+        return view("project.edit", ['project' => $project], ['divisions' => $divisions]);
     }
 
     public function store(Request $request)
@@ -99,7 +98,7 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        $P = P::findOrFail($id);
+        $project = Project::findOrFail($id);
         return view("project.show", ['project' => $project]);
     }
 
@@ -170,16 +169,31 @@ class ProjectController extends Controller
         return view('project.single', ['project' => $project,'division' => $division]);
     }
 
+    public function addUser($project_id)
+    {
+        $project = Project::findOrFail($project_id);
+        $users = User::where('role', '!=', 1)->whereDoesntHave('projects', function ($query) use ($project_id) {
+            $query->where('project_id', $project_id);
+        })->get();
+
+        return view('project.adduser', compact(['project', 'users']));
+    }
+
+    public function storeUser($project_id, $user_id)
+    {
+        $project = Project::findOrFail($project_id);
+        $user = User::findOrFail($user_id);
+
+        $project->users()->attach($user);
+        return redirect(route('admin.project.add.user', $project_id));
+    }
+
     public function dropUser($project_id, $user_id)
     {
         $project = Project::findOrFail($project_id);
         $user = User::findOrFail($user_id);
-        $user->projects()->detach();
-        return redirect(route('admin.project.edit', ['id' => $project_id]));
-    }
 
-    public function addUser()
-    {
-        return dd('Edit user');
+        $project->users()->detach($user);
+        return redirect(route('admin.project.edit', $project_id));
     }
 }

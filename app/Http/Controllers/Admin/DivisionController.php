@@ -17,6 +17,10 @@ class DivisionController extends Controller
         $division = Division::orderBy('name')->paginate(10);
         return view("division.index", ['division' => $division]);
     }
+    public function create()
+    {
+        return view("division.create");
+    }
 
     public function store(Request $request)
     {
