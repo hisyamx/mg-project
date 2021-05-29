@@ -161,17 +161,24 @@
                     <!-- Nav items -->
                     <ul class="navbar-nav md-3">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->named('admin.dashboard.index') ? 'active' : ''}}"
-                                href="{{ route('admin.dashboard.index')}}">
+                            <a class="nav-link {{ request()->route()->named('user.dashboard.index') ? 'active' : ''}}"
+                                href="{{ route('user.dashboard.index')}}">
                                 <i class="ni ni-shop text-blue"></i>
-                                <span class="nav-link-text">Karyawan</span>
+                                <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->named('admin.magang.index') ? 'active' : ''}}"
-                                href="{{ route('admin.magang.index')}}">
-                                <i class="ni ni-bullet-list-67 text-success"></i>
-                                <span class="nav-link-text">Magang</span>
+                            <a class="nav-link {{ request()->route()->named('user.division.index') ? 'active' : ''}}"
+                                href="{{ route('user.division.index')}}">
+                                <i class="ni ni-ui-04 text-pink"></i>
+                                <span class="nav-link-text">Division</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->route()->named('user.user.index') ? 'active' : ''}}"
+                                href="{{ route('user.user.index')}}">
+                                <i class="ni ni-bullet-list-67 text-info"></i>
+                                <span class="nav-link-text">Karyawan</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -183,15 +190,15 @@
                             <div class="collapse" id="userproject">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link {{ request()->route()->named('admin.project.index') ? 'active' : ''}}"
-                                            href="{{ route('admin.project.index') }}">
+                                        <a class="nav-link {{ request()->route()->named('user.project.index') ? 'active' : ''}}"
+                                            href="{{ route('user.project.index') }}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Project </span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link {{ request()->is('account') ? 'active' : ''}}"
-                                            href="{{ route('admin.project.timeline')}}">
+                                            href="{{ route('user.project.timeline')}}">
                                             <span class="sidenav-mini-icon"></span>
                                             <span class="sidenav-normal"> Timeline </span>
                                         </a>

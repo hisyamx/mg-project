@@ -11,8 +11,8 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="division.index"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.karyawan.index')}}">Karyawan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
                     </nav>

@@ -105,14 +105,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::delete("/magang/delete/{id}", 'Admin\MagangController@destroy')->name("admin.magang.delete");
     // End of magang
 
-    // ------------------------- Kelola status -------------------------
-    // > status
-//Get Requests
-    // Route::get("/status",'StatusController@index')->name('status.index');
-    //Post Requests
-    // Route::post("/status",'StatusController@store')->name('status.index');
-    // Delete Request
-    // Route::delete("/status/delete/{id}",'StatusController@destroy')->name('status.delete');
+        // ------------------------- Kelola user dashboard -------------------------
+    
+    // End of user
 
     // ------------------------- Kelola Akun -------------------------
     // > Akun
@@ -131,4 +126,30 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 
 Route::group(['prefix' => 'user'], function () {
+    // > user
+    // Get Request
+    Route::get("/dashboard", 'User\MainController@index')->name('user.dashboard.index');
+    Route::get("/dashboard/show/{id}", 'User\MainController@show')->name("user.dashboard.show");
+    // End of user
+
+    // ------------------------- Kelola user divison -------------------------
+    // > user
+    // Get Request
+    Route::get("/division", 'User\DivisionController@index')->name('user.division.index');
+    Route::get("/division/show/{id}", 'User\MainController@show')->name("user.division.show");
+    // End of user
+
+    // ------------------------- Kelola user divison -------------------------
+    // > user
+    // Get Request
+    Route::get("/user", 'User\UserController@index')->name('user.user.index');
+    Route::get("/user/show/{id}", 'User\MainController@showDivision')->name("user.user.show");
+    // End of user
+
+    // ------------------------- Kelola user project -------------------------
+    // > user
+    // Get Request
+    Route::get("/project", 'User\MainController@division')->name('user.project.index');
+    Route::get("/project/show/{id}", 'User\MainController@showProject')->name("user.project.show");
+    Route::get("/project/timeline", 'User\MainController@showTimeline')->name("user.project.timeline");
 });

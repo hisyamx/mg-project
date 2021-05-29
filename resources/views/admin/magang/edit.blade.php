@@ -45,9 +45,15 @@
                     <div class="text-center">
                         <h5 class="h3">{{ $magang->name }}<span class="font-weight-light"></span>
                         </h5>
+                        @if ($magang->role == 3)
                         <div class="h5 font-weight-300">
-                            <i class="ni location_pin mr-2"></i>{{ $magang->address }}
+                            <i class="ni location_pin mr-2"></i>Magang
                         </div>
+                        @else
+                        <div class="h5 font-weight-300">
+                            <i class="ni location_pin mr-2"></i>Karyawan
+                        </div>
+                        @endif
                         <div class="h5 mt-4">
                             <i class="ni business_briefcase-24 mr-2"></i>{{ $magang->username }}
                         </div>

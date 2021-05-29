@@ -11,13 +11,13 @@
     <!-- Favicon -->
     <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/webp">
     {{-- <link rel="icon" href="{{asset('/assets')}}/img/logo.svg"> --}}
-    @include('users/header')
+    @include('layouts.header')
 
     <section class="banner-part">
 
-        {{-- @include('layouts.message') --}}
         @yield('content')
-        @include('users/footer')
+
+        @include('layouts.footer')
 
     </section>
     </body>

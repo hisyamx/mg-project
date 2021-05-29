@@ -10,8 +10,8 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="dashboard.index"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="division.index">Division</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}">Division {{ $division->name }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -29,12 +29,12 @@
                     <form class="mb-5" action="{{ route('admin.division.edit',$division->id) }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-12 col-12">
                                 <label for="name">Nama Divisi</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ $division->name }}">
                                 <label for="headof">Kepala Divisi</label>
-                                <input type="text" class="form-control" id="head0f" name="headof"
+                                <input type="text" class="form-control" id="headof" name="headof"
                                     value="{{ $division->headof }}">
                                 <label for="status">Status Divisi</label>
                                 <input type="text" class="form-control" id="status" name="status"

@@ -147,7 +147,7 @@
                                     </td>
                                     <td class="text-right">
                                         <a href="{{ route('admin.project.drop.user', ['project_id' => $project->id, 'user_id' => $args->id]) }}"
-                                            type="button" class="btn btn-sm btn-primary">Drop</a>
+                                            type="button" class="btn btn-sm btn-danger">Drop</a>
                                     </td>
                                 </tr>
                             </tbody>
