@@ -31,7 +31,7 @@
                 <div class="navbar-collapse-header">
                     <div class="row">
                         <div class="col-6 collapse-brand">
-                            <a href="/dashboard">
+                            <a href="dasboard.index">
                                 <img src="{{asset('/assets')}}/img/botika.webp">
                             </a>
                         </div>
@@ -55,7 +55,7 @@
             <div class="header-body text-center mb-0">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <a href="/dashboard">
+                        <a href="dasboard.index">
                             <img src="{{asset('/assets')}}/img/botika.webp" width="50px" height="50px">
                         </a>
                     </div>
@@ -69,7 +69,8 @@
                     <div class="card bg-secondary border-0 mb-0">
 
                         <div class="card-body px-lg-5 py-lg-3">
-                            <form action="{{ route('password.update') }}" method="post" name="token" value="{{ $token }}" role="form">
+                            <form action="{{ route('password.update') }}" method="post" name="token"
+                                value="{{ $token }}" role="form">
                                 @csrf
                                 <div class="form-group mt-3 mb-3">
                                     <label for="email" class="label">Email</label>
@@ -91,12 +92,12 @@
                                     </div>
                                 </div>
                                 <div class="text-center form-group">
-                                    <button type="submit"
-                                        class="btn btn-primary mt-4 submit-btn btn-block">Reset Password</button>
+                                    <button type="submit" class="btn btn-primary mt-4 submit-btn btn-block">Reset
+                                        Password</button>
                                 </div>
                             </form>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>

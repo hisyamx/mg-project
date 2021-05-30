@@ -10,13 +10,13 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="/dashboard"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="division.index"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="/project">Project</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="/project/create" class="btn btn-sm btn-neutral">Tambah Project</a>
+                    <a href="project.create" class="btn btn-sm btn-neutral">Tambah Project</a>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item"
-                                                href="{{ route('project.edit',$args->id) }}">Edit</a>
+                                                href="{{ route('admin.project.edit',$args->id) }}">Edit</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('porject.show',$args->id) }}">Hapus</a>
                                         </div>

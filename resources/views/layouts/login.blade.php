@@ -31,7 +31,7 @@
                 <div class="navbar-collapse-header">
                     <div class="row">
                         <div class="col-6 collapse-brand">
-                            <a href="/dashboard">
+                            <a href="division.index">
                                 <img src="{{asset('/assets')}}/img/botika.webp">
                             </a>
                         </div>
@@ -55,7 +55,7 @@
             <div class="header-body text-center mb-0">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <a href="/dashboard">
+                        <a href="division.index">
                             <img src="{{asset('/assets')}}/img/botika.webp" width="50px" height="50px">
                         </a>
                     </div>
@@ -128,9 +128,9 @@
                     <div class="row mt-4">
                         <div class="col-6">
                             @if (Route::has('password.request'))
-                                <a class="text-light" href="{{ route('password.request') }}">
-                                    <small>Forgot password?</small>
-                                </a>
+                            <a class="text-light" href="{{ route('password.request') }}">
+                                <small>Forgot password?</small>
+                            </a>
                             @endif
                         </div>
 
@@ -138,7 +138,7 @@
                             <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

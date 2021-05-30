@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -39,7 +38,12 @@ class User extends Authenticatable
 
     public function division()
     {
-        return $this->hasOne(Division::class, 'id', 'division_id');
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'user_project_pivots');
     }
 
     public function scopeKaryawan($query)
@@ -50,5 +54,10 @@ class User extends Authenticatable
     public function scopeMagang($query)
     {
         return $query->where('role', 3);
+    }
+
+    public function getRole()
+    {
+        return $this->role == 2 ? 'Karyawan' : 'Magang';
     }
 }

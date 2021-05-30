@@ -12,10 +12,6 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        Project::create([
-            'name' => 'asdf',
-            'division_id' => 1,
-            'pj_user_id' => 3,
-        ]);
+        factory(Project::class, 50)->create();
     }
 }
