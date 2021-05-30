@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-sm-5 col-12">
                         <label for="headof">Kepala Divisi</label>
-                        <input type="text" class="form-control" id="headof" name="headof" required value="{{ old('headof') }}">
+                        <input type="text" class="form-control" id="headof" name="headof" required value="{{ old('head_user_id') }}">
                         </div>
                         <div class="col-sm-3 col-12">
                         <label for="status">Status Divisi</label>
@@ -62,7 +62,6 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <?php $i = 1; ?>
                         @foreach($division AS $args)
                         <tbody class="list">
                             <tr>
@@ -74,16 +73,16 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->headof}}
+                                    {{$args->user->name}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
                                         @if ($args->status == "Active")
                                         <i class="bg-success"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Aktif</span>
                                         @else
                                         <i class="bg-danger"></i>
-                                        <span class="status">{{$args->status}}</span>
+                                        <span class="status">Tidak Aktif</span>
                                         @endif
                                     </span>
                                 </td>
