@@ -52,8 +52,10 @@
                     <!-- Divider -->
                     <hr class="my-3">
                     <!-- Heading -->
+                    
+                    @if (Auth::user()->isAdmin())
                     <h6 class="navbar-heading p-0 text-muted">
-                        <span class="docs-normal">Main</span>
+                        <span class="docs-normal">Admin Menu</span>
                     </h6>
                     <!-- Nav items -->
                     <ul class="navbar-nav">
@@ -88,7 +90,7 @@
                     </ul>
                     <!-- Divider -->
                     <hr class="my-3">
-                    <!-- Heading -->
+                    
                     <h6 class="navbar-heading p-0 text-muted">
                         <span class="docs-normal">Manage</span>
                     </h6>
@@ -152,11 +154,11 @@
                             </div>
                         </li>
                     </ul>
-                    <!-- Divider -->
-                    <hr class="my-3">
+                    @elseif(Auth::user()->isNotAdmin())
+                    
                     <!-- Heading -->
                     <h6 class="navbar-heading p-0 text-muted">
-                        <span class="docs-normal">Page User</span>
+                        <span class="docs-normal">User Menu</span>
                     </h6>
                     <!-- Nav items -->
                     <ul class="navbar-nav md-3">
@@ -207,6 +209,7 @@
                             </div>
                         </li>
                     </ul>
+                    @endif
                     <!-- Divider -->
                     <hr class="my-3">
                     <!-- Navigation -->

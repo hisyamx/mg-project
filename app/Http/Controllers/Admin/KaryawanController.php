@@ -17,7 +17,7 @@ class KaryawanController extends Controller
         $division = Division::orderBy('name') -> get();
         $karyawan = User::karyawan()->orderBy('name')->paginate(20);
 
-        return view("karyawan.index", ['karyawan' => $karyawan,'division' => $division]);
+        return view("admin.karyawan.index", ['karyawan' => $karyawan,'division' => $division]);
     }
 
     public function create()
@@ -27,14 +27,14 @@ class KaryawanController extends Controller
         if (count($division) <  1) {
             return redirect("division.index")->with("error", "You must create a division before creating an karyawan");
         }
-        return view("karyawan.create", ['division' => $division]);
+        return view("admin.karyawan.create", ['division' => $division]);
     }
 
     public function edit($id)
     {
         $karyawan = User::findOrFail($id);
         $division = Division::all();
-        return view("karyawan.edit", ['karyawan' => $karyawan], ['division' => $division]);
+        return view("admin.karyawan.edit", ['karyawan' => $karyawan], ['division' => $division]);
     }
 
     public function store(Request $request)
@@ -93,7 +93,7 @@ class KaryawanController extends Controller
     public function show($id)
     {
         $karyawan = User::findOrFail($id);
-        return view("karyawan.show", ['karyawan' => $karyawan]);
+        return view("admin.karyawan.show", ['karyawan' => $karyawan]);
     }
 
     public function destroy($id)
@@ -165,6 +165,6 @@ class KaryawanController extends Controller
     // {
     //     $division = Division::orderBy('name') -> get();
     //     $karyawan = Karyawan::findOrFail($id);
-    //     return view("karyawan.pay",['karyawan' => $karyawan,'division' => $division]);
+    //     return view("admin.karyawan.pay",['karyawan' => $karyawan,'division' => $division]);
     // }
 }

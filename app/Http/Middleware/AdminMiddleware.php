@@ -18,10 +18,13 @@ class AdminMiddleware
     {
         if (Auth::check()) {
             $user = Auth::user();
-            if ($user->role == 1) {
+            if ($user->isAdmin()) {
                 return $next($request);
             }
-            return redirect("https://www.youtube.com");
+            // elseif($user->role == 2 || $user->role == 3){
+            else{
+                return redirect(route('user.dashboard.index'));
+            }
         }
         return redirect(route('login'));
     }

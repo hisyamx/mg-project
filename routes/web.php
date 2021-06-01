@@ -149,7 +149,7 @@ Route::group(['prefix' => 'user'], function () {
     // ------------------------- Kelola user project -------------------------
     // > user
     // Get Request
-    Route::get("/project", 'User\MainController@division')->name('user.project.index');
-    Route::get("/project/show/{id}", 'User\MainController@showProject')->name("user.project.show");
-    Route::get("/project/timeline", 'User\MainController@showTimeline')->name("user.project.timeline");
+    Route::get("/project", 'User\ProjectController@index')->name('user.project.index');
+    Route::get("/project/timeline", 'User\ProjectController@timelineIndex')->name("user.project.timeline");
+    Route::get("/project/show/{id}", 'User\ProjectController@showProject')->name("user.project.show");
 });

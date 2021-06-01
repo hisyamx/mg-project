@@ -60,4 +60,12 @@ class User extends Authenticatable
     {
         return $this->role == 2 ? 'Karyawan' : 'Magang';
     }
+
+    public function isAdmin(){
+        return $this->role == 1;
+    }
+
+    public function isNotAdmin(){
+        return $this->role != 1;
+    }
 }
