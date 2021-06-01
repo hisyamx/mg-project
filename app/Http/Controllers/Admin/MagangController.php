@@ -17,7 +17,7 @@ class MagangController extends Controller
         $division = Division::orderBy('name')->get();
         $magang = User::magang()->orderBy('name')->paginate();
 
-        return view("magang.index", ['magang' => $magang,'division' => $division]);
+        return view("admin.magang.index", ['magang' => $magang,'division' => $division]);
     }
 
     public function create()
@@ -27,14 +27,14 @@ class MagangController extends Controller
         if (count($division) <  1) {
             return redirect(route("division.index"))->with("error", "You must create a division before creating an magang");
         }
-        return view("magang.create", ['division' => $division]);
+        return view("admin.magang.create", ['division' => $division]);
     }
 
     public function edit($id)
     {
         $magang = User::findOrFail($id);
         $division = Division::all();
-        return view("magang.edit", ['magang' => $magang], ['division' => $division]);
+        return view("admin.magang.edit", ['magang' => $magang], ['division' => $division]);
     }
 
     public function store(Request $request)
@@ -94,7 +94,7 @@ class MagangController extends Controller
     public function show($id)
     {
         $magang = User::findOrFail($id);
-        return view("magang.show", ['magang' => $magang]);
+        return view("admin.magang.show", ['magang' => $magang]);
     }
 
     public function destroy($id)
@@ -168,6 +168,6 @@ class MagangController extends Controller
     // {
     //     $division = Division::orderBy('name') -> get();
     //     $magang = Magang::findOrFail($id);
-    //     return view("magang.pay",['magang' => $magang,'division' => $division]);
+    //     return view("admin.magang.pay",['magang' => $magang,'division' => $division]);
     // }
 }

@@ -1,4 +1,4 @@
-@extends('users.master')
+@extends('layouts.master')
 @section('title', 'Dashboard Management')
 
 @section('content')

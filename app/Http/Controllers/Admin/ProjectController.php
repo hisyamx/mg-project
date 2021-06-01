@@ -20,7 +20,7 @@ class ProjectController extends Controller
     public function index()
     {
         $project = Project::orderBy('name')->with(['pj_user', 'division', 'users'])->paginate(20);
-        return view("project.index", compact('project'));
+        return view("admin.project.index", compact('project'));
     }
 
 
@@ -29,7 +29,7 @@ class ProjectController extends Controller
         $division = Division::orderBy('name')->get();
         $project = Project::orderBy('name')->with('pj_user')->paginate(20);
 
-        return view("project.timeline", ['project' => $project,'division' => $division]);
+        return view("admin.project.timeline", ['project' => $project,'division' => $division]);
     }
 
     public function create()
@@ -39,14 +39,14 @@ class ProjectController extends Controller
         if (count($division) <  1) {
             return redirect("division.index")->with("error", "You must create a division before creating an project");
         }
-        return view("project.create", ['division' => $division]);
+        return view("admin.project.create", ['division' => $division]);
     }
 
     public function edit($id)
     {
         $project = Project::with(['users', 'division'])->findOrFail($id);
         $divisions = Division::all();
-        return view("project.edit", ['project' => $project], ['divisions' => $divisions]);
+        return view("admin.project.edit", ['project' => $project], ['divisions' => $divisions]);
     }
 
     public function store(Request $request)
@@ -99,7 +99,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        return view("project.show", ['project' => $project]);
+        return view("admin.project.show", ['project' => $project]);
     }
 
     public function destroy($id)

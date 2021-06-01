@@ -15,11 +15,11 @@ class DivisionController extends Controller
     public function index()
     {
         $division = Division::orderBy('name')->paginate(10);
-        return view("division.index", ['division' => $division]);
+        return view("admin.division.index", ['division' => $division]);
     }
     public function create()
     {
-        return view("division.create");
+        return view("admin.division.create");
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class DivisionController extends Controller
     public function show($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.delete", ['division' => $division]);
+        return view("admin.division.delete", ['division' => $division]);
     }
 
     public function destroy($id)
@@ -58,7 +58,7 @@ class DivisionController extends Controller
     public function edit($id)
     {
         $division = Division::findOrFail($id);
-        return view("division.edit", ['division' => $division]);
+        return view("admin.division.edit", ['division' => $division]);
     }
 
     public function update_record($id)

@@ -27,7 +27,7 @@ class MainController extends Controller
         $project_count = Project::count();
         $latest_project = Project::all()->take(5);
 
-        return view('user.index', compact(['division','karyawan_count','latest_karyawan','magang_count','latest_magang','project_count','latest_project']));
+        return view('pages.index', compact(['division','karyawan_count','latest_karyawan','magang_count','latest_magang','project_count','latest_project']));
     }
 
     public function user()
