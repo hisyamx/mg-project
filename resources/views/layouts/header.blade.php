@@ -1,30 +1,3 @@
-<!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-<!-- Icons -->
-<link rel="stylesheet" href="{{asset('/assets')}}/vendor/nucleo/css/nucleo.css" type="text/css">
-<link rel="stylesheet" href="{{asset('/assets')}}/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-<!-- Page plugins -->
-<!-- Argon CSS -->
-<link rel="stylesheet" href="{{asset('/assets')}}/css/argon.css" type="text/css">
-<!-- Page plugins -->
-{{-- datatables --}}
-<link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-<link rel="stylesheet" href="{{asset('/assets')}}/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
-{{-- sweetalert --}}
-<link rel="stylesheet" href="sweetalert2.min.css">
-{{-- <script src="sweetalert2.min.js"></script> --}}
-{{-- <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
-<script src="sweetalert2/dist/sweetalert2.min.js"></script> --}}
-<style>
-    @media print {
-        #ghostery-tracker-tally {
-            display: none !important
-        }
-    }
-</style>
-</head>
-
 <body>
     <!-- Sidenav -->
     <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
@@ -52,7 +25,7 @@
                     <!-- Divider -->
                     <hr class="my-3">
                     <!-- Heading -->
-                    
+
                     @if (Auth::user()->isAdmin())
                     <h6 class="navbar-heading p-0 text-muted">
                         <span class="docs-normal">Admin Menu</span>
@@ -90,12 +63,19 @@
                     </ul>
                     <!-- Divider -->
                     <hr class="my-3">
-                    
+
                     <h6 class="navbar-heading p-0 text-muted">
                         <span class="docs-normal">Manage</span>
                     </h6>
                     <!-- Navigation -->
                     <ul class="navbar-nav md-3">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->route()->named('admin.profile.index') ? 'active' : ''}}"
+                                href="{{ route('admin.profile.index') }}">
+                                <i class="ni ni-single-02 text-yellow"></i>
+                                <span class="nav-link-text">Profile</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#project" data-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="project">
@@ -121,41 +101,42 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#profile" data-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="profile">
-                                <i class="ni ni-single-02 text-yellow"></i>
-                                <span class="nav-link-text">Manage Account</span>
-                            </a>
-                            <div class="collapse" id="profile">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link {{ request()->route()->named('admin.profile.index') ? 'active' : ''}}"
-                                            href="{{ route('admin.profile.index') }}">
-                                            <span class="sidenav-mini-icon"></span>
-                                            <span class="sidenav-normal"> Profile </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link {{ request()->route()->named('admin.account.index') ? 'active' : ''}}"
-                                            href="{{ route('admin.account.index') }}">
-                                            <span class="sidenav-mini-icon"></span>
-                                            <span class="sidenav-normal"> Account </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link {{ request()->route()->named('admin.account.index') ? 'active' : ''}}"
-                                            href="{{ route('admin.account.index') }}">
-                                            <span class="sidenav-mini-icon"></span>
-                                            <span class="sidenav-normal"> Permission </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ request()->route()->named('admin.profile.index') ? 'active' : ''}}"
+                        href="{{ route('admin.profile.index') }}" data-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="profile">
+                        <i class="ni ni-single-02 text-yellow"></i>
+                        <span class="nav-link-text">Manage Account</span>
+                        </a>
+                        <div class="collapse" id="profile">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->route()->named('admin.profile.index') ? 'active' : ''}}"
+                                        href="{{ route('admin.profile.index') }}">
+                                        <span class="sidenav-mini-icon"></span>
+                                        <span class="sidenav-normal"> Profile </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->route()->named('admin.profile.edit') ? 'active' : ''}}"
+                                        href="{{ route('admin.profile.edit') }}">
+                                        <span class="sidenav-mini-icon"></span>
+                                        <span class="sidenav-normal"> Change Profile </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->route()->named('admin.account.index') ? 'active' : ''}}"
+                                        href="{{ route('admin.account.index') }}">
+                                        <span class="sidenav-mini-icon"></span>
+                                        <span class="sidenav-normal"> Permission </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        </li> --}}
                     </ul>
                     @elseif(Auth::user()->isNotAdmin())
-                    
+
                     <!-- Heading -->
                     <h6 class="navbar-heading p-0 text-muted">
                         <span class="docs-normal">User Menu</span>
@@ -234,14 +215,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Search form -->
                     <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
-                        <div class="form-group mb-0">
+                        {{-- <div class="form-group mb-0">
                             <div class="input-group input-group-alternative input-group-merge">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
                                 <input class="form-control" placeholder="Search" type="text">
                             </div>
-                        </div>
+                        </div> --}}
                         <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main"
                             aria-label="Close">
                             <span aria-hidden="true">×</span>

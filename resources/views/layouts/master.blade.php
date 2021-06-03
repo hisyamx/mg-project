@@ -11,15 +11,37 @@
     <!-- Favicon -->
     <link rel="icon" href="{{asset('/assets')}}/img/botika.webp" type="image/webp">
     {{-- <link rel="icon" href="{{asset('/assets')}}/img/logo.svg"> --}}
-    @include('layouts.header')
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{asset('/assets')}}/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('/assets')}}/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+        type="text/css">
 
-    <section class="banner-part">
+    <!-- Page CSS -->
+    @yield('page-css')
 
-        @yield('content')
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{asset('/assets')}}/css/argon.css" type="text/css">
 
-        @include('layouts.footer')
 
-    </section>
-    </body>
+    <style>
+        @media print {
+            #ghostery-tracker-tally {
+                display: none !important
+            }
+        }
+    </style>
+</head>
+
+@include('layouts.header')
+
+<section class="banner-part">
+
+    @yield('content')
+    @include('layouts.footer')
+</section>
+@yield('page-js')
+</body>
 
 </html>

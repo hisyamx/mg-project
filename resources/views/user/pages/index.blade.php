@@ -14,7 +14,8 @@
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href=""><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item active"><a
-                                    href="{{ route('admin.dashboard.index')}}">Dashboard</a></li>
+                                    href="{{ route('user.dashboard.index')}}">Dashboard</a>
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -110,7 +111,7 @@
                             <h3 class="mb-0">Project</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="{{route('admin.project.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
+                            <a href="{{route('user.project.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                         </div>
                     </div>
                 </div>
@@ -172,7 +173,7 @@
                             <h3 class="mb-0">Division</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="{{route('admin.division.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
+                            <a href="{{route('user.division.index')}}" class="btn btn-sm btn-primary">Lihat semua</a>
                         </div>
                     </div>
                 </div>

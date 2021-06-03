@@ -10,8 +10,9 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="division.index"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.karyawan.index') }}">Karyawan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>
                     </nav>
@@ -30,9 +31,14 @@
                     <div class="col-lg-3 order-lg-2">
                         <div class="card-profile-image">
                             <a href="#">
-                                <img src="{{asset('storage/cover_images/'.$karyawan->cover_image)}}"
-                                    class="rounded-circle">
+                                @if ($karyawan->cover_image != null)
+                                <img alt="Image placeholder"
+                                    src="{{asset('storage/cover_images/'.$karyawan->cover_image)}}">
+                                @else
+                                <img alt="Image placeholder" src="{{asset('/assets')}}/img/user.png">
+                                @endif
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -41,10 +47,13 @@
                         <h5 class="h3">{{ $karyawan->name }}<span class="font-weight-light"></span>
                         </h5>
                         <div class="h5 font-weight-300">
-                            <i class="ni location_pin mr-2"></i>{{ $karyawan->address }}
+                            <i class="ni location_pin mr-2"></i>{{ $karyawan->email }}
                         </div>
-                        <div class="h5 mt-4">
-                            <i class="ni business_briefcase-24 mr-2"></i>{{ $karyawan->username }}
+                        <div class="h5 font-weight-300">
+                            <i class="ni location_pin mr-2"></i>{{ $karyawan->getRole() }}
+                        </div>
+                        <div class="h5 mt-2">
+                            <i class="ni business_briefcase-24 mr-2"></i>{{ $karyawan->division->name }}
                         </div>
                         <div>
                             <i class="ni education_hat mr-2"></i>{{ $karyawan->address }}
@@ -73,44 +82,39 @@
                                     value="{{ $karyawan->name }}">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="kode">Kode</label>
-                                <input required type="text" class="form-control" id="code" name="kode"
+                                <label for="code">Kode</label>
+                                <input required type="text" class="form-control" id="code" name="code"
                                     placeholder="Nomor Induk" value="{{ $karyawan->code }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="role">Role</label>
-                                <input required type="text" class="form-control" id="role" name="role"
-                                    value="{{ $karyawan->role }}">
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="role" name="role"
+                                    value="{{ $karyawan->getRole() }}">
+                                    <option value="2">Karyawan</option>
+                                    <option value="3">Magang</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="division">Division</label>
-                                <select required id="division" class="form-control" name="division">
-                                    <option selected disabled>Divisi</option>
-                                    @foreach($division AS $args)
-                                    <option value="{{$args->name}}" <?php
-                                if($args->name == $karyawan->division){
-                                    print "selected";
-                                }
-                                ?>>{{$args->name}}</option>
-                                    @endforeach;
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="division" name="division"
+                                    value="{{ $karyawan->division->name }}">
+                                    @foreach($division AS $div)
+                                    <option value="{{$div->id}}">{{$div->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <hr class="my-4" />
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label for="telephone">Telephone</label>
-                                <input name="telephone" required type="number" class="form-control" id="telephone"
-                                    value="{{ $karyawan->telephone}}">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="status">Status</label>
-                                <input name="status" required type="text" class="form-control" id="status"
-                                    value="{{ $karyawan->status }}">
+                                <input name="telephone" required type="text" class="form-control" id="telephone"
+                                    value="{{ $karyawan->telephone }}">
                             </div>
                         </div>
-
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
@@ -139,8 +143,8 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
-                                name="address" value="{{ $karyawan->address }}">
+                            <textarea required type="text" class="form-control" id="address" placeholder="Alamat"
+                                name="address">{{ $karyawan->address }}</textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>
@@ -155,8 +159,18 @@
             </div>
         </div>
     </div>
+    @endsection
 
+    @section('page-css')
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    @endsection
 
+    @section('page-js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js">
+    </script>
+    <script>
+    </script>
     @endsection
 
     <!-- Modal -->

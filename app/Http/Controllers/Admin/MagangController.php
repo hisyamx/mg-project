@@ -3,21 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Division;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Division;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class MagangController extends Controller
 {
     public function index()
     {
-        $division = Division::orderBy('name')->get();
-        $magang = User::magang()->orderBy('name')->paginate();
+        $magang = User::magang()->orderBy('name')->get();
 
-        return view("admin.magang.index", ['magang' => $magang,'division' => $division]);
+        return view("admin.magang.index", ['magang' => $magang]);
     }
 
     public function create()
@@ -48,7 +47,7 @@ class MagangController extends Controller
             'telephone' => 'required',
             'address' => 'required',
             'instansi' => 'required',
-            'division_id' => 'required',
+            'division' => 'required',
             'start' => 'required',
             'finish' => 'nullable',
             'cover_image' => 'nullable',
@@ -80,14 +79,14 @@ class MagangController extends Controller
         $user->telephone = $request->telephone;
         $user->address = $request->address;
         $user->instansi = $request->instansi;
-        $user->division_id = $request->division_id;
+        $user->division_id = $request->division;
         $user->start = Carbon::make($request->start);
         $user->finish = Carbon::make($request->finish);
-        $user->cover_image = $request->cover_image;
+        $user->cover_image = $fileNameToStore;
 
         $user->save();
 
-        return redirect(route("magang.index"))->with('success', "Magang Created Successfully");
+        return redirect(route("admin.magang.index"))->with('success', "Magang Created Successfully");
     }
 
 
@@ -107,7 +106,7 @@ class MagangController extends Controller
             Storage::delete('public/cover_images/'.$magang->cover_image);
         }
 
-        return redirect(route("magang.index"))->with("success", "Magang Deleted Successfully");
+        return redirect(route("admin.magang.index"))->with("success", "Magang Deleted Successfully");
     }
 
     public function update_record(Request $request, $id)
@@ -121,7 +120,7 @@ class MagangController extends Controller
             'telephone' => 'required',
             'address' => 'required',
             'instansi' => 'required',
-            'division_id' => 'required',
+            'division' => 'required',
             'start' => 'required',
             'finish' => 'nullable',
             'cover_image' => 'nullable',
@@ -152,7 +151,7 @@ class MagangController extends Controller
         $user->telephone = $request->telephone;
         $user->address = $request->address;
         $user->instansi = $request->instansi;
-        $user->division_id = $request->division_id;
+        $user->division_id = $request->division;
         $user->start = Carbon::make($request->start);
         $user->finish = Carbon::make($request->finish);
         if ($request->hasFile('cover_image')) {
@@ -161,7 +160,7 @@ class MagangController extends Controller
 
         $user->save(); //this will UPDATE the record
 
-        return redirect(route("magang.index"))->with("success", "Account was updated successfully");
+        return redirect(route("admin.magang.index"))->with("success", "Account was updated successfully");
     }
 
     // public function pay($id)

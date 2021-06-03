@@ -16,6 +16,6 @@ $factory->define(Project::class, function (Faker $faker) {
         'pj_user_id' => $faker->numberBetween(4, 99),
         'start' => $start_datetime,
         'finish' => $finish_datetime,
-        'description' => $faker->realText(100),
+        'description' => $faker->realText(1000),
     ];
 });

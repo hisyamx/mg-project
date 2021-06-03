@@ -42,6 +42,8 @@
                                 <th scope="col" class="sort" data-sort="name">Kode</th>
                                 <th scope="col" class="sort" data-sort="name">Nama</th>
                                 <th scope="col" class="sort" data-sort="budget">Divisi</th>
+                                <th scope="col" class="sort" data-sort="budget">Start</th>
+                                <th scope="col" class="sort" data-sort="budget">Finish</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col"></th>
                             </tr>
@@ -61,7 +63,7 @@
                                             @endphp
                                             mr-3">
                                             @if ($args->cover_image != null)
-                                            <img alt="Image placeholder"
+                                            <img class="h-100 w-100" alt="Image placeholder"
                                                 src="{{asset('storage/cover_images/'.$args->cover_image)}}">
                                             @endif
                                         </a>
@@ -71,11 +73,17 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->division->name}}
+                                    {{ $args->division != null ? $args->division->name : '' }}
+                                </td>
+                                <td class="budget">
+                                    {{ $args->start != null ? $args->start->isoFormat('D MMMM Y') : '' }}
+                                </td>
+                                <td class="budget">
+                                    {{ $args->finish != null ? $args->finish->isoFormat('D MMMM Y') : '' }}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->finish == null)
+                                        @if ($args->finish == null || $args->finish->greaterThan(Carbon\Carbon::now()))
                                         <i class="bg-success"></i>
                                         <span class="status">Aktif</span>
                                         @else

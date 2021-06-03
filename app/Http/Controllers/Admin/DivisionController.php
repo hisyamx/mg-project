@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\User;
 use App\Division;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DivisionController extends Controller
@@ -19,46 +20,49 @@ class DivisionController extends Controller
     }
     public function create()
     {
-        return view("admin.division.create");
+        $users = User::where('role', '!=', 1)->get();
+        return view("admin.division.create", compact('users'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:30',
-            'headof' => 'required|max:30',
+            'head_user_id' => 'required|numeric|max:99999',
             'status' => 'required|max:30'
         ]);
 
         $division = new Division();
 
         $division->name = request('name');
-        $division->headof = request('headof');
-        $division->status = request('status');
+        $division->head_user_id = request('head_user_id');
+        $division->active = request('status') == "true";
 
         $division->save();
 
-        return redirect("division.index")->with("success", "Division Created Successfully");
+        return redirect(route("admin.division.index"))->with("success", "Division Created Successfully");
     }
 
     public function show($id)
     {
-        $division = Division::findOrFail($id);
-        return view("admin.division.delete", ['division' => $division]);
+        $users = User::where('role', '!=', 1)->get();
+        return view("admin.division.delete", compact('users'));
     }
 
     public function destroy($id)
     {
         $division = Division::findOrFail($id);
+        $users = User::where('role', '!=', 1)->get();
         $division->delete();
 
-        return redirect("division.index")->with("success", "Division Deleted Successfully");
+        return redirect("admin.division.index")->with("success", "Division Deleted Successfully");
     }
 
     public function edit($id)
     {
         $division = Division::findOrFail($id);
-        return view("admin.division.edit", ['division' => $division]);
+        $users = User::where('role', '!=', 1)->get();
+        return view("admin.division.edit", compact(['division','users']));
     }
 
     public function update_record($id)
@@ -66,11 +70,11 @@ class DivisionController extends Controller
         $division = Division::findOrFail($id);
 
         $division->name = request('name');
-        $division->headof = request('headof');
-        $division->status = request('status');
+        $division->head_user_id = request('head_user_id');
+        $division->active = request('status') == "true";
 
         $division->save(); //this will UPDATE the record with id=1
 
-        return redirect("division.index")->with("success", "Division Updated Successfully");
+        return redirect(route("admin.division.index"))->with("success", "Division Updated Successfully");
     }
 }

@@ -32,8 +32,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'start' => 'datetime',
+        'finish' => 'datetime'
     ];
 
     public function division()
@@ -61,11 +64,18 @@ class User extends Authenticatable
         return $this->role == 2 ? 'Karyawan' : 'Magang';
     }
 
-    public function isAdmin(){
+    public function getDivision()
+    {
+        return $this->division->name;
+    }
+
+    public function isAdmin()
+    {
         return $this->role == 1;
     }
 
-    public function isNotAdmin(){
+    public function isNotAdmin()
+    {
         return $this->role != 1;
     }
 }

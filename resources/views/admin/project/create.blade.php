@@ -31,35 +31,31 @@
                     <form action="{{ route('admin.project.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-12">
                                 <label for="name">Project Name</label>
                                 <input required type="text" class="form-control" id="name" name="name"
                                     value="{{ old('name') }}">
                             </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="status">Status</label>
-                                <input name="status" required type="text" class="form-control" id="status"
-                                    value="{{ old('status') }}">
-                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="division">Division</label>
-                                <select required id="division" class="form-control" name="division">
-                                    <option selected disabled>Divisi</option>
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="division" name="division_id"
+                                    title="Pilih Divisi">
                                     @foreach($division AS $div)
-                                    <option value="{{$div->name}}">{{$div->name}}</option>
-                                    @endforeach;
+                                    <option value="{{$div->id}}">{{$div->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-8">
-                                <label for="pj">Users</label>
-                                <select required id="pj" class="form-control" name="pj">
-                                    <option selected disabled>Pilih Users</option>
-                                    @foreach($division AS $div)
-                                    <option value="{{$div->headof}}">{{$div->headof}}</option>
-                                    @endforeach;
+                            <div class="form-group col-md-6">
+                                <label for="pj_user">Penanggung Jawab</label>
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="pj_user" name="pj_user"
+                                    title="Pilih Penanggungjawab">
+                                    @foreach($users AS $div)
+                                    <option value="{{$div->id}}">{{$div->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -110,4 +106,16 @@
         </div>
     </div>
 
-    @endsection;
+    @endsection
+
+    @section('page-css')
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    @endsection
+
+    @section('page-js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js">
+    </script>
+    <script>
+    </script>
+    @endsection

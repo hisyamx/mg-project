@@ -125,23 +125,23 @@
                         </div>
                     </div>
 
-                    <div class="row mt-4">
+                    {{-- <div class="row mt-4">
                         <div class="col-6">
                             @if (Route::has('password.request'))
                             <a class="text-light" href="{{ route('password.request') }}">
-                                <small>Forgot password?</small>
-                            </a>
-                            @endif
-                        </div>
-
-                        <div class="col-6 text-right">
-                            <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
-                        </div>
-                    </div>
-
+                    <small>Forgot password?</small>
+                    </a>
+                    @endif
                 </div>
-            </div>
+
+                <div class="col-6 text-right">
+                    <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
+                </div>
+            </div> --}}
+
         </div>
+    </div>
+    </div>
     </div>
     <!-- Footer -->
     <footer class="mb-5" id="footer-main">

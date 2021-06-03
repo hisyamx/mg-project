@@ -12,7 +12,8 @@
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="{{ route('user.dashboard.index') }}"><i
                                         class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.user.index') }}">User</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.user.index') }}">Karyawan dan Karyawan
+                                    Magang</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -38,6 +39,7 @@
                                 <th scope="col" class="sort" data-sort="name">Kode</th>
                                 <th scope="col" class="sort" data-sort="name">Nama</th>
                                 <th scope="col" class="sort" data-sort="budget">Divisi</th>
+                                <th scope="col" class="sort" data-sort="budget">Role</th>
                                 <th scope="col" class="sort" data-sort="budget">Instansi</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                             </tr>
@@ -50,31 +52,38 @@
                                 </td>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <div class="avatar rounded-circle
+                                        <a href="{{ route('user.user.show',$args->id) }}" class="avatar rounded-circle
                                             @php
                                                 $array = ['bg-primary', '', 'bg-warning', 'bg-danger'];
                                                 echo $array[array_rand($array, 1)];
                                             @endphp
                                             mr-3">
                                             @if ($args->cover_image != null)
-                                            <img alt="Image placeholder"
+                                            <img class="h-100 w-100" alt="Image placeholder"
                                                 src="{{asset('storage/cover_images/'.$args->cover_image)}}">
                                             @endif
-                                    </div>
-                                        <div class="media-body">
+                                        </a>
+                                        <a href="{{ route('user.user.show',$args->id) }}" class="media-body">
                                             <span class="name mb-0 text-sm">{{$args->name}}</span>
-                                        </div>
+                                        </a>
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->division->name}}
+                                    {{ $args->division != null ? $args->division->name : '' }}
                                 </td>
                                 <td class="budget">
+                                    {{$args->getRole()}}
+                                </td>
+                                <td class="budget">
+                                    @if ($args->instansi == null)
+                                    Botika
+                                    @else
                                     {{$args->instansi}}
+                                    @endif
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->finish == null)
+                                        @if ($args->finish == null || $args->finish->greaterThan(Carbon\Carbon::now()))
                                         <i class="bg-success"></i>
                                         <span class="status">Aktif</span>
                                         @else
@@ -83,6 +92,7 @@
                                         @endif
                                     </span>
                                 </td>
+
                             </tr>
                         </tbody>
                         @endforeach
