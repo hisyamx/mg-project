@@ -13,21 +13,20 @@ use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
-
     public function index()
     {
         $division = Division::all();
 
         $karyawan_count = User::karyawan()->count();
-        $latest_karyawan = User::karyawan()->take(5);
+        $latest_karyawan = User::karyawan()->take(8);
 
         $magang_count = User::magang()->count();
-        $latest_magang = User::magang()->take(5);
+        $latest_magang = User::magang()->take(8);
 
         $project_count = Project::count();
-        $latest_project = Project::all()->take(5);
+        $latest_project = Project::all()->take(8);
 
-        return view('pages.index', compact(['division','karyawan_count','latest_karyawan','magang_count','latest_magang','project_count','latest_project']));
+        return view('user.pages.index', compact(['division','karyawan_count','latest_karyawan','magang_count','latest_magang','project_count','latest_project']));
     }
 
     public function user()

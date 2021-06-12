@@ -10,8 +10,10 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}">Division {{ $division->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}">Division
+                                    {{ $division->name }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -33,23 +35,49 @@
                                 <label for="name">Nama Divisi</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ $division->name }}">
-                                <label for="headof">Kepala Divisi</label>
-                                <input type="text" class="form-control" id="headof" name="headof"
-                                    value="{{ $division->headof }}">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="form-group col-md-6">
+                                <label for="head_user_id">Kepala Divisi</label>
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="head_user_id" name="head_user_id"
+                                    value="{{ $division->head_user_id }}">
+                                    @foreach($users AS $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label for="status">Status Divisi</label>
-                                <input type="text" class="form-control" id="status" name="status"
-                                    value="{{ $division->status }}">
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="status" name="status"
+                                    title="{{ $division->status }}">
+                                    <option value="true">Aktif</option>
+                                    <option value="false">Tidak Aktif</option>
+                                </select>
                             </div>
                         </div>
                         <br>
-
-                        <button class="btn btn-danger" type="submit">Edit</button>
+                        <button class="btn btn-warning" type="submit">Edit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
+    @endsection
+
+    @section('page-css')
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    @endsection
+
+    @section('page-js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js">
+    </script>
+    <script>
+    </script>
     @endsection
 
     <!-- Modal -->

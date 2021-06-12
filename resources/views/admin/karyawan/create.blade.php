@@ -11,7 +11,8 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}"><i
+                                        class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.karyawan.index')}}">Karyawan</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
@@ -30,46 +31,63 @@
                     <form action="{{ route('admin.karyawan.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-8">
-                                <label for="name">Fullname</label>
+                            <div class="form-group col-md-12">
+                                <label for="name">Nama</label>
                                 <input required type="text" class="form-control" id="name" name="name"
                                     value="{{ old('name') }}">
                             </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="telephone">Telephone</label>
+                                <input name="telephone" required type="number" class="form-control" id="telephone"
+                                    value="{{ old('telephone') }}">
+                            </div>
                             <div class="form-group col-md-4">
-                                <label for="kode">Kode</label>
-                                <input required type="text" class="form-control" id="kode" name="kode"
-                                    placeholder="BT-001" value="{{ old('kode') }}">
+                                <label for="code">Kode</label>
+                                <input required type="text" class="form-control" id="code" name="code"
+                                    value="{{ old('code') }}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="email">Email</label>
+                                <input required type="email" class="form-control" id="email" name="email"
+                                    value="{{ old('email') }}">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="password">Password</label>
+                                <input required type="password" class="form-control" id="password" name="password"
+                                    value="{{ old('password') }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="role">Role</label>
-                                <input required type="text" class="form-control" id="role" name="role"
-                                    value="{{ old('role') }}">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="division">Division</label>
-                                <select required id="division" class="form-control" name="division">
-                                    <option selected disabled>Divisi</option>
-                                    @foreach($division AS $div)
-                                    <option value="{{$div->id}}">{{$div->name}}</option>
-                                    @endforeach;
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="role" name="role" title="Pilih Role">
+                                    <option value="2">Karyawan</option>
+                                    <option value="3">Magang</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="telephone">Telephone</label>
-                                <input name="telephone" required type="number" class="form-control" id="telephone"
-                                    value="{{ old('telephone') }}">
+                                <label for="division">Divisi</label>
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="division" name="division" title="Pilih Divisi">
+                                    @foreach($division AS $div)
+                                    <option value="{{$div->id}}">{{$div->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-4">
                                 <label for="status">Status</label>
-                                <input name="status" required type="text" class="form-control" id="status"
-                                    value="{{ old('status') }}">
-                            </div>
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="status" name="status" title="Pilih status">
+                                    <option value="active">Aktif</option>
+                                    <option value="nonactive">Tidak Aktif</option>
+                                </select>
+                            </div> --}}
                         </div>
-
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
@@ -98,8 +116,8 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input required type="text" class="form-control" id="address" placeholder="Alamat"
-                                name="address" value="{{ old('address') }}">
+                            <textarea required type="text" class="form-control" id="address" placeholder="Alamat"
+                                name="address" value="{{ old('address') }}"></textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>
@@ -115,4 +133,16 @@
         </div>
     </div>
 
-    @endsection;
+    @endsection
+
+    @section('page-css')
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    @endsection
+
+    @section('page-js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js">
+    </script>
+    <script>
+    </script>
+    @endsection

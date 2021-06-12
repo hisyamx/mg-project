@@ -25,10 +25,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/search/{word}', 'SearchManageController@searchPage');
 
     // ------------------------- Profile -------------------------
-    Route::get('/profile', 'ProfileManageController@viewProfile')->name('admin.profile.index');
-    Route::post('/profile/update/data', 'ProfileManageController@changeData')->name('admin.profile.edit');
-    Route::post('/profile/update/password', 'ProfileManageController@changePassword')->name('admin.profile.password');
-    Route::post('/profile/update/picture', 'ProfileManageController@changePicture')->name('admin.profile.picture');
+    Route::get('/profile', 'Admin\ProfileController@viewProfile')->name('admin.profile.index');
+    Route::post('/profile/update', 'Admin\ProfileController@changeData')->name('admin.profile.edit');
 
     // ------------------------- Kelola Akun -------------------------
     // > Akun
@@ -104,25 +102,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     // Delete
     Route::delete("/magang/delete/{id}", 'Admin\MagangController@destroy')->name("admin.magang.delete");
     // End of magang
-
-        // ------------------------- Kelola user dashboard -------------------------
-    
-    // End of user
-
-    // ------------------------- Kelola Akun -------------------------
-    // > Akun
-    // Route::get('/account', 'UserManageController@viewAccount');
-    // Route::get('/account/new', 'UserManageController@viewNewAccount');
-    // Route::post('/account/create', 'UserManageController@createAccount');
-    // Route::get('/account/edit/{id}', 'UserManageController@editAccount');
-    // Route::post('/account/update', 'UserManageController@updateAccount');
-    // Route::get('/account/delete/{id}', 'UserManageController@deleteAccount');
-    // Route::get('/account/filter/{id}', 'UserManageController@filterTable');
-    // > Akses
-    // Route::get('/access', 'AccessManageController@viewAccess');
-    // Route::get('/access/change/{user}/{access}', 'AccessManageController@changeAccess');
-    // Route::get('/access/check/{user}', 'AccessManageController@checkAccess');
-    // Route::get('/access/sidebar', 'AccessManageController@sidebarRefresh');
 });
 
 Route::group(['prefix' => 'user'], function () {
@@ -152,4 +131,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get("/project", 'User\ProjectController@index')->name('user.project.index');
     Route::get("/project/timeline", 'User\ProjectController@timelineIndex')->name("user.project.timeline");
     Route::get("/project/show/{id}", 'User\ProjectController@showProject')->name("user.project.show");
+
+    // ------------------------- Profile -------------------------
+    Route::get('/profile', 'User\ProfileController@viewProfile')->name('user.profile.index');
 });

@@ -35,31 +35,32 @@ class ProjectController extends Controller
     public function create()
     {
         $division = Division::all();
+        $users = User::where('role', '!=', 1)->get();
         // $karyawan = Karyawan::all();
         if (count($division) <  1) {
-            return redirect("division.index")->with("error", "You must create a division before creating an project");
+            return redirect("admin.division.index")->with("error", "You must create a division before creating an project");
         }
-        return view("admin.project.create", ['division' => $division]);
+        return view("admin.project.create", compact(['division','users']));
     }
 
     public function edit($id)
     {
         $project = Project::with(['users', 'division'])->findOrFail($id);
-        $divisions = Division::all();
-        return view("admin.project.edit", ['project' => $project], ['divisions' => $divisions]);
+        $users = User::where('role', '!=', 1)->get();
+        $division = Division::all();
+        return view("admin.project.edit", compact(['division','users','project']));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:50',
-            'status' =>  'required',
-            'division' =>  'required',
-            'pj' => 'required',
+            'name' => 'required',
+            'division_id' =>  'required',
+            'pj_user' => 'required',
             'start' =>  'required',
             'finish' =>  'nullable',
-            'description' => 'required|max:999',
-            'cover_image' => 'image|nullable|max:1999'
+            'description' => 'required',
+            'cover_image' => 'nullable'
             ]);
 
         // Handle File Upload
@@ -80,19 +81,18 @@ class ProjectController extends Controller
 
         $project = new Project();
 
-        $project->name = request('name');
-        $project->status = request('status');
-        $project->division = request('division');
-        $project->pj = request('pj');
-        $project->start = request('start');
+        $project->name = $request->name;
+        $project->division_id = $request->division_id;
+        $project->pj_user_id = $request->pj_user;
+        $project->start = $request->start;
 
-        $project->finish = request('finish');
-        $project->description = request('description');
+        $project->finish = $request->finish;
+        $project->description = $request->description;
         $project->cover_image = $fileNameToStore;
 
         $project->save();
 
-        return redirect("project.index")->with('success', "Project Created Successfully");
+        return redirect(route('admin.project.index'))->with('success', "Project Created Successfully");
     }
 
 
@@ -112,20 +112,19 @@ class ProjectController extends Controller
             Storage::delete('public/cover_images/'.$project->cover_image);
         }
 
-        return redirect("project.index")->with("success", "Project Deleted Successfully");
+        return redirect(route('admin.project.index'))->with("success", "Project Deleted Successfully");
     }
 
     public function update_record(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:50',
-            'status' =>  'required',
-            'division' =>  'required',
-            'pj' => 'required',
+            'name' => 'required',
+            'division_id' =>  'required',
+            'pj_user_id' => 'required',
             'start' =>  'required',
             'finish' =>  'nullable',
-            'description' => 'required|max:999',
-            'cover_image' => 'image|nullable|max:1999'
+            'description' => 'required',
+            'cover_image' => 'nullable'
         ]);
 
         $project = Project::findOrFail($id);
@@ -145,20 +144,20 @@ class ProjectController extends Controller
             Storage::delete('public/cover_images/'.$project->cover_image);
         }
 
-        $project->name = request('name');
-        $project->status = request('status');
-        $project->division = request('division');
-        $project->pj = request('pj');
-        $project->start = request('start');
-        $project->finish = request('finish');
-        $project->description = request('description');
+        $project->name = $request->name;
+        $project->division_id = $request->division_id;
+        $project->pj_user_id = $request->pj_user_id;
+        $project->start = $request->start;
+
+        $project->finish = $request->finish;
+        $project->description = $request->description;
         if ($request->hasFile('cover_image')) {
             $project->cover_image = $fileNameToStore;
         }
 
         $project->save(); //this will UPDATE the record
 
-        return redirect("project.index")->with("success", "Account was updated successfully");
+        return redirect(route('admin.project.index'))->with("success", "Account was updated successfully");
     }
 
     public function single($id)
@@ -166,7 +165,7 @@ class ProjectController extends Controller
         $project = Project::where('division', $id)->orderBy('name') -> paginate(20);
         $division = Division::orderBy('name') -> get();
 
-        return view('project.single', ['project' => $project,'division' => $division]);
+        return view('admin.project.single', ['project' => $project,'division' => $division]);
     }
 
     public function addUser($project_id)
@@ -176,7 +175,7 @@ class ProjectController extends Controller
             $query->where('project_id', $project_id);
         })->get();
 
-        return view('project.adduser', compact(['project', 'users']));
+        return view('admin.project.adduser', compact(['project', 'users']));
     }
 
     public function storeUser($project_id, $user_id)

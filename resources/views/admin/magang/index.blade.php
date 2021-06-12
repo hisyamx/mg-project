@@ -38,9 +38,11 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="sort" data-sort="name">ID</th>
+                                <th scope="col" class="sort" data-sort="name">Kode</th>
                                 <th scope="col" class="sort" data-sort="name">Nama</th>
                                 <th scope="col" class="sort" data-sort="budget">Divisi</th>
+                                <th scope="col" class="sort" data-sort="budget">Start</th>
+                                <th scope="col" class="sort" data-sort="budget">Finish</th>
                                 <th scope="col" class="sort" data-sort="completion">Instansi</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col"></th>
@@ -71,14 +73,20 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                    {{$args->division->name}}
+                                    {{ $args->division != null ? $args->division->name : '' }}
+                                </td>
+                                <td class="budget">
+                                    {{ $args->start != null ? $args->start->isoFormat('D MMMM Y') : '' }}
+                                </td>
+                                <td class="budget">
+                                    {{ $args->finish != null ? $args->finish->isoFormat('D MMMM Y') : '' }}
                                 </td>
                                 <td class="budget">
                                     {{$args->instansi}}
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->finish == null)
+                                        @if ($args->finish == null || $args->finish->greaterThan(Carbon\Carbon::now()))
                                         <i class="bg-success"></i>
                                         <span class="status">Aktif</span>
                                         @else

@@ -1,0 +1,23 @@
+$user->name = "Rumah Sakit Pratama Batu Buil"
+$user->phone = "081270522847"
+$user->email = "rsp.batubuil20@gmail.com"
+$user->password = "rspbc19"
+$user->instance = "Rumah Sakit Pratama"
+$user->instance_place = "Belimbing"
+$user->role = 3
+
+$user->name = "Rumah Sakit Bunda Jaya"
+$user->phone = "081270522847"
+$user->email = "rskasihbundajaya@gmail.com"
+$user->password = "rsbjc19"
+$user->instance = "Rumah Sakit Bunda Jaya"
+$user->instance_place = "Nanga Pinoh"
+$user->role = 3
+
+$user->name = "Rumah Sakit Citra Husada"
+$user->phone = "081270522847"
+$user->email = "rscitrahusadangp@gmail.com"
+$user->password = "rschc19"
+$user->instance = "Rumah Sakit Citra Husada"
+$user->instance_place = "Nanga Pinoh"
+$user->role = 3

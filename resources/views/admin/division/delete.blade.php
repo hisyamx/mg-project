@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5>Nama Divisi: {{ $division->name }}</h5>
-                    <h5>Kepala Divisi: {{ $division->headof }}</h5>
+                    <h5>Kepala Divisi: {{ $division->head_user_id }}</h5>
                     <h5>Status Divisi: {{ $division->status }}</h5>
                     <h5>Last Updated: {{ $division->updated_at }}</h5><br>
                     <form class="" action="{{ route('admin.division.delete',$division->id) }}" method="POST">

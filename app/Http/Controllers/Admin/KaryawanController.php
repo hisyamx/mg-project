@@ -15,7 +15,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $division = Division::orderBy('name') -> get();
-        $karyawan = User::karyawan()->orderBy('name')->paginate(20);
+        $karyawan = User::karyawan()->orderBy('name')->get();
 
         return view("admin.karyawan.index", ['karyawan' => $karyawan,'division' => $division]);
     }
@@ -23,11 +23,11 @@ class KaryawanController extends Controller
     public function create()
     {
         $division = Division::all();
-
+        $users = User::where('role', '!=', 1)->get();
         if (count($division) <  1) {
             return redirect("division.index")->with("error", "You must create a division before creating an karyawan");
         }
-        return view("admin.karyawan.create", ['division' => $division]);
+        return view("admin.karyawan.create", compact(['division','users']));
     }
 
     public function edit($id)
@@ -47,7 +47,7 @@ class KaryawanController extends Controller
             'role' => 'required',
             'telephone' => 'required',
             'address' => 'required',
-            'division_id' => 'required',
+            'division' => 'required',
             'start' => 'required',
             'finish' => 'nullable',
             'cover_image' => 'nullable',
@@ -64,6 +64,7 @@ class KaryawanController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
+
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         } else {
             $fileNameToStore = 'noimage.jpg';
@@ -79,13 +80,13 @@ class KaryawanController extends Controller
         $user->role = $request->role;
         $user->telephone = $request->telephone;
         $user->address = $request->address;
-        $user->division_id = $request->division_id;
+        $user->division_id = $request->division;
         $user->start = Carbon::make($request->start);
         $user->finish = Carbon::make($request->finish);
-        $user->cover_image = $request->cover_image;
+        $user->cover_image = $fileNameToStore;
 
         if ($user->save()) {
-            return redirect(route('karyawan.index'))->with('success', "karyawan Created Successfully");
+            return redirect(route('admin.karyawan.index'))->with('success', "karyawan Created Successfully");
         }
     }
 
@@ -106,7 +107,7 @@ class KaryawanController extends Controller
             Storage::delete('public/cover_images/'.$karyawan->cover_image);
         }
 
-        return redirect(route('karyawan.index'))->with("success", "karyawan Deleted Successfully");
+        return redirect(route('admin.karyawan.index'))->with("success", "karyawan Deleted Successfully");
     }
 
     public function update_record(Request $request, $id)
@@ -114,12 +115,10 @@ class KaryawanController extends Controller
         $this->validate($request, [
             'code' => 'required',
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
             'role' => 'required',
             'telephone' => 'required',
             'address' => 'required',
-            'division_id' => 'required',
+            'division' => 'required',
             'start' => 'required',
             'finish' => 'nullable',
             'cover_image' => 'nullable',
@@ -144,11 +143,10 @@ class KaryawanController extends Controller
 
         $user->code = $request->code;
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->role = $request->role;
         $user->telephone = $request->telephone;
         $user->address = $request->address;
-        $user->division_id = $request->division_id;
+        $user->division_id = $request->division;
         $user->start = Carbon::make($request->start);
         $user->finish = Carbon::make($request->finish);
 
@@ -158,7 +156,7 @@ class KaryawanController extends Controller
 
         $user->save(); //this will UPDATE the record
 
-        return redirect(route('karyawan.index'))->with("success", "Karyawan was updated successfully");
+        return redirect(route('admin.karyawan.index'))->with("success", "Karyawan was updated successfully");
     }
 
     // public function pay($id)

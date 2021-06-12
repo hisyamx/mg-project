@@ -10,9 +10,9 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}"><i
+                            <li class="breadcrumb-item"><a href="{{ route('admin.division.index') }}"><i
                                         class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="{{ route ('admin.magang.index')}}">Magang</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.magang.index') }}">Magang</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>
                     </nav>
@@ -38,6 +38,7 @@
                                 <img alt="Image placeholder" src="{{asset('/assets')}}/img/user.png">
                                 @endif
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -45,17 +46,14 @@
                     <div class="text-center">
                         <h5 class="h3">{{ $magang->name }}<span class="font-weight-light"></span>
                         </h5>
-                        @if ($magang->role == 3)
                         <div class="h5 font-weight-300">
-                            <i class="ni location_pin mr-2"></i>Magang
+                            <i class="ni location_pin mr-2"></i>{{ $magang->email }}
                         </div>
-                        @else
                         <div class="h5 font-weight-300">
-                            <i class="ni location_pin mr-2"></i>Karyawan
+                            <i class="ni location_pin mr-2"></i>{{ $magang->getRole() }}
                         </div>
-                        @endif
-                        <div class="h5 mt-4">
-                            <i class="ni business_briefcase-24 mr-2"></i>{{ $magang->username }}
+                        <div class="h5 mt-2">
+                            <i class="ni business_briefcase-24 mr-2"></i>{{ $magang->division->name }}
                         </div>
                         <div>
                             <i class="ni education_hat mr-2"></i>{{ $magang->address }}
@@ -84,26 +82,37 @@
                                     value="{{ $magang->name }}">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="nim">Nomor Induk</label>
-                                <input required type="text" class="form-control" id="nim" name="nim"
-                                    placeholder="Nomor Induk" value="{{ $magang->nim }}">
+                                <label for="code">Kode</label>
+                                <input required type="text" class="form-control" id="code" name="code" placeholder="NIM"
+                                    value="{{ $magang->code }}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input required type="text" class="form-control" id="email" name="email"
+                                    value="{{ $magang->email }}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password">Password</label>
+                                <input required type="password" class="form-control" id="password" name="password"
+                                    placeholder="Password" value="{{ $magang->password }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="role">Role</label>
-                                <input required type="text" class="form-control" id="role" name="role"
-                                    value="{{ $magang->role }}">
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="role" name="role"
+                                    value="{{ $magang->getRole() }}">
+                                    <option value="2">Karyawan</option>
+                                    <option value="3">Magang</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="division">Division</label>
-                                <select required id="division" class="form-control" name="division">
-                                    <option selected disabled>Divisi</option>
-                                    @foreach($division AS $args)
-                                    <option value="{{$args->name}}" <?php
-                                if($args->name == $magang->division){
-                                    print "selected";
-                                }
-                                ?>>{{$args->name}}</option>
-                                    @endforeach;
+                                <select class="selectpicker d-block w-100" data-style="btn-outline-primary"
+                                    data-live-search="true" required id="division" name="division"
+                                    value="{{ $magang->division->name }}">
+                                    @foreach($division AS $div)
+                                    <option value="{{$div->id}}">{{$div->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -112,19 +121,19 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="telephone">Telephone</label>
-                                <input name="telephone" required type="number" class="form-control" id="telephone"
-                                    value="{{ $magang->telephone}}">
+                                <input name="telephone" required type="text" class="form-control" id="telephone"
+                                    value="{{ $magang->telephone }}">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="status">Status</label>
-                                <input name="status" required type="text" class="form-control" id="status"
-                                    value="{{ $magang->status }}">
+                                <label for="instansi">Instansi</label>
+                                <input name="instansi" required type="text" class="form-control" id="instansi"
+                                    value="{{ $magang->instansi }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="start">Mulai Magang</label>
+                                    <label for="start">Mulai</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
@@ -136,7 +145,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="finish">Selesai Magang</label>
+                                    <label for="finish">Selesai</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
@@ -149,8 +158,8 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input required type="text" class="form-control" id="address" name="address"
-                                value="{{ $magang->address }}">
+                            <textarea required type="text" class="form-control" id="address" placeholder="Alamat"
+                                name="address">{{ $magang->address }}</textarea>
                         </div>
                         <div class="form-row">
                             <label> Tambahkan Foto (Optional)</label>
@@ -165,8 +174,18 @@
             </div>
         </div>
     </div>
+    @endsection
 
+    @section('page-css')
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    @endsection
 
+    @section('page-js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js">
+    </script>
+    <script>
+    </script>
     @endsection
 
     <!-- Modal -->

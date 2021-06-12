@@ -36,11 +36,12 @@
                 <!-- Light table -->
                 @if(count($division) >= 1)
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                    <table class="table align-items-center table-flush" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">Nama Divisi</th>
                                 <th scope="col" class="sort" data-sort="name">Kepala Divisi</th>
+                                <th scope="col" class="sort" data-sort="name">Members</th>
                                 <th scope="col" class="sort" data-sort="status">Status Divisi</th>
                                 <th scope="col"></th>
                             </tr>
@@ -58,9 +59,12 @@
                                 <td class="budget">
                                     {{$args->user->name}}
                                 </td>
+                                <td class="budget">
+                                    {{ $args->users->count() }}
+                                </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        @if ($args->status == "Active")
+                                        @if ($args->active)
                                         <i class="bg-success"></i>
                                         <span class="status">Aktif</span>
                                         @else
@@ -98,14 +102,4 @@
             </div>
         </div>
     </div>
-    <script>
-        if ($status == Active) {
-            <i class="bg-warning"></i>
-        }
-        else {
-            <i class="bg-green"></i>
-        }
-    </script>
-
-
     @endsection

@@ -11,7 +11,13 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('name')->karyawan()->get();
+        $users = User::all();
         return view("user.user.index", ['users' => $users]);
+    }
+
+    public function show($id)
+    {
+        $users = User::findOrFail($id);
+        return view("user.user.show", ['users' => $users]);
     }
 }
